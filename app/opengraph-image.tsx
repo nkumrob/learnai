@@ -22,23 +22,13 @@ export default function OgImage() {
         }}
       >
         <div style={{ display: "flex", alignItems: "center", gap: 20 }}>
-          <div
-            style={{
-              width: 68,
-              height: 68,
-              borderRadius: 18,
-              background: "#63bc9d",
-              display: "flex",
-              alignItems: "flex-end",
-              justifyContent: "center",
-              gap: 6,
-              padding: "0 13px 15px",
-            }}
-          >
-            <div style={{ width: 10, height: 22, background: "#0e1a14", borderRadius: 3 }} />
-            <div style={{ width: 10, height: 32, background: "#0e1a14", borderRadius: 3 }} />
-            <div style={{ width: 10, height: 42, background: "#0e1a14", borderRadius: 3 }} />
-          </div>
+          <svg width="68" height="68" viewBox="0 0 512 512">
+            <rect width="512" height="512" rx="120" fill="#63bc9d" />
+            <path
+              d="M150 144 H292 V172 H254 V306 H364 V376 H150 V306 H188 V172 H150 Z"
+              fill="#0e1a14"
+            />
+          </svg>
           <div style={{ fontSize: 34, letterSpacing: -1 }}>{SITE_NAME}</div>
         </div>
 
