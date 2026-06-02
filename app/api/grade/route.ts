@@ -2,7 +2,11 @@ import { NextResponse } from "next/server";
 import { z } from "zod";
 import { requireSession } from "@/lib/server/session";
 import { getModuleWithContent } from "@/lib/server/db/tracks";
-import { isTrackPassed, upsertProgress } from "@/lib/server/db/progress";
+import {
+  isTrackComplete,
+  isTrackPassed,
+  upsertProgress,
+} from "@/lib/server/db/progress";
 import { gradeQuiz } from "@/lib/core/grading";
 import type { GradeResult } from "@/types/shared";
 
@@ -35,6 +39,9 @@ export async function POST(req: Request) {
   const trackCompleted = graded.passed
     ? await isTrackPassed(session.id, module.trackId)
     : false;
+  const trackReadyToCertify = trackCompleted
+    ? await isTrackComplete(session.id, module.trackId)
+    : false;
 
   const result: GradeResult = {
     score: graded.score,
@@ -42,6 +49,7 @@ export async function POST(req: Request) {
     correctAnswers: graded.correctAnswers,
     explanations: graded.explanations,
     trackCompleted,
+    trackReadyToCertify,
   };
   return NextResponse.json(result);
 }

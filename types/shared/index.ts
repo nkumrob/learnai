@@ -77,8 +77,10 @@ export interface GradeResult {
   correctAnswers: number[];
   /** Per-question explanations. */
   explanations: string[];
-  /** True if this pass completed the whole track. */
+  /** True if this pass means every module's quiz in the track is now passed. */
   trackCompleted: boolean;
+  /** True if every module is fully done (quiz passed AND task checked). */
+  trackReadyToCertify: boolean;
 }
 
 /** Result of the placement quiz. */

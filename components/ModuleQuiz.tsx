@@ -212,21 +212,33 @@ function ResultBanner({
     );
   }
 
+  // All quizzes passed but some hands-on tasks are still unchecked.
+  const tasksRemain = result.trackCompleted && !result.trackReadyToCertify;
+
   return (
     <div className="rise rounded-[var(--r-lg)] border border-accent/30 bg-accent-faint p-6">
       <div className="font-display text-xl font-medium text-accent">Passed - {pct}%</div>
       <p className="mt-1 text-sm text-ink-2">
-        {result.trackCompleted
-          ? "That was the final module. You've completed the whole track."
-          : "Nicely done. The next module is unlocked."}
+        {result.trackReadyToCertify
+          ? "That was the final step. Every quiz passed and every task done - your certificate is ready."
+          : tasksRemain
+            ? "All quizzes in this level are passed. Check off your remaining hands-on tasks to earn the certificate."
+            : "Nicely done. The next module is unlocked."}
       </p>
       <div className="mt-5 flex flex-wrap gap-3">
-        {result.trackCompleted ? (
+        {result.trackReadyToCertify ? (
           <Link
             href={`/track/${slug}/certificate`}
             className="rounded-[var(--r-md)] bg-accent px-5 py-2.5 text-sm font-medium text-accent-ink transition-colors hover:bg-accent-hover"
           >
             Claim your certificate
+          </Link>
+        ) : tasksRemain ? (
+          <Link
+            href={`/track/${slug}`}
+            className="rounded-[var(--r-md)] bg-accent px-5 py-2.5 text-sm font-medium text-accent-ink transition-colors hover:bg-accent-hover"
+          >
+            Review remaining tasks
           </Link>
         ) : nextOrder ? (
           <Link
@@ -240,7 +252,7 @@ function ResultBanner({
           href={`/track/${slug}`}
           className="rounded-[var(--r-md)] border border-line-strong bg-surface px-5 py-2.5 text-sm font-medium transition-colors hover:border-accent"
         >
-          Back to track
+          Back to level
         </Link>
       </div>
     </div>
