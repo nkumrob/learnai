@@ -4,6 +4,7 @@ import { fundamentals2 } from "./fundamentals2";
 import { productivity } from "./productivity";
 import { productivity2 } from "./productivity2";
 import { prompting } from "./prompting";
+import { prompting2 } from "./prompting2";
 import { automation } from "./automation";
 import { building } from "./building";
 
@@ -16,6 +17,7 @@ const ALL: Record<string, ModuleContent> = {
   ...productivity,
   ...productivity2,
   ...prompting,
+  ...prompting2,
   ...automation,
   ...building,
 };

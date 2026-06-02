@@ -1,6 +1,6 @@
 import type { ModuleContent } from "@/types/shared";
 
-// Level 2 - Prompt Engineering (Literacy to Fluency). Topics 11-20.
+// Level 2 - Prompt Engineering (Literacy to Fluency). Topics 11-15.
 export const prompting: Record<string, ModuleContent> = {
   "prompting-1": {
     lesson: `**TL;DR - A strong prompt has four parts: context, instruction, input, and output format. Add them and unreliable results become repeatable ones.**
@@ -39,237 +39,172 @@ Format: [length] | [structure] | [tone].
 ## Common mistakes (and the fix)
 - **Burying the instruction** in a wall of context. **Fix:** put the task on its own line, near the top.
 - **No format.** "Make it good" isn't a format. **Fix:** name the length, structure, and tone.
-- **One giant prompt.** **Fix:** get a draft, then refine with one small nudge - "shorter", "warmer", "add a call to action".
+- **One giant prompt.** **Fix:** get a draft, then refine with one small nudge - "shorter", "warmer".
 
 ## Good to know - this works everywhere
-The four-part structure is **model-agnostic**: it works the same in **ChatGPT**, **Claude**, **Gemini**, and **Copilot**. A few real-world notes:
-- **Claude** and **ChatGPT** both reward a clearly stated role and structure; Claude is especially strong with long documents and careful instructions.
-- For **long inputs**, paste the material _last_ and restate the instruction at the end - models pay most attention to the start and end.
-- You learn prompting once, then carry it across every tool. That's why it's Level 2 of the journey.`,
+The four-part structure is **model-agnostic**: it works the same in **ChatGPT**, **Claude**, **Gemini**, and **Copilot**. A few notes: Claude and ChatGPT both reward a clearly stated role; for long inputs, paste the material _last_ and restate the instruction at the end. You learn prompting once and carry it across every tool.`,
     task: "Starter: take a message you actually need to write, and run it twice - once as a bare request, once with the four-part template. Compare how much you edit. Stretch: save your filled-in template as a reusable prompt for a task you do every week.",
     quiz: [
-      {
-        prompt: "Your prompt keeps giving vague, generic answers. Which fix helps most?",
-        options: [
-          "Add context, a specific instruction, and an output format",
-          "Make the prompt longer with more adjectives",
-          "Send the same prompt again and hope",
-          "Switch to a different AI tool",
-        ],
-        answerIndex: 0,
-        explanation: "Generic output almost always means missing context/instruction/format - structure fixes it.",
-      },
-      {
-        prompt: "Which line is the 'format' part of a prompt?",
-        options: [
-          "Under 120 words, warm tone, end with a next step",
-          "You are an HR lead at a startup",
-          "Write a welcome email",
-          "Their buddy is Sam, kickoff is 10am",
-        ],
-        answerIndex: 0,
-        explanation: "Format specifies length, structure, and tone - the shape of the answer.",
-      },
-      {
-        prompt: "You're pasting a long document for the AI to use. Best practice?",
-        options: [
-          "Put the material last and restate the instruction at the end",
-          "Put the instruction only at the very top and hope",
-          "Remove all formatting instructions",
-          "Split it across ten separate prompts",
-        ],
-        answerIndex: 0,
-        explanation: "Models attend most to the start and end, so restating the task at the end helps with long inputs.",
-      },
-      {
-        prompt: "Does the four-part structure work across ChatGPT, Claude, and Gemini?",
-        options: [
-          "Yes - prompting structure is model-agnostic",
-          "No, each needs a completely different approach",
-          "Only ChatGPT understands structure",
-          "Only on paid plans",
-        ],
-        answerIndex: 0,
-        explanation: "The same structured approach works across the major assistants.",
-      },
+      { prompt: "Your prompt keeps giving vague, generic answers. Which fix helps most?", options: ["Add context, a specific instruction, and an output format", "Make the prompt longer with more adjectives", "Send the same prompt again and hope", "Switch to a different AI tool"], answerIndex: 0, explanation: "Generic output almost always means missing context/instruction/format." },
+      { prompt: "Which line is the 'format' part of a prompt?", options: ["Under 120 words, warm tone, end with a next step", "You are an HR lead at a startup", "Write a welcome email", "Their buddy is Sam, kickoff is 10am"], answerIndex: 0, explanation: "Format specifies length, structure, and tone." },
+      { prompt: "You're pasting a long document for the AI to use. Best practice?", options: ["Put the material last and restate the instruction at the end", "Put the instruction only at the very top and hope", "Remove all formatting instructions", "Split it across ten separate prompts"], answerIndex: 0, explanation: "Models attend most to the start and end of long inputs." },
+      { prompt: "Does the four-part structure work across ChatGPT, Claude, and Gemini?", options: ["Yes - prompting structure is model-agnostic", "No, each needs a completely different approach", "Only ChatGPT understands structure", "Only on paid plans"], answerIndex: 0, explanation: "The same structured approach works across the major assistants." },
     ],
   },
+
   "prompting-2": {
-    lesson: `Adding "You are a [role]" anchors the AI's tone, depth, and perspective - and dramatically changes the output.
+    lesson: `**TL;DR - Start a prompt with "You are a [role]" and you anchor the AI's tone, depth, and perspective. A persona often does more for quality than any other single change.**
 
-> **Same task, different persona.** "Explain this budget" vs. "You are a CFO explaining this budget to a non-financial team." The second is clearer, better-pitched, and more useful.
+## Why it matters
+Without a role, the model picks a bland average voice. Give it a role and it pulls from the patterns of that expert - a teacher simplifies, a lawyer flags risk, an editor tightens. You're choosing which specialist shows up.
 
-## Why it works
-A persona pulls the model toward the patterns of that role: a teacher simplifies, a lawyer flags risk, an editor tightens. You're choosing which "expert" shows up.
+## Worked example - same task, different persona
+> **Bare:** "Explain this budget." -> a flat, generic summary.
+> **With persona:**
+\`\`\`
+You are a CFO explaining this budget to a smart but non-financial team.
+Avoid jargon, lead with the 3 things that matter, and flag one risk.
+\`\`\`
+Same data, a far clearer and better-pitched result.
 
-## How to write one
-Name the **role**, the **audience**, and the **goal**: "You are a friendly Python tutor for total beginners. Explain with one tiny example, no jargon."`,
-    task: "Write a persona prompt for three different workplace scenarios. For each, explain why that persona choice improves the output.",
+## Steal this template
+\`\`\`
+You are [specific role] with [experience/POV].
+You are speaking to [audience], who care about [their priority].
+Be [tone]. Avoid [what to skip].
+\`\`\`
+
+## Common mistakes (and the fix)
+- **Vague roles.** "You are an expert" barely helps. **Fix:** be specific - "a senior B2B copywriter for fintech".
+- **Forgetting the audience.** The role shapes the voice; the audience shapes the level. Name both.
+- **Persona theater.** Don't add a backstory it doesn't need - role + audience + tone is enough.
+
+## Good to know
+In **ChatGPT** you can bake a persona into "Custom Instructions" or a Custom GPT; in **Claude** you set it as the system prompt or a Project's instructions; in **Gemini** as a saved Gem. Set the persona once and every reply follows it - you'll formalize this in the "system prompts" lesson later this level.`,
+    task: "Starter: write a persona prompt (role + audience + tone) for a real task and compare it to a bare request. Stretch: turn your best persona into a saved Custom GPT / Claude Project / Gem so you can reuse it.",
     quiz: [
-      { prompt: "What does persona prompting do?", options: ["Anchors the AI's tone, depth, and perspective", "Makes responses slower", "Hides the question", "Removes context"], answerIndex: 0, explanation: "A role pulls output toward that expertise." },
-      { prompt: "A strong persona names the...", options: ["Role, audience, and goal", "Date and time", "Model's price", "Font and color"], answerIndex: 0, explanation: "Role + audience + goal shape the response well." },
-      { prompt: "Why does 'You are a CFO explaining to a non-financial team' help?", options: ["It sets expertise and the right audience level", "It's longer", "It uses the word CFO", "It avoids the topic"], answerIndex: 0, explanation: "It pitches the explanation correctly." },
-      { prompt: "A persona effectively lets you...", options: ["Choose which expert shows up", "Slow the model down", "Remove instructions", "Skip the task"], answerIndex: 0, explanation: "You select the relevant expertise pattern." },
+      { prompt: "What does a persona prompt mainly do?", options: ["Anchors the AI's tone, depth, and perspective", "Makes responses slower", "Hides the question", "Removes the need for context"], answerIndex: 0, explanation: "A role pulls output toward that expertise." },
+      { prompt: "Which persona is strongest?", options: ["A senior B2B copywriter for fintech, writing for busy founders", "An expert", "A helper", "A smart person"], answerIndex: 0, explanation: "Specific role + audience beats a vague 'expert'." },
+      { prompt: "Besides the role, what else should you name?", options: ["The audience and the tone", "The model's price", "The date", "The font"], answerIndex: 0, explanation: "Role sets the voice; audience sets the level." },
+      { prompt: "How do you make a persona persist across replies?", options: ["Save it as a system prompt / Custom GPT / Project / Gem", "Retype it every message only", "Hope the model remembers", "Use a longer prompt once"], answerIndex: 0, explanation: "System-level instructions persist across the conversation." },
     ],
   },
+
   "prompting-3": {
-    lesson: `Want consistent, on-brand output? Show examples. **Few-shot prompting** gives the model a pattern to copy before the real input.
+    lesson: `**TL;DR - Show the AI 2-3 examples of what you want before the real request. "Few-shot" prompting locks in format and voice far better than describing them in words.**
 
+## Why it matters
+Telling the model "use a friendly tone" is fuzzy. _Showing_ it two friendly examples is exact. Few-shot is the most reliable way to get consistent, on-brand output - for labels, templated copy, data extraction, anything repeated.
+
+## Worked example
 \`\`\`
-Write product descriptions in this style:
-"Cloud Mug - keeps coffee warm, feels like a hug."
-"Trail Bottle - rugged, leakproof, ready for anything."
-Now write one for: Desk Lamp ->
+Classify each review as POSITIVE, NEGATIVE, or NEUTRAL.
+
+"Shipped late but the product is great." -> POSITIVE
+"Stopped working in a week." -> NEGATIVE
+"It's fine, nothing special." -> NEUTRAL
+"Support ignored me for days." ->
+\`\`\`
+The examples pin the labels and format exactly. Ask cold (zero-shot) and you'll get inconsistent wording instead.
+
+## Steal this skeleton
+\`\`\`
+[Instruction].
+Here are examples of the format I want:
+[input 1] -> [ideal output 1]
+[input 2] -> [ideal output 2]
+Now do the same for: [real input]
 \`\`\`
 
-> **Zero-shot vs few-shot.** Asked cold, you get five different tones. With two examples, all five match. Examples beat describing the style in words.
+## Common mistakes (and the fix)
+- **Zero examples for a format-critical task.** **Fix:** give 2-3 representative ones, including a tricky case.
+- **Inconsistent examples.** If your samples disagree, so will the output. Keep them clean.
+- **Too many examples.** 2-4 is usually enough; more just costs tokens.
 
-Use it whenever format or voice must stay consistent - labels, classifications, templated copy.`,
-    task: "Produce a consistent-format deliverable (e.g., five items in the same tone) using a 2-3 example prompt, where a no-example attempt was inconsistent.",
+## Good to know
+Few-shot works in every assistant and is the backbone of reliable **automations** (Level 4) and **API** calls (Level 5) - when AI feeds another system, examples are how you guarantee the shape. Pair it with chain-of-thought (next lesson): show examples that include the reasoning.`,
+    task: "Starter: pick a small repeated task (classify, format, label) and write a 3-example few-shot prompt; compare it to a no-example attempt. Stretch: add one tricky 'edge case' example and see if accuracy improves.",
     quiz: [
-      { prompt: "What is few-shot prompting?", options: ["Giving examples before the real input", "Using the model briefly", "A short prompt", "Turning off context"], answerIndex: 0, explanation: "Examples teach the pattern to copy." },
-      { prompt: "When is few-shot most useful?", options: ["When format or voice must stay consistent", "When you want randomness", "For a one-word reply", "Never"], answerIndex: 0, explanation: "Examples lock in a consistent style." },
-      { prompt: "Examples are better than describing style because...", options: ["They show the exact pattern precisely", "They use fewer words always", "They hide the task", "They confuse the model"], answerIndex: 0, explanation: "A concrete sample communicates style clearly." },
-      { prompt: "Few-shot helps most with which task?", options: ["Five product blurbs in one voice", "A casual hello", "Reading the news", "Doing your taxes"], answerIndex: 0, explanation: "Repeated, consistent format is the sweet spot." },
+      { prompt: "What is few-shot prompting?", options: ["Giving 2-3 examples before the real request", "Using the model briefly", "A very short prompt", "Turning off context"], answerIndex: 0, explanation: "Examples teach the exact pattern to copy." },
+      { prompt: "Why are examples better than describing a format?", options: ["They pin the labels and shape precisely", "They always use fewer tokens", "They hide the task", "They confuse the model"], answerIndex: 0, explanation: "A concrete sample is clearer than an abstract description." },
+      { prompt: "When is few-shot most valuable?", options: ["When format/voice must stay consistent across items", "For a one-word hello", "When you want randomness", "Never"], answerIndex: 0, explanation: "Repeated, consistent output is the sweet spot." },
+      { prompt: "How many examples are usually enough?", options: ["About 2-4, including a tricky case", "Zero, always", "At least 50", "Exactly 1, never more"], answerIndex: 0, explanation: "A few clean, representative examples do the job." },
     ],
   },
+
   "prompting-4": {
-    lesson: `For anything with reasoning or multiple steps, tell the model to **think step by step** before answering. This single phrase sharply improves accuracy.
+    lesson: `**TL;DR - For anything with steps or reasoning, add "think step by step" before the answer. This one phrase sharply cuts mistakes.**
 
-> **Before / after.** "A meeting starts 2:45pm, runs 90 min, then a 20-min break, then 45 min - when does it end?" A snap answer often errs. Add "think step by step" and it works through each interval correctly.
+## Why it matters
+Without it, the model jumps to a plausible-sounding answer and skips the working - so it errs on math, logic, and multi-part problems. Forcing it to reason out loud catches those errors before the final answer.
 
-## Why it works
-Without it, the model jumps to a plausible-sounding answer. Reasoning out loud forces it to show its work, catching mistakes a guess would make.
+## Worked example - before / after
+> **Prompt:** "A meeting starts at 2:45pm, runs 90 minutes, then a 20-minute break, then 45 minutes. When does it end?"
+> **Cold answer:** often wrong - it guesses.
+> **With "think step by step":** 2:45 + 90 = 4:15; + 20 = 4:35; + 45 = **5:20pm.** Correct, because it showed the steps.
 
-Use it for math, logic, planning, and anything multi-step. Skip it for simple lookups where it just adds length.`,
-    task: "Take a multi-step problem. Run it once normally and once with 'think step by step', and capture the before/after difference in accuracy or quality.",
+## Steal this - when to use it
+\`\`\`
+Use "think step by step" (or "show your reasoning, then answer") for:
+- math, dates, logic, comparisons, multi-part questions, decisions with trade-offs.
+Skip it for:
+- simple lookups or one-line rewrites (it just adds length).
+\`\`\`
+
+## Common mistakes (and the fix)
+- **Using it for trivial tasks.** It bloats simple answers. **Fix:** reserve it for real reasoning.
+- **Not asking for the steps separately.** **Fix:** "Reason first, then give the final answer on its own line."
+- **Trusting the reasoning blindly** - skim it; it can reason wrongly too.
+
+## Good to know
+Newer **reasoning models** - OpenAI's o-series and **Claude's extended thinking** - do this internally, so you don't always have to ask. But for everyday models (GPT-4-class, Gemini), "think step by step" is still one of the highest-return tricks. Combine it with few-shot: show examples that include the reasoning.`,
+    task: "Starter: take a multi-step problem, run it cold, then run it with 'think step by step' and compare. Stretch: write a prompt that asks for the reasoning first and the final answer on its own line.",
     quiz: [
-      { prompt: "What does chain-of-thought prompting do?", options: ["Makes the model reason step by step before answering", "Makes answers shorter", "Removes context", "Picks a font"], answerIndex: 0, explanation: "Step-by-step reasoning improves accuracy." },
-      { prompt: "When does it help most?", options: ["Math, logic, planning, multi-step tasks", "Saying hello", "Copying text", "Choosing a color"], answerIndex: 0, explanation: "Reasoning helps where steps are involved." },
-      { prompt: "Why does reasoning out loud help?", options: ["It catches mistakes a snap answer would make", "It looks nice", "It uses more tokens", "It hides the answer"], answerIndex: 0, explanation: "Showing work surfaces errors before the final answer." },
-      { prompt: "When can you skip chain-of-thought?", options: ["Simple lookups where it just adds length", "Complex math", "Multi-step planning", "Logic puzzles"], answerIndex: 0, explanation: "Simple tasks don't need step-by-step reasoning." },
+      { prompt: "What does chain-of-thought prompting do?", options: ["Makes the model reason step by step before answering", "Makes answers shorter", "Removes context", "Picks a font"], answerIndex: 0, explanation: "Reasoning out loud catches mistakes a snap answer makes." },
+      { prompt: "When should you skip it?", options: ["Simple lookups or one-line rewrites", "Multi-step math", "Logic puzzles", "Decisions with trade-offs"], answerIndex: 0, explanation: "It only adds length on trivial tasks." },
+      { prompt: "Which models do this reasoning automatically?", options: ["Reasoning models (OpenAI o-series, Claude extended thinking)", "All models, always", "No models ever", "Only image tools"], answerIndex: 0, explanation: "Reasoning models think internally before answering." },
+      { prompt: "Best way to combine techniques?", options: ["Show few-shot examples that include the reasoning", "Never give examples", "Only greet the model", "Ask for the shortest answer"], answerIndex: 0, explanation: "Examples that demonstrate reasoning give pattern + rigor." },
     ],
   },
+
   "prompting-5": {
-    lesson: `The best AI users treat a chat as a **conversation**, not a vending machine. They ask, see the result, then refine - rather than expecting perfection in one shot.
+    lesson: `**TL;DR - Treat AI like a conversation, not a vending machine. Get a rough draft, then refine with small, specific nudges. Iterating beats trying to write one perfect prompt.**
 
-## The loop
-1. Get a rough draft.
-2. React with one specific change: "shorter", "more formal", "add a call to action".
-3. Repeat until it's right.
+## Why it matters
+The best AI users operate in a loop - ask, react, redirect - rather than expecting perfection in one shot. Each small correction steers the result, and you stay in control of the outcome.
 
-> **Example.** Draft an email -> "make it warmer" -> "cut the second paragraph" -> "add a clear ask". Three small turns beat one giant prompt, and you stay in control of the result.
-
-Don't restart from scratch when an answer misses. Build on what's there.`,
-    task: "Produce a polished output by iterating through at least three refinements. Note what you changed in each turn and why.",
-    quiz: [
-      { prompt: "How do expert users treat AI chats?", options: ["As an iterative conversation", "As a one-shot vending machine", "As a search engine only", "As a calculator"], answerIndex: 0, explanation: "Refining across turns produces the best results." },
-      { prompt: "Best move when a draft misses?", options: ["Reply with one specific change", "Start over from scratch", "Give up", "Repeat the same prompt"], answerIndex: 0, explanation: "Small, specific refinements beat restarting." },
-      { prompt: "Why iterate instead of one giant prompt?", options: ["You stay in control and reach a better result", "It uses more words", "It's slower for no reason", "It hides the goal"], answerIndex: 0, explanation: "Step-by-step refinement is more reliable." },
-      { prompt: "A good refinement instruction is...", options: ["'Make it warmer' or 'add a clear ask'", "'Do better'", "'Something nice'", "'Fix it'"], answerIndex: 0, explanation: "Specific changes steer the next turn." },
-    ],
-  },
-  "prompting-6": {
-    lesson: `A great prompt you use once is wasted. Save your best ones as **reusable templates** with slots you fill each time.
-
+## Worked example - the refine loop
 \`\`\`
-You are my comms assistant.
-Write a weekly update from these notes: [PASTE NOTES]
-Format: 3 sections - Done, In progress, Blocked. Under 150 words.
+You: Draft a follow-up email to a lead who went quiet.
+AI:  [draft]
+You: Warmer, and shorter - 4 sentences max.
+AI:  [tighter draft]
+You: Add one specific reason to reconnect this week.
+AI:  [final - ready to send]
+\`\`\`
+Three small turns beat one giant prompt, and each step is easy to judge.
+
+## Steal this - refinement nudges
+\`\`\`
+Length:  "cut by half" · "one paragraph"
+Tone:    "warmer" · "more direct" · "less salesy"
+Focus:   "lead with the ask" · "drop the second point"
+Form:    "make it a bulleted list" · "add a subject line"
 \`\`\`
 
-Next week, only the notes change. The structure - which took effort to get right - stays.
+## Common mistakes (and the fix)
+- **Restarting from scratch** when a draft misses. **Fix:** reply with the single change you want.
+- **Vague feedback** ("make it better"). **Fix:** name the specific change.
+- **Losing good earlier versions.** **Fix:** "keep the last version but only change X."
 
-## Build your library
-- Keep a doc (or your tool's saved prompts) of 5+ templates for frequent tasks.
-- Name them clearly: "Weekly update", "Polite decline", "Summarize call".
-- Improve them over time; save the better version.
-
-> **Payoff.** Templates turn occasional AI help into a repeatable part of how you work.`,
-    task: "Build and save a personal prompt library of at least five templates for your most frequent tasks, each with a clear slot for the changing input.",
+## Good to know
+This is why **chat history matters** - the model uses the whole conversation as context, so each turn builds on the last. In **Claude Projects** and **ChatGPT** threads, you can keep iterating on the same material for a long session. Start a fresh chat only when you want a clean slate.`,
+    task: "Starter: produce a finished piece by iterating at least three times; note what you changed each turn and why. Stretch: do it in one continuous chat and notice how the model uses earlier turns as context.",
     quiz: [
-      { prompt: "What is a prompt template?", options: ["A reusable prompt with slots you fill each time", "A one-time question", "A random word", "An error"], answerIndex: 0, explanation: "Templates keep the structure and swap the input." },
-      { prompt: "What's a 'slot'?", options: ["The changing input, like [PASTE NOTES]", "The model's name", "A bug", "The temperature"], answerIndex: 0, explanation: "Slots hold the variable part." },
-      { prompt: "How do you improve a library over time?", options: ["Refine and re-save prompts that underperform", "Never change them", "Delete the good ones", "Leave them unnamed"], answerIndex: 0, explanation: "Iterating makes the library compound." },
-      { prompt: "The payoff of a prompt library is...", options: ["AI becomes a repeatable part of your workflow", "You stop reviewing output", "You never think again", "It removes context"], answerIndex: 0, explanation: "Reuse multiplies the value of good prompts." },
-    ],
-  },
-  "prompting-7": {
-    lesson: `Most beginner output is too long, in the wrong format, or the wrong voice. Explicit control fixes all three fast.
-
-## Direct three things
-- **Format**: bullets vs prose vs table vs JSON. "Answer as a 3-row table."
-- **Tone**: formal/casual, confident/cautious. "Friendly but concise."
-- **Length**: "Under 100 words." "One sentence."
-
-> **One source, three shapes.** From the same notes: an executive email, a bullet summary, and a Slack message - just by changing the format and tone instructions.
-
-Being explicit is the fastest path from "meh" to professional output.`,
-    task: "Produce the same content in three formats (executive email, bullet summary, Slack message) from one underlying prompt, changing only format and tone.",
-    quiz: [
-      { prompt: "Which three things should you control explicitly?", options: ["Format, tone, and length", "Color, font, size", "Model, price, date", "Nothing"], answerIndex: 0, explanation: "These fix most beginner output problems." },
-      { prompt: "How do you get a table instead of prose?", options: ["Ask for it: 'answer as a 3-row table'", "Hope for it", "Use a longer prompt", "Avoid instructions"], answerIndex: 0, explanation: "State the format you want." },
-      { prompt: "Why control length?", options: ["Beginner output is often too long", "Longer is always better", "It changes the facts", "It's required by law"], answerIndex: 0, explanation: "Explicit length keeps it tight and usable." },
-      { prompt: "Explicit format control is...", options: ["The fastest path to professional output", "A waste of time", "Only for coders", "Bad for tone"], answerIndex: 0, explanation: "Specifying format/tone/length raises quality quickly." },
-    ],
-  },
-  "prompting-8": {
-    lesson: `When output is wrong, vague, too long, or hallucinated, beginners blame the AI. Experts diagnose **which prompt element failed** and fix it.
-
-## A quick diagnosis
-- **Too generic?** Missing context or persona.
-- **Wrong shape/length?** Missing format instruction.
-- **Off-topic or invented facts?** Input unclear, or you asked for something it can't know.
-- **Inconsistent?** Add examples (few-shot) or lower temperature.
-
-> **Example.** "It's too formal" isn't the AI's fault - your prompt never specified tone. Add "casual, friendly" and it's fixed.
-
-Treat a bad output as feedback on your prompt, not the model.`,
-    task: "Take three poorly-performing prompts and their bad outputs. Identify the structural flaw in each and write a revised prompt that fixes it.",
-    quiz: [
-      { prompt: "Output is too generic. Likely cause?", options: ["Missing context or persona", "Too much context", "Wrong model price", "Too many examples"], answerIndex: 0, explanation: "Generic output usually lacks context/role." },
-      { prompt: "Output is the wrong shape or length. Fix?", options: ["Add a format instruction", "Change the wifi", "Use a bigger screen", "Wait a day"], answerIndex: 0, explanation: "Specify the format explicitly." },
-      { prompt: "How do experts treat a bad output?", options: ["As feedback on the prompt, not the model", "As proof AI is useless", "As random", "As unfixable"], answerIndex: 0, explanation: "Diagnose and revise the prompt." },
-      { prompt: "Inconsistent results - best fix?", options: ["Add examples or lower temperature", "Ask vaguely", "Remove all instructions", "Give up"], answerIndex: 0, explanation: "Few-shot and lower temperature add consistency." },
-    ],
-  },
-  "prompting-9": {
-    lesson: `Three power-user controls separate competent from expert AI use.
-
-- **System prompt** - a standing instruction that shapes *every* reply: "You are a concise support agent; never give legal advice." Set it once; it persists.
-- **Temperature** - the creativity dial. **Low** (0-0.3) for consistent, factual work; **high** for brainstorming and variety.
-- **Context window** - the model's working memory. For big inputs, put key instructions near the top *and* restate them at the end so they aren't lost.
-
-> **Example.** For a support bot you'd set a firm system prompt and a low temperature - you want consistency, not surprise.
-
-These don't change *what* you ask, but *how reliably* you get it.`,
-    task: "Configure a system prompt for a specific use case (e.g., a support tone) and choose a temperature. Explain why that temperature fits the task.",
-    quiz: [
-      { prompt: "What does a system prompt do?", options: ["Sets standing behavior for every reply", "Sends one message then vanishes", "Connects to the internet", "Stores a password"], answerIndex: 0, explanation: "It persists across the conversation." },
-      { prompt: "When should temperature be low?", options: ["When you want consistent, factual output", "When brainstorming", "When you want surprises", "Never"], answerIndex: 0, explanation: "Low temperature = more deterministic." },
-      { prompt: "For very long inputs, you should...", options: ["Put key instructions at the top and restate them at the end", "Delete the instructions", "Use no format", "Make it longer"], answerIndex: 0, explanation: "Restating guards against losing key points in a long context." },
-      { prompt: "For a support bot, the best settings are...", options: ["Firm system prompt, low temperature", "No system prompt, high temperature", "Random everything", "Maximum creativity"], answerIndex: 0, explanation: "Consistency matters for support." },
-    ],
-  },
-  "prompting-10": {
-    lesson: `What works for drafting emails doesn't work for analyzing data. Each domain has its own prompt patterns - learning to adapt is a fluency milestone.
-
-## Patterns by domain
-- **Writing**: persona + tone + format ("warm, 100 words").
-- **Research**: ask for sources, opposing views, and a confidence note.
-- **Data**: describe the columns, ask for specific calculations and one chart.
-- **Coding**: state the language, inputs, and expected output; ask for comments.
-- **Management**: ask for options with trade-offs, not a single answer.
-
-> **Example.** A data task starts very differently: "Here are columns Date, Region, Sales. Find the top region by month and flag anomalies."
-
-The skill is recognizing the domain and reaching for its pattern.`,
-    task: "Write an effective prompt for a task in a domain outside your usual role (e.g., data if you're a writer) and get a usable result on the first try.",
-    quiz: [
-      { prompt: "Why adapt prompts by domain?", options: ["Each domain needs different structure and asks", "All tasks are identical", "Longer is always better", "Domains don't matter"], answerIndex: 0, explanation: "Writing, data, and coding need different patterns." },
-      { prompt: "A good data prompt should...", options: ["Describe the columns and ask for specific calculations", "Say 'analyze this' vaguely", "Avoid mentioning the data", "Request a poem"], answerIndex: 0, explanation: "Specifying columns and calculations gets usable analysis." },
-      { prompt: "For a management decision, ask for...", options: ["Options with trade-offs, not one answer", "A single answer with no reasoning", "A random pick", "Nothing"], answerIndex: 0, explanation: "Trade-off options support real judgment." },
-      { prompt: "The core domain skill is...", options: ["Recognizing the domain and using its pattern", "Using one prompt for everything", "Ignoring format", "Avoiding examples"], answerIndex: 0, explanation: "Match the prompt pattern to the domain." },
+      { prompt: "How do expert users treat an AI chat?", options: ["As an iterative conversation, refining across turns", "As a one-shot vending machine", "As a search engine only", "As a calculator"], answerIndex: 0, explanation: "Refining across turns produces the best results." },
+      { prompt: "Best move when a draft is close but off?", options: ["Reply with the one specific change you want", "Start over from scratch", "Give vague feedback", "Repeat the same prompt"], answerIndex: 0, explanation: "Small, specific nudges steer the result." },
+      { prompt: "Why does keeping the same chat help?", options: ["The model uses the whole conversation as context", "It's faster wifi", "It saves money only", "It hides the goal"], answerIndex: 0, explanation: "Each turn builds on the prior context." },
+      { prompt: "A good refinement nudge is...", options: ["'Cut by half' or 'lead with the ask'", "'Make it better'", "'Do something nice'", "'Fix it'"], answerIndex: 0, explanation: "Specific instructions steer the next turn." },
     ],
   },
 };
