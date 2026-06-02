@@ -20,19 +20,21 @@ export default async function TrackPage({
   const view = await getTrackView(slug, session.id);
   if (!view) notFound();
 
-  const { track, modules, completed, passedCount } = view;
-  const pct = Math.round((passedCount / modules.length) * 100);
+  const { track, modules, completeAll, completeCount, level, tier } = view;
+  const pct = Math.round((completeCount / modules.length) * 100);
 
   return (
     <div className="mx-auto max-w-2xl px-5 py-12 sm:py-16">
       <Link
-        href="/#curriculum"
+        href="/#journey"
         className="text-sm text-ink-3 transition-colors hover:text-ink"
       >
-        ← Curriculum
+        ← Journey
       </Link>
 
-      <p className="eyebrow rise rise-1 mt-6">Track</p>
+      <p className="eyebrow rise rise-1 mt-6">
+        Level {level} · {tier}
+      </p>
       <h1 className="rise rise-2 mt-2 font-display text-4xl font-medium tracking-tight">
         {track.title}
       </h1>
@@ -48,16 +50,16 @@ export default async function TrackPage({
           />
         </div>
         <span className="text-sm font-medium text-ink-2 tabular-nums">
-          {passedCount} / {modules.length}
+          {completeCount} / {modules.length} done
         </span>
       </div>
 
-      {completed && (
+      {completeAll && (
         <div className="rise mt-7 flex flex-col gap-4 rounded-[var(--r-lg)] border border-accent/30 bg-accent-faint p-5 sm:flex-row sm:items-center sm:justify-between">
           <div>
-            <div className="font-medium text-accent">Track complete</div>
+            <div className="font-medium text-accent">Level complete</div>
             <div className="text-sm text-ink-2">
-              You&apos;ve passed every module. Your certificate is ready.
+              Every lesson passed and every task done. Your certificate is ready.
             </div>
           </div>
           <Link
@@ -79,24 +81,20 @@ export default async function TrackPage({
 }
 
 function ModuleRow({ slug, module: m }: { slug: string; module: ModuleView }) {
-  const state =
-    m.status === "passed"
-      ? { label: "Passed", cls: "text-accent", dot: "bg-accent" }
-      : m.status === "in_progress"
-        ? { label: "In progress", cls: "text-ink-2", dot: "bg-ink-3" }
-        : m.locked
-          ? { label: "Locked", cls: "text-ink-3", dot: "bg-line-strong" }
-          : { label: "Start", cls: "text-accent", dot: "bg-line-strong" };
+  const passed = m.status === "passed";
 
   const inner = (
     <div
       className={`flex items-center gap-4 rounded-[var(--r-lg)] border border-line bg-surface px-5 py-4 ${
         m.locked ? "opacity-60" : "transition-all hover:border-accent hover:shadow-sm"
-      }`}
+      } ${m.complete ? "border-accent/30" : ""}`}
     >
-      <span className="grid h-9 w-9 shrink-0 place-items-center rounded-full border border-line font-display text-sm text-ink-2">
-        {m.status === "passed" ? "✓" : m.locked ? "" : m.order}
-        {m.locked && <LockIcon />}
+      <span
+        className={`grid h-9 w-9 shrink-0 place-items-center rounded-full border font-display text-sm ${
+          m.complete ? "border-accent bg-accent text-accent-ink" : "border-line text-ink-2"
+        }`}
+      >
+        {m.complete ? "✓" : m.locked ? <LockIcon /> : m.order}
       </span>
       <div className="min-w-0 flex-1">
         <div className="font-medium tracking-tight">{m.title}</div>
@@ -104,15 +102,13 @@ function ModuleRow({ slug, module: m }: { slug: string; module: ModuleView }) {
           You&apos;ll be able to {lower(m.outcome)}.
         </div>
       </div>
-      <span className={`flex shrink-0 items-center gap-2 text-xs font-medium ${state.cls}`}>
-        <span className={`h-1.5 w-1.5 rounded-full ${state.dot}`} />
-        {state.label}
-        {m.score != null && m.status === "passed" && (
-          <span className="text-ink-3 tabular-nums">
-            {Math.round(m.score * 100)}%
-          </span>
-        )}
-      </span>
+      {!m.locked && (
+        <div className="flex shrink-0 items-center gap-1.5">
+          <Pill on={passed} label={passed ? `Quiz ${Math.round((m.score ?? 0) * 100)}%` : "Quiz"} />
+          <Pill on={m.taskDone} label="Task" />
+        </div>
+      )}
+      {m.locked && <span className="shrink-0 text-xs font-medium text-ink-3">Locked</span>}
     </div>
   );
 
@@ -121,6 +117,19 @@ function ModuleRow({ slug, module: m }: { slug: string; module: ModuleView }) {
     <li>
       <Link href={`/track/${slug}/${m.order}`}>{inner}</Link>
     </li>
+  );
+}
+
+function Pill({ on, label }: { on: boolean; label: string }) {
+  return (
+    <span
+      className={`rounded-[var(--r-sm)] px-2 py-0.5 text-[11px] font-medium tabular-nums ${
+        on ? "bg-accent-faint text-accent" : "bg-surface-2 text-ink-3"
+      }`}
+    >
+      {on ? "✓ " : ""}
+      {label}
+    </span>
   );
 }
 

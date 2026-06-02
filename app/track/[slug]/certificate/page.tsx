@@ -2,7 +2,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { getCurrentSession } from "@/lib/server/session";
 import { getTrackBySlug } from "@/lib/server/db/tracks";
-import { isTrackPassed } from "@/lib/server/db/progress";
+import { isTrackComplete } from "@/lib/server/db/progress";
 import { getForSessionTrack } from "@/lib/server/db/certificates";
 import { isTrackSlug } from "@/lib/core/track-meta";
 import { CertificateClaim } from "@/components/CertificateClaim";
@@ -23,7 +23,7 @@ export default async function CertificatePage({
   const track = await getTrackBySlug(slug);
   if (!track) notFound();
 
-  const passed = await isTrackPassed(session.id, track.id);
+  const passed = await isTrackComplete(session.id, track.id);
   if (!passed) {
     return (
       <div className="mx-auto max-w-md px-5 py-24 text-center">
@@ -35,7 +35,8 @@ export default async function CertificatePage({
         </div>
         <h1 className="mt-5 font-display text-2xl font-medium">Not yet certified</h1>
         <p className="mt-2 text-ink-2">
-          Finish every module in {track.title} to claim your certificate.
+          Finish every module in {track.title} - pass the quiz and check off the
+          task - to claim your certificate.
         </p>
         <Link
           href={`/track/${slug}`}

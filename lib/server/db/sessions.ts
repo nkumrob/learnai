@@ -6,6 +6,8 @@ export interface Session {
   id: string;
   learnerName: string | null;
   tier: "free" | "premium";
+  /** Level the learner was placed at (1..5); defaults to 1. */
+  startLevel: number;
 }
 
 type Row = Record<string, unknown>;
@@ -15,6 +17,7 @@ function toSession(r: Row): Session {
     id: String(r.id),
     learnerName: r.learner_name == null ? null : String(r.learner_name),
     tier: (r.tier as "free" | "premium") ?? "free",
+    startLevel: r.start_level == null ? 1 : Number(r.start_level),
   };
 }
 
@@ -45,5 +48,17 @@ export async function setLearnerName(
   await getDb().execute({
     sql: `UPDATE sessions SET learner_name = ? WHERE id = ?`,
     args: [name, id],
+  });
+}
+
+/** Record the placement result so the journey can open the right levels. */
+export async function setStartLevel(
+  id: string,
+  level: number,
+): Promise<void> {
+  await ensureSchema();
+  await getDb().execute({
+    sql: `UPDATE sessions SET start_level = ? WHERE id = ?`,
+    args: [level, id],
   });
 }

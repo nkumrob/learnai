@@ -28,6 +28,7 @@ const STATEMENTS = [
     id TEXT PRIMARY KEY,
     learner_name TEXT,
     tier TEXT NOT NULL DEFAULT 'free',
+    start_level INTEGER NOT NULL DEFAULT 1,
     created_at TEXT NOT NULL
   )`,
   `CREATE TABLE IF NOT EXISTS progress (
@@ -35,6 +36,7 @@ const STATEMENTS = [
     module_id TEXT NOT NULL REFERENCES modules(id),
     status TEXT NOT NULL,
     score REAL,
+    task_done INTEGER NOT NULL DEFAULT 0,
     updated_at TEXT NOT NULL,
     PRIMARY KEY (session_id, module_id)
   )`,

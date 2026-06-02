@@ -6,6 +6,7 @@ import { getModuleContent } from "@/lib/server/db/tracks";
 import { isTrackSlug } from "@/lib/core/track-meta";
 import { Markdown } from "@/components/Markdown";
 import { ModuleQuiz } from "@/components/ModuleQuiz";
+import { TaskCheck } from "@/components/TaskCheck";
 
 export const dynamic = "force-dynamic";
 
@@ -68,10 +69,11 @@ export default async function ModulePage({
         <Markdown>{content.lesson}</Markdown>
       </article>
 
-      <div className="rise mt-9 rounded-[var(--r-lg)] border border-line bg-surface-2 p-5">
-        <div className="eyebrow text-accent">Try it now</div>
-        <p className="mt-2 leading-relaxed text-ink">{content.task}</p>
-      </div>
+      <TaskCheck
+        moduleId={current.id}
+        task={content.task}
+        initialDone={current.taskDone}
+      />
 
       <ModuleQuiz
         moduleId={current.id}

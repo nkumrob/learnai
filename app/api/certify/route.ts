@@ -2,7 +2,7 @@ import { NextResponse } from "next/server";
 import { z } from "zod";
 import { requireSession } from "@/lib/server/session";
 import { getTrackBySlug } from "@/lib/server/db/tracks";
-import { isTrackPassed } from "@/lib/server/db/progress";
+import { isTrackComplete } from "@/lib/server/db/progress";
 import { issueCertificate } from "@/lib/server/db/certificates";
 import { setLearnerName } from "@/lib/server/db/sessions";
 import type { TrackSlug } from "@/types/shared";
@@ -31,10 +31,13 @@ export async function POST(req: Request) {
     return NextResponse.json({ error: "Track not found" }, { status: 404 });
   }
 
-  const completed = await isTrackPassed(session.id, track.id);
+  const completed = await isTrackComplete(session.id, track.id);
   if (!completed) {
     return NextResponse.json(
-      { error: "Finish all modules before claiming your certificate." },
+      {
+        error:
+          "Finish every module (pass the quiz and check off the task) before claiming your certificate.",
+      },
       { status: 403 },
     );
   }

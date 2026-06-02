@@ -1,363 +1,128 @@
 import type { ModuleContent } from "@/types/shared";
 
-// Hand-authored content for the Building with AI: APIs & MCP track.
+// Level 5 - Advanced & Specialized AI (Mastery). Topics 45-50.
 export const building: Record<string, ModuleContent> = {
   "building-1": {
-    lesson: `Behind every AI app is an **API call**: your code sends a request to a model and gets text back. Under the hood, the chat tool you've been using does exactly this.
+    lesson: `A normal LLM only knows its training data. **RAG (Retrieval-Augmented Generation)** connects it to *your* documents so it answers from your knowledge.
 
-## The shape of a request
-You send a list of **messages** (a system instruction plus the conversation) and get a reply.
-\`\`\`
-POST https://api.provider.com/v1/chat
-{
-  "model": "a-small-fast-model",
-  "messages": [
-    { "role": "system", "content": "You are a concise assistant." },
-    { "role": "user", "content": "Summarize this in one line: ..." }
-  ]
-}
-\`\`\`
-The response contains the model's text, plus usage info (how many **tokens** you used - that's what you pay for).
+## The flow
+1. **Prepare** - split your docs into chunks, store them in a search index (often a *vector database* that searches by meaning).
+2. **Retrieve** - for a question, find the most relevant chunks.
+3. **Augment** - paste those chunks into the prompt.
+4. **Generate** - the model answers using them.
 
-## Three knobs you'll actually use
-- **model** - bigger = smarter but slower/pricier; pick the smallest that's good enough.
-- **temperature** - low (0-0.3) for consistent/factual, higher for creative.
-- **max tokens** - caps the response length (and cost).
+> **Example.** "What's our refund window?" -> retrieve the policy chunk ("within 30 days") -> answer grounded in your real policy, not a guess.
 
-## Keys and safety
-- Your **API key** is a secret. Never put it in frontend code or commit it - keep it on the server / in an environment variable.
-- Calls can fail or be slow; handle errors and timeouts.
-
-> **Mindset.** An API call is just "function in, text out." Once you can send messages and read the reply, you can build almost anything on top.`,
-    task: "Read your chosen provider's quickstart and identify, in their example: the model field, the messages array, where the response text lives, and where the API key is set. Don't build yet - just locate each piece.",
+RAG = an open-book exam: the model is smart, but you hand it the right page. It powers internal chatbots and document Q&A. Keep it honest: "answer only from the provided context; if it's not there, say you don't know."`,
+    task: "Explain in plain language what RAG does differently from a standard prompt, and describe one real use case where it would change the output quality significantly.",
     quiz: [
-      {
-        prompt: "What do you send in a chat API request?",
-        options: [
-          "A model and a list of messages",
-          "Only your password",
-          "A single image",
-          "Nothing - it guesses",
-        ],
-        answerIndex: 0,
-        explanation: "You specify the model and a messages array (system + conversation).",
-      },
-      {
-        prompt: "What are you billed by on most LLM APIs?",
-        options: ["Tokens used", "Number of clicks", "Time of day", "File size on disk"],
-        answerIndex: 0,
-        explanation: "Usage is measured in tokens for input and output.",
-      },
-      {
-        prompt: "When should you lower the temperature?",
-        options: [
-          "When you want consistent, factual output",
-          "When you want maximum randomness",
-          "When you want longer answers",
-          "Never",
-        ],
-        answerIndex: 0,
-        explanation: "Low temperature gives more deterministic, consistent responses.",
-      },
-      {
-        prompt: "Where must your API key live?",
-        options: [
-          "On the server / in an environment variable, never in frontend code",
-          "In your public HTML",
-          "In a committed file on GitHub",
-          "In the user's browser",
-        ],
-        answerIndex: 0,
-        explanation: "API keys are secrets - exposing them lets others spend your money.",
-      },
+      { prompt: "What problem does RAG solve?", options: ["The model doesn't know your private/current data", "The model writes slowly", "The model can't form sentences", "Prompts are impossible"], answerIndex: 0, explanation: "RAG injects your relevant data." },
+      { prompt: "RAG's steps in order?", options: ["Prepare/index, retrieve, augment, generate", "Generate then index", "Delete then guess", "Only generate"], answerIndex: 0, explanation: "Index, retrieve relevant chunks, add to prompt, generate." },
+      { prompt: "Best analogy for RAG?", options: ["An open-book exam - hand it the right page", "A closed memory test", "A coin flip", "A calculator"], answerIndex: 0, explanation: "It supplies reference material at answer time." },
+      { prompt: "Instruction that keeps RAG honest?", options: ["'Answer only from the provided context, else say you don't know'", "'Make something up'", "'Ignore the context'", "'Cite a random source'"], answerIndex: 0, explanation: "Grounding reduces hallucination." },
     ],
   },
-
   "building-2": {
-    lesson: `On its own a model only produces text. **Tool calling** (a.k.a. function calling) lets it *use* your code: you describe functions, and the model replies with which one to call and the arguments - as structured data.
+    lesson: `Chatbots are the most visible AI application - and you can now build a useful one with no-code tools (Flowise, Voiceflow, n8n) connected to your documents via RAG.
 
-## How it works
-1. You give the model a list of tools with names, descriptions, and an argument schema.
-2. The model decides a tool is needed and returns a structured call:
-\`\`\`
-{ "tool": "get_weather", "args": { "city": "Accra", "unit": "celsius" } }
-\`\`\`
-3. **Your code** runs the real function and sends the result back.
-4. The model uses that result to write its final answer.
+## What it takes
+- **A document source** - FAQ, policies, product docs.
+- **RAG retrieval** - so it answers from those docs.
+- **A clear scope** - "answers questions about our return policy", not "knows everything".
+- **Failure handling** - "if unsure, say so and offer a human".
 
-The model never runs anything itself - it just *requests* a call, and you stay in control of execution.
+> **Example.** An internal HR assistant connected to the employee handbook: ask "how many vacation days do I get?" and it answers from the real policy.
 
-## Why it's the key to useful AI
-Text alone can't check inventory, book a slot, or query a database. Tools connect the model to the real world: live data, actions, your systems. This is the foundation under agents - an agent is mostly a model plus tools in a loop.
-
-## Design tools well
-- **Clear names and descriptions** so the model knows when to use each.
-- **Strict argument schemas** (types, allowed values) so the call is valid.
-- **Validate the args** before executing - never trust them blindly.
-
-> **Example.** A booking assistant has tools: \`search_slots(date)\`, \`book_slot(id)\`. The model picks which to call based on what the user asked, and your code does the actual booking.`,
-    task: "Pick a simple capability (e.g. 'look up an order'). Write the tool definition for it: a name, a one-line description, and the argument schema (fields + types). Note what your code would validate before running it.",
+The hard part isn't building - it's testing. Try real questions, find where it fails, and narrow its scope or improve the source docs.`,
+    task: "Plan a chatbot: pick a document source, define its scope, list five real questions you'd test it with, and note its likely failure points.",
     quiz: [
-      {
-        prompt: "What does tool calling let a model do?",
-        options: [
-          "Request that your code run a function with structured arguments",
-          "Run any program on your computer itself",
-          "Replace your database",
-          "Send text only, nothing else",
-        ],
-        answerIndex: 0,
-        explanation: "The model returns a structured call; your code executes it.",
-      },
-      {
-        prompt: "Who actually runs the function in tool calling?",
-        options: [
-          "Your code does; the model only requests it",
-          "The model runs it directly",
-          "No one",
-          "The end user manually",
-        ],
-        answerIndex: 0,
-        explanation: "You stay in control of execution - the model just asks.",
-      },
-      {
-        prompt: "Why is tool calling the foundation of useful AI?",
-        options: [
-          "It connects the model to live data and real actions",
-          "It makes text longer",
-          "It removes the need for prompts",
-          "It hides the output",
-        ],
-        answerIndex: 0,
-        explanation: "Tools let the model check data and take actions beyond plain text.",
-      },
-      {
-        prompt: "What should you always do with the model's tool arguments?",
-        options: [
-          "Validate them before executing",
-          "Trust them blindly",
-          "Ignore the schema",
-          "Run them twice",
-        ],
-        answerIndex: 0,
-        explanation: "Validate types and allowed values before acting on model-supplied args.",
-      },
+      { prompt: "What grounds a no-code chatbot in real answers?", options: ["A document source via RAG retrieval", "Guessing", "A bigger logo", "More colors"], answerIndex: 0, explanation: "Connected docs let it answer from real content." },
+      { prompt: "What's the hard part of building a chatbot?", options: ["Testing and finding where it fails", "Picking a name", "The logo", "The font"], answerIndex: 0, explanation: "Real-question testing reveals failure points." },
+      { prompt: "Good scope for a first chatbot?", options: ["Narrow and specific (e.g., return policy)", "Knows everything", "No defined scope", "All company data"], answerIndex: 0, explanation: "Narrow scope is reliable and testable." },
+      { prompt: "What should it do when unsure?", options: ["Say so and offer a human", "Make up an answer", "Crash", "Stay silent"], answerIndex: 0, explanation: "Graceful failure builds trust." },
     ],
   },
-
   "building-3": {
-    lesson: `A model doesn't know your documents, your policies, or last week's tickets. **Retrieval-Augmented Generation (RAG)** fixes that by fetching the relevant text and putting it into the prompt - so the model answers from *your* data, not just its training.
+    lesson: `Beyond copy-pasting a table, intermediate data work means connecting real data to AI for repeatable insight, anomaly detection, and simple dashboards.
 
-## The RAG flow
-1. **Prepare** - split your documents into chunks and store them in a search index (often a *vector database* that searches by meaning, not exact words).
-2. **Retrieve** - when a question comes in, find the few most relevant chunks.
-3. **Augment** - paste those chunks into the prompt as context.
-4. **Generate** - the model answers using that context.
-\`\`\`
-Question: "What's our refund window?"
--> retrieve: [policy chunk: "Refunds within 30 days..."]
--> prompt: "Using this policy, answer: ... <chunk> ..."
--> answer grounded in your real policy
-\`\`\`
+## What's possible
+- Connect spreadsheets, CSVs, or a database to an AI tool.
+- "Analyze this multi-tab sheet: top trends, anomalies, and two recommendations."
+- Generate a chart or a recurring summary.
 
-## Why teams use it
-- **Current and private** - answers reflect your latest docs without retraining a model.
-- **Cheaper and safer** than fine-tuning for most "answer from our knowledge" needs.
-- **Citable** - you can show which chunk the answer came from.
+> **Example.** A monthly sales export -> AI flags an unusual dip in one region and recommends investigating shipping delays - a finding you'd have missed scanning rows.
 
-## Watch-outs
-- Garbage in, garbage out: if retrieval pulls the wrong chunk, the answer is wrong.
-- Always keep the model honest: "answer only from the provided context; if it's not there, say you don't know."
-
-> **Mental model.** RAG = open-book exam. The model is smart but needs you to hand it the right page.`,
-    task: "Pick a set of docs you'd want an AI to answer from (a policy, an FAQ). Describe how you'd chunk them and write the instruction that keeps the model answering only from retrieved context.",
+Data fluency is one of the most in-demand AI-adjacent skills. The rule stays: **verify** the analysis and understand how it reached a number before you act. AI assists; you own the conclusion.`,
+    task: "Take a multi-tab spreadsheet, run an AI-assisted analysis, and produce a findings brief with at least two actionable recommendations backed by the data.",
     quiz: [
-      {
-        prompt: "What problem does RAG solve?",
-        options: [
-          "The model doesn't know your private or current data",
-          "The model writes too slowly",
-          "The model can't form sentences",
-          "There's no way to prompt it",
-        ],
-        answerIndex: 0,
-        explanation: "RAG injects your relevant data so answers reflect it.",
-      },
-      {
-        prompt: "What are the steps of RAG, in order?",
-        options: [
-          "Prepare/index, retrieve, augment the prompt, generate",
-          "Generate, then index",
-          "Delete, then guess",
-          "Only generate, nothing else",
-        ],
-        answerIndex: 0,
-        explanation: "Index your docs, retrieve relevant chunks, add them to the prompt, then generate.",
-      },
-      {
-        prompt: "A good instruction to keep RAG honest is:",
-        options: [
-          "'Answer only from the provided context; else say you don't know'",
-          "'Make up an answer if unsure'",
-          "'Ignore the context'",
-          "'Always cite a random source'",
-        ],
-        answerIndex: 0,
-        explanation: "Grounding the model to the context reduces hallucination.",
-      },
-      {
-        prompt: "Which analogy fits RAG best?",
-        options: [
-          "An open-book exam - hand the model the right page",
-          "A closed-book memory test",
-          "A coin flip",
-          "A calculator",
-        ],
-        answerIndex: 0,
-        explanation: "RAG supplies the relevant reference material at answer time.",
-      },
+      { prompt: "Intermediate AI data work means...", options: ["Connecting real data for repeatable insight and anomaly detection", "Only copy-pasting once", "Avoiding data", "Guessing trends"], answerIndex: 0, explanation: "It goes beyond one-off copy-paste." },
+      { prompt: "The enduring rule with AI data analysis?", options: ["Verify and understand how it got the number", "Trust it blindly", "Skip the chart", "Never look"], answerIndex: 0, explanation: "You own the conclusion." },
+      { prompt: "A good analysis prompt asks for...", options: ["Trends, anomalies, and recommendations", "'Something interesting'", "A poem", "The font"], answerIndex: 0, explanation: "Specific asks produce actionable output." },
+      { prompt: "Why is data fluency valuable?", options: ["It's one of the most in-demand AI-adjacent skills", "It's obsolete", "It's only for engineers", "It's banned"], answerIndex: 0, explanation: "Data skills are sought across industries." },
     ],
   },
-
   "building-4": {
-    lesson: `Connecting a model to tools used to mean custom code for every app-and-model combination. **MCP (Model Context Protocol)** is an open standard that fixes this - think of it as a **USB-C port for AI**: one common way for models to access tools and data.
+    lesson: `"Vibe coding" means building working software by describing it in plain language - using tools like Cursor, Replit, or Claude - without being a trained developer.
 
-## What MCP standardizes
-- An **MCP server** exposes tools, data, and prompts (e.g. a GitHub server, a database server, a filesystem server).
-- An **MCP client** (an AI app or assistant) connects to any server using the same protocol.
-- So any compliant model can use any compliant tool - no more one-off integrations.
+## What you can build
+- A small script to automate a personal chore.
+- A simple web app or internal tool.
+- A custom calculator or form.
 
-> **Before MCP.** N models × M tools = N×M custom integrations.
-> **With MCP.** Build a server once; every MCP-aware app can use it.
+## How to do it well
+- Describe the goal, inputs, and outputs clearly (it's prompting, applied to code).
+- Build in small steps; run and test each piece.
+- When something breaks, paste the error back and ask for a fix.
 
-## Why it exploded
-By 2026 MCP had tens of millions of monthly SDK downloads and backing from major AI vendors (OpenAI, Microsoft, Google, Amazon). When the big players agree on one standard, it becomes the default plumbing for agentic AI - which is why it's worth knowing even if you don't build servers yourself.
+> **Example.** "Build a web page that takes a list of names and emails and outputs a formatted CSV." Iterate until it runs.
 
-## What this means for you
-- **Users**: assistants can plug into your tools (calendar, repos, docs) through MCP servers.
-- **Builders**: expose your service as an MCP server once, and it works across many AI clients.
-- It pairs naturally with tool calling and agents - MCP is *how* an agent reaches the outside world in a standard way.
-
-> **One line.** MCP is the standard that lets any AI app talk to any tool, so integrations stop being one-off.`,
-    task: "Find one MCP server (official or community) for a tool you use. Read its README and note: what tools it exposes, and what an AI assistant could now do with it that it couldn't before.",
+You don't need to memorize syntax - you need clear thinking and the willingness to test. Non-developers can now solve their own software problems.`,
+    task: "Build and run one working tool (a script, a simple web app, or an automation) that solves a real problem - starting from a plain-language description.",
     quiz: [
-      {
-        prompt: "What is MCP, in one line?",
-        options: [
-          "An open standard for how AI apps access tools and data",
-          "A new AI model",
-          "A programming language",
-          "A type of GPU",
-        ],
-        answerIndex: 0,
-        explanation: "MCP standardizes the connection between models and tools/data.",
-      },
-      {
-        prompt: "Which analogy is used for MCP?",
-        options: [
-          "A USB-C port for AI",
-          "A search engine",
-          "A spreadsheet",
-          "A password manager",
-        ],
-        answerIndex: 0,
-        explanation: "One common port so any model can reach any tool.",
-      },
-      {
-        prompt: "What problem does MCP remove?",
-        options: [
-          "Building N×M one-off integrations for every model-tool pair",
-          "The need to ever prompt a model",
-          "The existence of APIs",
-          "Writing any code ever",
-        ],
-        answerIndex: 0,
-        explanation: "Build a server once and every MCP-aware client can use it.",
-      },
-      {
-        prompt: "Why does MCP matter even if you don't build servers?",
-        options: [
-          "Major vendors adopted it, so it's becoming default agent plumbing",
-          "It replaces the internet",
-          "It is required to send any email",
-          "It makes models smaller",
-        ],
-        answerIndex: 0,
-        explanation: "Broad vendor adoption makes MCP the standard way agents reach tools.",
-      },
+      { prompt: "What is 'vibe coding'?", options: ["Building software by describing it in plain language", "Memorizing syntax", "Avoiding all tools", "Only for experts"], answerIndex: 0, explanation: "You describe; AI helps build." },
+      { prompt: "How should you build with AI coding tools?", options: ["Small steps, run and test each piece", "All at once, never test", "Without describing the goal", "By guessing"], answerIndex: 0, explanation: "Incremental, tested steps work best." },
+      { prompt: "When something breaks, you should...", options: ["Paste the error back and ask for a fix", "Give up", "Ignore it", "Delete everything"], answerIndex: 0, explanation: "Errors are feedback for the next iteration." },
+      { prompt: "What do you really need to vibe code?", options: ["Clear thinking and willingness to test", "A CS degree", "Memorized syntax", "Nothing"], answerIndex: 0, explanation: "Clarity and testing matter more than syntax." },
     ],
   },
-
   "building-5": {
-    lesson: `You've got the pieces - prompts, structured output, tools, RAG, MCP. Shipping an AI feature is about wiring them into something reliable and useful. Here's a sane path from idea to production.
+    lesson: `Teaching others is the clearest signal of real mastery - it forces you to organize what you know and reveals your own gaps.
 
-## 1. Start from a real job
-Pick one concrete task with a clear input and output. "Summarize support tickets into a daily digest" beats "add AI."
+## How to teach AI well
+- **Meet them where they are** - no jargon; start from their actual task.
+- **Show, don't lecture** - have them do one useful thing with AI in the first 10 minutes.
+- **Use their context** - their email, their report, not an abstract demo.
+- **Answer the "but what about..."** - the worries (privacy, accuracy) are where trust is built.
 
-## 2. Prototype the prompt
-Get it working by hand first: a system prompt, the right context, structured output if it feeds other code. Build a few **evals** so you know it works beyond one lucky run.
+> **Example.** Sit with a colleague, take a real email they dread, and prompt it together. Their first "oh, that's it?" moment is the lesson.
 
-## 3. Wire it in
-- Call the API **from your server**, key kept secret.
-- Add **tools/RAG** only if the task needs live data or actions.
-- Pick the **smallest model** that passes your evals; escalate only where needed.
-
-## 4. Make it production-grade
-- **Handle failure**: timeouts, retries, a fallback message when the model is down.
-- **Cache** repeated requests to cut cost and latency (exactly how this very app serves lessons).
-- **Set limits**: rate limits and spend caps so a bug can't run up a huge bill.
-- **Keep a human option** for anything risky.
-
-## 5. Ship small, watch, improve
-Release to a few users, log inputs and outputs, and feed real failures back into your evals.
-
-> **The big idea.** An AI feature is normal software with one fuzzy step in the middle. Engineer around that step - validate, constrain, cache, and monitor - and it becomes dependable.`,
-    task: "Plan one AI feature end to end in a few lines: the job, the prompt approach, whether it needs tools/RAG, two failure cases you'll handle, and how you'd keep cost in check. (Caching and small models are good defaults.)",
+If you can get a true beginner to a win and answer their follow-ups accurately, you've mastered the material.`,
+    task: "Run a 20-minute informal session with someone who's never used AI: get them to complete one useful task and answer their follow-up questions accurately.",
     quiz: [
-      {
-        prompt: "What's the best way to scope an AI feature?",
-        options: [
-          "Start from one real job with a clear input and output",
-          "Add AI everywhere at once",
-          "Pick the vaguest possible goal",
-          "Avoid defining the output",
-        ],
-        answerIndex: 0,
-        explanation: "A concrete task beats a vague 'add AI' mandate.",
-      },
-      {
-        prompt: "How should you choose a model for production?",
-        options: [
-          "The smallest model that passes your evals",
-          "Always the biggest and priciest",
-          "A random model each call",
-          "Whichever is slowest",
-        ],
-        answerIndex: 0,
-        explanation: "Use evals to pick the cheapest model that's good enough, escalating only where needed.",
-      },
-      {
-        prompt: "Which is a production-grade safeguard?",
-        options: [
-          "Caching, retries, rate limits, and spend caps",
-          "Putting the API key in the browser",
-          "Never handling errors",
-          "Unlimited spending",
-        ],
-        answerIndex: 0,
-        explanation: "Engineering around the fuzzy step makes the feature dependable.",
-      },
-      {
-        prompt: "The big idea of shipping AI features is:",
-        options: [
-          "It's normal software with one fuzzy step to engineer around",
-          "It needs no testing",
-          "It can't fail",
-          "It replaces all engineering practices",
-        ],
-        answerIndex: 0,
-        explanation: "Validate, constrain, cache, and monitor the model step like any dependency.",
-      },
+      { prompt: "Why is teaching a sign of mastery?", options: ["It forces you to organize knowledge and reveals gaps", "It's easy", "It's unrelated to skill", "It avoids learning"], answerIndex: 0, explanation: "Teaching deepens and tests understanding." },
+      { prompt: "Best way to teach a beginner AI?", options: ["Have them do one useful thing in the first 10 minutes", "Lecture for an hour", "Use abstract demos", "Start with jargon"], answerIndex: 0, explanation: "An early real win builds confidence." },
+      { prompt: "What builds a learner's trust?", options: ["Answering their worries about privacy and accuracy", "Ignoring questions", "Hiding the risks", "Rushing"], answerIndex: 0, explanation: "Addressing concerns honestly builds trust." },
+      { prompt: "Use which examples when teaching?", options: ["The learner's own real context", "Abstract textbook ones", "None", "Random topics"], answerIndex: 0, explanation: "Personal relevance drives engagement." },
+    ],
+  },
+  "building-6": {
+    lesson: `AI changes faster than any course can track. The final meta-skill is a **self-renewing learning system** - so you stay current without chasing every shiny tool.
+
+## Build your system
+- **Sources** - 2-3 trusted newsletters or communities; skim weekly, don't doomscroll.
+- **A way to evaluate new tools** - "Does it solve a real problem I have? Is it worth switching?"
+- **A maintained prompt library** - update it as you learn.
+- **A hype filter** - a rule for when to adopt vs. ignore a trend (wait for it to prove useful in *your* work).
+
+> **Example.** "Every Friday, 20 minutes: skim two newsletters, note one thing to try, update my prompt doc."
+
+A static credential ages fast; a learning habit compounds. This is how you stay capable for the long run.`,
+    task: "Document your long-term AI learning system: your weekly sources, how you'll evaluate new tools, your prompt library, and your rule for when to adopt vs. ignore a trend.",
+    quiz: [
+      { prompt: "Why is a learning system the final skill?", options: ["AI changes faster than any course; habits keep you current", "Tools never change", "Credentials never age", "Learning is one-time"], answerIndex: 0, explanation: "A renewing habit beats a static credential." },
+      { prompt: "What's a 'hype filter'?", options: ["A rule for when to adopt vs. ignore a trend", "A type of model", "A newsletter", "A password"], answerIndex: 0, explanation: "It stops you chasing every shiny tool." },
+      { prompt: "How should you handle sources?", options: ["A few trusted ones, skimmed weekly", "Doomscroll everything", "Ignore all news", "Only one tweet"], answerIndex: 0, explanation: "Curated, regular skimming stays current sustainably." },
+      { prompt: "How to evaluate a new tool?", options: ["Does it solve a real problem worth switching for?", "Is it trending?", "Does it have a logo?", "Is it new?"], answerIndex: 0, explanation: "Adopt based on real value, not novelty." },
     ],
   },
 };

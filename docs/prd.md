@@ -32,20 +32,29 @@ able to *do things* with it at work. Not researchers or ML engineers.
 
 ## 5. Scope - In (v1)
 
-- **5 fixed tracks** forming a ladder from AI literacy to building with AI. Each has
-  4–5 modules with a clear learning outcome (see §5a for the research behind this):
-  - **AI Fundamentals** (4) - what AI can/can't do, prompting, judging output, safe use.
-  - **AI for Everyday Productivity** (4) - drafting, research, planning, reusable prompts.
-  - **Prompt & Context Engineering** (5) - prompt anatomy, system prompts, few-shot &
-    chain-of-thought, structured output, context engineering & evals.
-  - **AI Automation & Agents** (5) - spotting automatable work, no-code tools
-    (Zapier/Make/n8n), triggers & actions, AI agents, reliability & guardrails.
-  - **Building with AI: APIs & MCP** (5) - calling an LLM API, tool/function calling,
-    RAG, the Model Context Protocol, shipping an AI-native feature.
-- **Placement quiz** (3 questions: experience, goal, code comfort) routes a learner to
-  one track. Two guardrails keep certificates meaningful: total beginners start at
-  Fundamentals; the developer track requires some comfort with code, otherwise the
-  learner is routed to the no-code Automation track first.
+- **One journey, 5 levels, 50 micro-topics** mapping onto the Literacy → Fluency →
+  Mastery model. Each topic is one bite-sized module; its mastery indicator is the
+  module's outcome and hands-on task. (Curriculum from the "Top 50 AI & Automation
+  Topics" doc; see §5a.)
+  - **Level 1 - AI Foundations** (Literacy, 10) - what AI is, LLMs, can/can't, safe use,
+    tools, bias, jobs, probabilistic vs deterministic, human-in-the-loop, terminology.
+  - **Level 2 - Prompt Engineering** (Literacy→Fluency, 10) - the 4-part prompt, personas,
+    few-shot, chain-of-thought, iteration, templates, format control, debugging, system
+    prompts/temperature, domain prompting.
+  - **Level 3 - AI for Everyday Productivity** (Fluency, 13) - writing, research, email,
+    meetings, brainstorming, planning, data, learning, content, finance, careers,
+    personal systems, health.
+  - **Level 4 - AI Automation** (Fluency→Mastery, 11) - when to automate, APIs, Zapier/Make,
+    n8n, AI-in-workflow, task audits, intake & content builds, guardrails, monitoring, agents.
+  - **Level 5 - Advanced & Specialized** (Mastery, 6) - RAG, no-code chatbots, data
+    analysis, vibe coding, teaching others, a long-term learning system.
+- **Journey map home**: a visual path of the 5 levels with mastery-tier labels, progress,
+  and progressive unlocking. The **placement quiz** (3 questions) sets the learner's
+  starting level; everything up to it opens, and finishing a level's quizzes unlocks the next.
+- **Prove-it per module**: each module has a short MCQ quiz (gates the next module at 80%)
+  **plus** a hands-on task with an "I completed this" self-check. A **level certificate**
+  requires every module's quiz passed **and** task checked - so the credential reflects real
+  practice, not just recall.
 
 ## 5a. Curriculum rationale (research-backed, 2026)
 

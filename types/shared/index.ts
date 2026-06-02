@@ -65,6 +65,8 @@ export interface ModuleProgress {
   status: ProgressStatus;
   /** Best quiz score 0..1, or null if never attempted. */
   score: number | null;
+  /** Whether the learner self-attested completing the hands-on task. */
+  taskDone: boolean;
 }
 
 /** Result of grading a quiz submission. */
