@@ -4,7 +4,7 @@ import { getCurrentSession } from "@/lib/server/session";
 import { getTrackView } from "@/lib/server/track-view";
 import { getModuleContent } from "@/lib/server/db/tracks";
 import { isTrackSlug } from "@/lib/core/track-meta";
-import { Markdown } from "@/components/Markdown";
+import { LessonReader } from "@/components/LessonReader";
 import { ModuleQuiz } from "@/components/ModuleQuiz";
 import { TaskCheck } from "@/components/TaskCheck";
 
@@ -65,8 +65,8 @@ export default async function ModulePage({
         You&apos;ll be able to {lower(current.outcome)}.
       </p>
 
-      <article className="rise rise-4 mt-9">
-        <Markdown>{content.lesson}</Markdown>
+      <article className="mt-9">
+        <LessonReader markdown={content.lesson} />
       </article>
 
       <TaskCheck

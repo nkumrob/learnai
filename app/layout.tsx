@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Fraunces, Hanken_Grotesk, Geist_Mono } from "next/font/google";
 import Link from "next/link";
+import { ThemeToggle } from "@/components/ThemeToggle";
 import "./globals.css";
 
 const fraunces = Fraunces({
@@ -33,8 +34,17 @@ export default function RootLayout({
   return (
     <html
       lang="en"
+      suppressHydrationWarning
       className={`${fraunces.variable} ${hanken.variable} ${geistMono.variable} h-full`}
     >
+      <head>
+        {/* Apply the saved theme before paint to avoid a flash. */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `try{var t=localStorage.getItem('theme');if(t==='light'||t==='dark'){document.documentElement.setAttribute('data-theme',t);}}catch(e){}`,
+          }}
+        />
+      </head>
       <body className="relative flex min-h-full flex-col">
         <div className="relative z-[1] flex min-h-full flex-col">
           <SiteHeader />
@@ -58,12 +68,15 @@ function SiteHeader() {
             learn AI, prove it
           </span>
         </Link>
-        <Link
-          href="/placement"
-          className="rounded-[var(--r-md)] border border-line-strong bg-surface px-4 py-1.5 text-sm font-medium transition-colors hover:border-accent hover:text-accent"
-        >
-          Find where to start
-        </Link>
+        <div className="flex items-center gap-2">
+          <ThemeToggle />
+          <Link
+            href="/placement"
+            className="rounded-[var(--r-md)] border border-line-strong bg-surface px-4 py-1.5 text-sm font-medium transition-colors hover:border-accent hover:text-accent"
+          >
+            Find where to start
+          </Link>
+        </div>
       </div>
     </header>
   );

@@ -9,10 +9,11 @@ export function middleware(req: NextRequest) {
   if (existing) return NextResponse.next();
 
   const sid = crypto.randomUUID();
-  // Make the new id visible to the current render and persist it for the browser.
-  const requestHeaders = new Headers(req.headers);
-  const res = NextResponse.next({ request: { headers: requestHeaders } });
+  // Set the cookie on the request FIRST so this render (server components reading
+  // cookies()) sees it, then forward those updated headers and persist it for the
+  // browser. Without this, a first-ever deep link renders before the cookie exists.
   req.cookies.set(SESSION_COOKIE, sid);
+  const res = NextResponse.next({ request: { headers: req.headers } });
   res.cookies.set(SESSION_COOKIE, sid, {
     httpOnly: true,
     sameSite: "lax",

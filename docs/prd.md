@@ -125,7 +125,11 @@ landing page. Defined as CSS tokens in `app/globals.css`.
   Geist Mono (verification IDs). No Inter/Roboto/system fonts.
 - **Color**: warm neutral base (bone paper / warm ink) with **one** restrained
   evergreen accent. Gold appears only as the certificate foil. Deliberately not the
-  blue-purple "AI" cliché. Full **dark mode** via `prefers-color-scheme`.
+  blue-purple "AI" cliché. **Light / dark / system theme toggle** (header), persisted
+  to localStorage with a no-flash inline script; system mode follows the OS.
+- **Read your way**: each lesson has a **Listen** control (browser Web Speech TTS -
+  free, no key) and a **Focus** distraction-free reading view with larger type and the
+  current sentence highlighted as it's read aloud.
 - **Surface**: hairline borders, fine grain texture, low-opacity layered shadows;
   restrained radii (no pill overload), generous spacing.
 - **Motion**: one orchestrated staggered load reveal; gentle state transitions;
