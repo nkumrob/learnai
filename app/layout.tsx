@@ -2,7 +2,7 @@ import type { Metadata, Viewport } from "next";
 import { Fraunces, Hanken_Grotesk, Geist_Mono } from "next/font/google";
 import Link from "next/link";
 import { Analytics } from "@vercel/analytics/next";
-import { GoogleTagManager } from "@next/third-parties/google";
+import { GoogleAnalytics } from "@next/third-parties/google";
 import { ThemeToggle } from "@/components/ThemeToggle";
 import { Logo, LogoMark } from "@/components/Logo";
 import { JsonLd } from "@/components/JsonLd";
@@ -112,7 +112,7 @@ export default function RootLayout({
       suppressHydrationWarning
       className={`${fraunces.variable} ${hanken.variable} ${geistMono.variable} h-full`}
     >
-      <GoogleTagManager gtmId="GTM-N9444WMN" />
+      <GoogleAnalytics gaId="G-THE0NJMJVV" />
       <head>
         {/* Apply the saved theme before paint to avoid a flash. */}
         <script
