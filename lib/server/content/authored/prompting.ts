@@ -3,24 +3,95 @@ import type { ModuleContent } from "@/types/shared";
 // Level 2 - Prompt Engineering (Literacy to Fluency). Topics 11-20.
 export const prompting: Record<string, ModuleContent> = {
   "prompting-1": {
-    lesson: `A vague prompt gives a vague answer. Strong prompts have four parts: **context, instructions, input, and output format.**
+    lesson: `**TL;DR - A strong prompt has four parts: context, instruction, input, and output format. Add them and unreliable results become repeatable ones.**
 
+## Why it matters
+The exact same model can hand you junk or gold depending only on how you ask. "Rewrite this" gives a random paragraph; a structured prompt gives the email you'd actually send. Because every other AI skill - writing, research, automation - runs on prompts, this is the highest-leverage thing you can learn. In studies, structured prompts have cut task time dramatically and raised output quality across the board.
+
+## The four parts
+- **Context** - who the AI is and the situation. _"You are a support agent for a calm, premium brand."_
+- **Instruction** - the one clear task. _"Reply to this unhappy customer."_
+- **Input** - the raw material to work from.
+- **Format** - the exact shape of the answer. _"Under 80 words. Apologize, give the fix, give a timeline."_
+
+## Worked example
+> **Weak:** \`write about onboarding\`
+> You get a generic 400-word essay on why onboarding matters. Useless.
+
+**Strong** - paste this and you'll see the difference:
 \`\`\`
-Context:     You are my support assistant for a calm, premium product.
-Instruction: Reply to this unhappy customer.
-Input:       "I was double-charged $40."
-Format:      Under 80 words. Apologize, state the fix, give a timeline.
+You are an HR lead at a 30-person startup (context).
+Write a welcome email for a new designer starting Monday (instruction).
+Details: their buddy is Sam, kickoff is 10am, bring a laptop and ID (input).
+Format: warm but brief, under 120 words, end with one clear next step (format).
+\`\`\`
+You get a near-final email that needs a 5-second tweak, not a rewrite.
+
+## Steal this template
+Reuse this for almost anything - just fill the brackets:
+\`\`\`
+You are [role / expertise], helping with [situation].
+Task: [the one thing you want].
+Input: [paste your material].
+Format: [length] | [structure] | [tone].
 \`\`\`
 
-> **Weak vs strong.** "Write about onboarding" gives generic filler. The structured version above gives something you can almost send.
+## Common mistakes (and the fix)
+- **Burying the instruction** in a wall of context. **Fix:** put the task on its own line, near the top.
+- **No format.** "Make it good" isn't a format. **Fix:** name the length, structure, and tone.
+- **One giant prompt.** **Fix:** get a draft, then refine with one small nudge - "shorter", "warmer", "add a call to action".
 
-Most disappointing answers are really *format* failures - too long, wrong shape. Spell out the format and you fix most of them. The mindset shift: you're not chatting, you're **specifying**.`,
-    task: "Take three weak prompts you'd normally type and rewrite each using the four-part framework. Run one and notice how much less you have to edit.",
+## Good to know - this works everywhere
+The four-part structure is **model-agnostic**: it works the same in **ChatGPT**, **Claude**, **Gemini**, and **Copilot**. A few real-world notes:
+- **Claude** and **ChatGPT** both reward a clearly stated role and structure; Claude is especially strong with long documents and careful instructions.
+- For **long inputs**, paste the material _last_ and restate the instruction at the end - models pay most attention to the start and end.
+- You learn prompting once, then carry it across every tool. That's why it's Level 2 of the journey.`,
+    task: "Starter: take a message you actually need to write, and run it twice - once as a bare request, once with the four-part template. Compare how much you edit. Stretch: save your filled-in template as a reusable prompt for a task you do every week.",
     quiz: [
-      { prompt: "What are the four parts of a strong prompt?", options: ["Context, instructions, input, output format", "Hi, question, thanks, bye", "Who, what, when, where", "Title, body, footer, link"], answerIndex: 0, explanation: "These four remove the model's guesswork." },
-      { prompt: "Most disappointing answers are failures of...", options: ["Format", "Spelling", "Color", "Speed"], answerIndex: 0, explanation: "Wrong length/shape is usually a format problem." },
-      { prompt: "Why is 'Write about onboarding' weak?", options: ["No context, input, or format, so output is generic", "Too long", "Too specific", "Uses bullet points"], answerIndex: 0, explanation: "Without specifics the model fills in generic filler." },
-      { prompt: "The right prompting mindset is...", options: ["Specifying, not casually chatting", "Being vague for creativity", "Hiding the goal", "Never stating format"], answerIndex: 0, explanation: "Clear specs produce usable output." },
+      {
+        prompt: "Your prompt keeps giving vague, generic answers. Which fix helps most?",
+        options: [
+          "Add context, a specific instruction, and an output format",
+          "Make the prompt longer with more adjectives",
+          "Send the same prompt again and hope",
+          "Switch to a different AI tool",
+        ],
+        answerIndex: 0,
+        explanation: "Generic output almost always means missing context/instruction/format - structure fixes it.",
+      },
+      {
+        prompt: "Which line is the 'format' part of a prompt?",
+        options: [
+          "Under 120 words, warm tone, end with a next step",
+          "You are an HR lead at a startup",
+          "Write a welcome email",
+          "Their buddy is Sam, kickoff is 10am",
+        ],
+        answerIndex: 0,
+        explanation: "Format specifies length, structure, and tone - the shape of the answer.",
+      },
+      {
+        prompt: "You're pasting a long document for the AI to use. Best practice?",
+        options: [
+          "Put the material last and restate the instruction at the end",
+          "Put the instruction only at the very top and hope",
+          "Remove all formatting instructions",
+          "Split it across ten separate prompts",
+        ],
+        answerIndex: 0,
+        explanation: "Models attend most to the start and end, so restating the task at the end helps with long inputs.",
+      },
+      {
+        prompt: "Does the four-part structure work across ChatGPT, Claude, and Gemini?",
+        options: [
+          "Yes - prompting structure is model-agnostic",
+          "No, each needs a completely different approach",
+          "Only ChatGPT understands structure",
+          "Only on paid plans",
+        ],
+        answerIndex: 0,
+        explanation: "The same structured approach works across the major assistants.",
+      },
     ],
   },
   "prompting-2": {

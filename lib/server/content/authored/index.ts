@@ -1,5 +1,6 @@
 import type { ModuleContent } from "@/types/shared";
 import { fundamentals } from "./fundamentals";
+import { fundamentals2 } from "./fundamentals2";
 import { productivity } from "./productivity";
 import { productivity2 } from "./productivity2";
 import { prompting } from "./prompting";
@@ -11,6 +12,7 @@ import { building } from "./building";
 // deterministic.
 const ALL: Record<string, ModuleContent> = {
   ...fundamentals,
+  ...fundamentals2,
   ...productivity,
   ...productivity2,
   ...prompting,
