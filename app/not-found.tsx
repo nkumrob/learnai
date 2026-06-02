@@ -12,7 +12,7 @@ export default function NotFound() {
         href="/"
         className="mt-7 inline-block rounded-[var(--r-md)] bg-accent px-6 py-3 font-medium text-accent-ink transition-colors hover:bg-accent-hover"
       >
-        Back to Tuttorr
+        Back to LearnAI
       </Link>
     </div>
   );

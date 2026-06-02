@@ -9,6 +9,11 @@ import { CertificateClaim } from "@/components/CertificateClaim";
 
 export const dynamic = "force-dynamic";
 
+export const metadata = {
+  title: "Your certificate",
+  robots: { index: false, follow: false },
+};
+
 export default async function CertificatePage({
   params,
 }: {

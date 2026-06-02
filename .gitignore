@@ -41,6 +41,6 @@ yarn-error.log*
 next-env.d.ts
 
 # Local SQLite database
-tuttorr.db
-tuttorr.db-*
+learnai.db
+learnai.db-*
 *.db

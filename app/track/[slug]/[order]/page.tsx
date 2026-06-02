@@ -1,14 +1,48 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { getCurrentSession } from "@/lib/server/session";
 import { getTrackView } from "@/lib/server/track-view";
 import { getModuleContent } from "@/lib/server/db/tracks";
-import { isTrackSlug } from "@/lib/core/track-meta";
+import {
+  isTrackSlug,
+  TRACK_LABEL,
+  TRACK_LEVEL,
+  TRACK_TIER,
+} from "@/lib/core/track-meta";
+import { TRACK_DEFS } from "@/lib/server/content/tracks-definition";
+import { absoluteUrl, SITE_NAME, SITE_URL } from "@/lib/core/site";
 import { LessonReader } from "@/components/LessonReader";
 import { ModuleQuiz } from "@/components/ModuleQuiz";
 import { TaskCheck } from "@/components/TaskCheck";
+import { JsonLd } from "@/components/JsonLd";
 
 export const dynamic = "force-dynamic";
+
+function findModuleDef(slug: string, order: number) {
+  return TRACK_DEFS.find((t) => t.slug === slug)?.modules.find(
+    (m) => m.order === order,
+  );
+}
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ slug: string; order: string }>;
+}): Promise<Metadata> {
+  const { slug, order } = await params;
+  if (!isTrackSlug(slug)) return {};
+  const m = findModuleDef(slug, Number(order));
+  if (!m) return {};
+  const description = `Learn to ${m.outcome}. A free, hands-on AI lesson in LearnAI's ${TRACK_LABEL[slug]} (Level ${TRACK_LEVEL[slug]}), with a quick quiz and a real task.`;
+  const url = absoluteUrl(`/track/${slug}/${order}`);
+  return {
+    title: m.title,
+    description,
+    alternates: { canonical: url },
+    openGraph: { title: `${m.title} - LearnAI`, description, url, type: "article" },
+  };
+}
 
 export default async function ModulePage({
   params,
@@ -28,12 +62,8 @@ export default async function ModulePage({
   const current = view.modules.find((m) => m.order === orderNum);
   if (!current) notFound();
 
-  if (current.locked) {
-    return (
-      <BlockedState slug={slug} />
-    );
-  }
-
+  // Lessons are open to read (good for learners and search engines); the quiz
+  // stays gated until earlier modules are passed.
   const content = await getModuleContent(current.id);
   if (!content) notFound();
 
@@ -46,8 +76,28 @@ export default async function ModulePage({
     options: q.options,
   }));
 
+  const lessonJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "LearningResource",
+    name: current.title,
+    description: `Learn to ${current.outcome}.`,
+    teaches: current.outcome,
+    learningResourceType: "lesson",
+    educationalLevel: TRACK_TIER[slug],
+    inLanguage: "en",
+    isAccessibleForFree: true,
+    url: absoluteUrl(`/track/${slug}/${current.order}`),
+    isPartOf: {
+      "@type": "Course",
+      name: TRACK_LABEL[slug],
+      url: absoluteUrl(`/track/${slug}`),
+    },
+    provider: { "@type": "Organization", name: SITE_NAME, "@id": `${SITE_URL}/#org` },
+  };
+
   return (
     <div className="mx-auto max-w-2xl px-5 py-12 sm:py-16">
+      <JsonLd data={lessonJsonLd} />
       <Link
         href={`/track/${slug}`}
         className="text-sm text-ink-3 transition-colors hover:text-ink"
@@ -81,30 +131,8 @@ export default async function ModulePage({
         nextOrder={nextOrder}
         questions={clientQuestions}
         alreadyPassed={current.status === "passed"}
+        locked={current.locked}
       />
-    </div>
-  );
-}
-
-function BlockedState({ slug }: { slug: string }) {
-  return (
-    <div className="mx-auto max-w-md px-5 py-24 text-center">
-      <div className="mx-auto grid h-12 w-12 place-items-center rounded-full border border-line text-ink-3">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden>
-          <rect x="5" y="11" width="14" height="9" rx="2" stroke="currentColor" strokeWidth="2" />
-          <path d="M8 11V8a4 4 0 0 1 8 0v3" stroke="currentColor" strokeWidth="2" />
-        </svg>
-      </div>
-      <h1 className="mt-5 font-display text-2xl font-medium">This module is locked</h1>
-      <p className="mt-2 text-ink-2">
-        Pass the previous module at 80% or higher to unlock it.
-      </p>
-      <Link
-        href={`/track/${slug}`}
-        className="mt-7 inline-block rounded-[var(--r-md)] bg-accent px-6 py-3 font-medium text-accent-ink transition-colors hover:bg-accent-hover"
-      >
-        Back to track
-      </Link>
     </div>
   );
 }

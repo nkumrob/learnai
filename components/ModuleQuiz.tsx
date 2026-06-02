@@ -15,12 +15,14 @@ export function ModuleQuiz({
   nextOrder,
   questions,
   alreadyPassed,
+  locked = false,
 }: {
   moduleId: string;
   slug: string;
   nextOrder: number | null;
   questions: ClientQuestion[];
   alreadyPassed: boolean;
+  locked?: boolean;
 }) {
   const [started, setStarted] = useState(false);
   const [answers, setAnswers] = useState<number[]>(
@@ -38,6 +40,34 @@ export function ModuleQuiz({
     setStarted(true);
     requestAnimationFrame(() =>
       quizRef.current?.scrollIntoView({ behavior: "smooth", block: "start" }),
+    );
+  }
+
+  if (locked) {
+    return (
+      <section className="mt-12 border-t border-line pt-10">
+        <div className="flex items-center gap-4 rounded-[var(--r-lg)] border border-line bg-surface-2 p-6">
+          <span className="grid h-9 w-9 shrink-0 place-items-center rounded-full border border-line text-ink-3">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden>
+              <rect x="5" y="11" width="14" height="9" rx="2" stroke="currentColor" strokeWidth="2" />
+              <path d="M8 11V8a4 4 0 0 1 8 0v3" stroke="currentColor" strokeWidth="2" />
+            </svg>
+          </span>
+          <div>
+            <h2 className="font-display text-lg font-medium tracking-tight">
+              The quiz is locked
+            </h2>
+            <p className="mt-1 text-sm text-ink-2">
+              Read this lesson freely. To take the quiz and earn credit, pass the
+              earlier lessons in this level first.{" "}
+              <Link href={`/track/${slug}`} className="text-accent underline">
+                Back to the level
+              </Link>
+              .
+            </p>
+          </div>
+        </div>
+      </section>
     );
   }
 

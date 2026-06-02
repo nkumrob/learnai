@@ -14,7 +14,7 @@ export function CertificateCard({ cert }: { cert: Certificate }) {
     <div className="relative overflow-hidden rounded-[var(--r-lg)] border border-line-strong bg-surface shadow-lg">
       {/* Inner ruled frame */}
       <div className="m-2.5 rounded-[var(--r-md)] border border-[color:var(--gold)]/40 px-8 py-12 text-center sm:px-14 sm:py-16">
-        <div className="font-display text-lg tracking-tight">Tuttorr</div>
+        <div className="font-display text-lg tracking-tight">LearnAI</div>
         <div className="mx-auto mt-1 h-px w-10 bg-[color:var(--gold)]/50" />
 
         <div className="eyebrow mt-8 text-ink-3">Certificate of Completion</div>

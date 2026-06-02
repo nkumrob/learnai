@@ -1,4 +1,4 @@
-# Tuttorr - Learn AI. Prove it.
+# LearnAI - Learn AI. Prove it.
 
 A free, public, AI-driven upskilling app that answers one question:
 **"How do I learn to use AI fast - and prove I can do real work with it - starting
@@ -83,7 +83,7 @@ types/shared/      # shared domain types
 |---|---|---|---|
 | `OPENAI_API_KEY` | no | – | Enables AI-authored content at seed time |
 | `OPENAI_MODEL` | no | `gpt-4o-mini` | Model used for seeding |
-| `DATABASE_URL` | no | `file:./tuttorr.db` | libsql/Turso connection |
+| `DATABASE_URL` | no | `file:./learnai.db` | libsql/Turso connection |
 | `DATABASE_AUTH_TOKEN` | no | – | Turso auth token (hosted only) |
 
 ## Status

@@ -14,12 +14,20 @@ export function LessonReader({ markdown }: { markdown: string }) {
   const [active, setActive] = useState(-1);
   const [focus, setFocus] = useState(false);
   const stoppedRef = useRef(false);
+  const keepAliveRef = useRef<ReturnType<typeof setInterval> | null>(null);
 
   useEffect(() => {
     setSupported(
       typeof window !== "undefined" && "speechSynthesis" in window,
     );
+    // Some browsers populate voices asynchronously; nudge them to load.
+    try {
+      window.speechSynthesis?.getVoices();
+    } catch {
+      /* ignore */
+    }
     return () => {
+      if (keepAliveRef.current) clearInterval(keepAliveRef.current);
       try {
         window.speechSynthesis?.cancel();
       } catch {
@@ -47,31 +55,49 @@ export function LessonReader({ markdown }: { markdown: string }) {
     }
   }, [active, focus]);
 
-  function speakFrom(i: number) {
-    if (i >= spoken.length) {
-      stop();
-      return;
-    }
-    setActive(i);
-    const u = new SpeechSynthesisUtterance(spoken[i]);
-    u.lang = "en-US";
-    u.rate = 1;
-    u.onend = () => {
-      if (!stoppedRef.current) speakFrom(i + 1);
-    };
-    u.onerror = () => {
-      if (!stoppedRef.current) speakFrom(i + 1);
-    };
-    window.speechSynthesis.speak(u);
+  function pickVoice(): SpeechSynthesisVoice | null {
+    const voices = window.speechSynthesis.getVoices();
+    if (!voices.length) return null;
+    return (
+      voices.find((v) => /en[-_]US/i.test(v.lang) && v.localService) ||
+      voices.find((v) => /^en/i.test(v.lang)) ||
+      voices[0]
+    );
   }
 
   function play(from = 0) {
     if (!supported || spoken.length === 0) return;
-    window.speechSynthesis.cancel();
+    const synth = window.speechSynthesis;
+    synth.cancel();
     stoppedRef.current = false;
     setPlaying(true);
     setPaused(false);
-    speakFrom(Math.max(0, from));
+
+    const voice = pickVoice();
+    const last = spoken.length - 1;
+    // Queue every sentence up front. Chaining via onend is unreliable in
+    // Chrome (queued speak() calls get dropped); queuing is robust and we
+    // highlight via each utterance's onstart.
+    for (let i = Math.max(0, from); i < spoken.length; i++) {
+      const u = new SpeechSynthesisUtterance(spoken[i]);
+      u.lang = "en-US";
+      if (voice) u.voice = voice;
+      u.rate = 1;
+      u.onstart = () => setActive(i);
+      if (i === last) {
+        u.onend = () => {
+          if (!stoppedRef.current) stop();
+        };
+      }
+      synth.speak(u);
+    }
+
+    // Defeat Chrome's ~15s auto-pause by nudging resume periodically.
+    if (keepAliveRef.current) clearInterval(keepAliveRef.current);
+    keepAliveRef.current = setInterval(() => {
+      if (stoppedRef.current) return;
+      if (synth.speaking && !synth.paused) synth.resume();
+    }, 10000);
   }
   function pause() {
     window.speechSynthesis.pause();
@@ -83,6 +109,10 @@ export function LessonReader({ markdown }: { markdown: string }) {
   }
   function stop() {
     stoppedRef.current = true;
+    if (keepAliveRef.current) {
+      clearInterval(keepAliveRef.current);
+      keepAliveRef.current = null;
+    }
     try {
       window.speechSynthesis.cancel();
     } catch {

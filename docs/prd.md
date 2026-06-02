@@ -1,4 +1,4 @@
-# Tuttorr - Product Requirements (MVP)
+# LearnAI - Product Requirements (MVP)
 
 _Last updated: 2026-06-01_
 
@@ -98,7 +98,7 @@ course topics ([DataCamp](https://www.datacamp.com/blog/best-prompt-engineering-
 3. **Certification** - Last module passed → certificate page → enter name → issue →
    download/print + shareable verify link.
 4. **Verification** - Anyone opens `/verify/<token>` → sees the certificate + a
-   "Verified by Tuttorr" badge, or a not-found state.
+   "Verified by LearnAI" badge, or a not-found state.
 
 ## 8. Functional requirements
 

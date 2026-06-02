@@ -1,10 +1,35 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { getCurrentSession } from "@/lib/server/session";
 import { getTrackView, type ModuleView } from "@/lib/server/track-view";
-import { isTrackSlug } from "@/lib/core/track-meta";
+import {
+  isTrackSlug,
+  TRACK_LABEL,
+  TRACK_LEVEL,
+  TRACK_PROMISE,
+} from "@/lib/core/track-meta";
+import { absoluteUrl } from "@/lib/core/site";
 
 export const dynamic = "force-dynamic";
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}): Promise<Metadata> {
+  const { slug } = await params;
+  if (!isTrackSlug(slug)) return {};
+  const title = `${TRACK_LABEL[slug]} - Level ${TRACK_LEVEL[slug]}`;
+  const description = `${TRACK_PROMISE[slug]} A free, hands-on level in the LearnAI journey with bite-sized lessons, quizzes, and a verifiable certificate.`;
+  const url = absoluteUrl(`/track/${slug}`);
+  return {
+    title,
+    description,
+    alternates: { canonical: url },
+    openGraph: { title: `${title} - LearnAI`, description, url },
+  };
+}
 
 export default async function TrackPage({
   params,
@@ -85,16 +110,16 @@ function ModuleRow({ slug, module: m }: { slug: string; module: ModuleView }) {
 
   const inner = (
     <div
-      className={`flex items-center gap-4 rounded-[var(--r-lg)] border border-line bg-surface px-5 py-4 ${
-        m.locked ? "opacity-60" : "transition-all hover:border-accent hover:shadow-sm"
-      } ${m.complete ? "border-accent/30" : ""}`}
+      className={`flex items-center gap-4 rounded-[var(--r-lg)] border border-line bg-surface px-5 py-4 transition-all hover:border-accent hover:shadow-sm ${
+        m.complete ? "border-accent/30" : ""
+      } ${m.locked ? "opacity-80" : ""}`}
     >
       <span
         className={`grid h-9 w-9 shrink-0 place-items-center rounded-full border font-display text-sm ${
           m.complete ? "border-accent bg-accent text-accent-ink" : "border-line text-ink-2"
         }`}
       >
-        {m.complete ? "✓" : m.locked ? <LockIcon /> : m.order}
+        {m.complete ? "✓" : m.order}
       </span>
       <div className="min-w-0 flex-1">
         <div className="font-medium tracking-tight">{m.title}</div>
@@ -102,17 +127,19 @@ function ModuleRow({ slug, module: m }: { slug: string; module: ModuleView }) {
           You&apos;ll be able to {lower(m.outcome)}.
         </div>
       </div>
-      {!m.locked && (
-        <div className="flex shrink-0 items-center gap-1.5">
+      <div className="flex shrink-0 items-center gap-1.5">
+        {m.locked ? (
+          <span className="flex items-center gap-1 rounded-[var(--r-sm)] bg-surface-2 px-2 py-0.5 text-[11px] font-medium text-ink-3">
+            <LockIcon /> Quiz
+          </span>
+        ) : (
           <Pill on={passed} label={passed ? `Quiz ${Math.round((m.score ?? 0) * 100)}%` : "Quiz"} />
-          <Pill on={m.taskDone} label="Task" />
-        </div>
-      )}
-      {m.locked && <span className="shrink-0 text-xs font-medium text-ink-3">Locked</span>}
+        )}
+        <Pill on={m.taskDone} label="Task" />
+      </div>
     </div>
   );
 
-  if (m.locked) return <li aria-disabled>{inner}</li>;
   return (
     <li>
       <Link href={`/track/${slug}/${m.order}`}>{inner}</Link>

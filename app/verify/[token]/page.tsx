@@ -4,6 +4,12 @@ import { CertificateCard } from "@/components/CertificateCard";
 
 export const dynamic = "force-dynamic";
 
+export const metadata = {
+  title: "Verify a certificate",
+  description: "Confirm that a LearnAI certificate is genuine.",
+  robots: { index: false, follow: true },
+};
+
 export default async function VerifyPage({
   params,
 }: {
@@ -26,13 +32,13 @@ export default async function VerifyPage({
           We couldn&apos;t verify this
         </h1>
         <p className="mt-2 text-ink-2">
-          This link doesn&apos;t match any certificate Tuttorr has issued.
+          This link doesn&apos;t match any certificate LearnAI has issued.
         </p>
         <Link
           href="/"
           className="mt-7 inline-block rounded-[var(--r-md)] bg-accent px-6 py-3 font-medium text-accent-ink transition-colors hover:bg-accent-hover"
         >
-          Go to Tuttorr
+          Go to LearnAI
         </Link>
       </div>
     );
@@ -48,7 +54,7 @@ export default async function VerifyPage({
         </span>
         <div className="text-sm">
           <span className="font-medium text-accent">Verified.</span>{" "}
-          <span className="text-ink-2">This certificate was issued by Tuttorr.</span>
+          <span className="text-ink-2">This certificate was issued by LearnAI.</span>
         </div>
       </div>
 

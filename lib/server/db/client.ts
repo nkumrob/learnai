@@ -8,7 +8,7 @@ let client: Client | null = null;
 
 export function getDb(): Client {
   if (client) return client;
-  const url = process.env.DATABASE_URL ?? "file:./tuttorr.db";
+  const url = process.env.DATABASE_URL ?? "file:./learnai.db";
   client = createClient({
     url,
     authToken: process.env.DATABASE_AUTH_TOKEN,

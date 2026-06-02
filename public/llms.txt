@@ -1,0 +1,26 @@
+# LearnAI
+
+> LearnAI (https://learnai.to) is a free, guided learning journey that takes complete beginners to genuine, demonstrable AI capability. It has five progressive levels and 50 short, hands-on lessons. Every lesson ends with a real task and a quick quiz; finishing a level earns a verifiable certificate. No signup or login is required.
+
+LearnAI is for non-technical professionals and curious beginners who want practical, work-relevant AI skills — not theory. A 3-question placement quiz routes each learner to the right starting level. Content is hand-authored and example-driven. The learning model follows the Literacy → Fluency → Mastery framework.
+
+## Start here
+- [LearnAI home — the journey map](https://learnai.to/): Overview of the five-level journey and your progress.
+- [Placement quiz](https://learnai.to/placement): A 3-question quiz that recommends where to start.
+
+## The five levels
+- [Level 1 — AI Foundations (Literacy)](https://learnai.to/track/fundamentals): What AI is and isn't, how LLMs work, what AI can and can't do, safe and responsible use, the tools landscape, bias awareness, AI and your job, generative vs traditional software, the human-in-the-loop mindset, core terminology.
+- [Level 2 — Prompt Engineering (Fluency)](https://learnai.to/track/prompting): The four-part prompt, persona prompting, few-shot examples, chain-of-thought, iterative prompting, reusable templates, controlling tone/format, diagnosing bad outputs, system prompts and temperature, domain-specific prompting.
+- [Level 3 — AI for Everyday Productivity (Fluency)](https://learnai.to/track/productivity): Writing, research and summarization, email, meetings, brainstorming, planning, data analysis, learning, content creation, personal finance, job search, building a personal AI system, health and wellness.
+- [Level 4 — AI Automation (Mastery)](https://learnai.to/track/automation): When to automate, APIs and webhooks, no-code automation with Zapier and Make, n8n, adding AI steps to workflows, spotting automatable tasks, building intake and content workflows, guardrails, monitoring, and no-code AI agents.
+- [Level 5 — Advanced & Specialized (Mastery)](https://learnai.to/track/building): RAG (retrieval-augmented generation), no-code chatbots, intermediate data analysis, vibe coding, teaching AI to others, and building a long-term AI learning system.
+
+## Key facts
+- Cost: Free. No account or email required.
+- Format: 50 micro-lessons (about 2-4 minutes each) across 5 levels.
+- Assessment: An auto-graded quiz (pass at 80%) plus a hands-on task per lesson.
+- Credential: A shareable, publicly verifiable certificate per level.
+- Topics covered include: prompt engineering, AI agents, no-code automation (Zapier, Make, n8n), APIs, RAG, and the Model Context Protocol (MCP).
+
+## Contact
+- Website: https://learnai.to
