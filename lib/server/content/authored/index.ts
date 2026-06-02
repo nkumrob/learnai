@@ -6,6 +6,7 @@ import { productivity2 } from "./productivity2";
 import { prompting } from "./prompting";
 import { prompting2 } from "./prompting2";
 import { automation } from "./automation";
+import { automation2 } from "./automation2";
 import { building } from "./building";
 
 // Hand-authored, example-driven content keyed by moduleId. Preferred over AI
@@ -19,6 +20,7 @@ const ALL: Record<string, ModuleContent> = {
   ...prompting,
   ...prompting2,
   ...automation,
+  ...automation2,
   ...building,
 };
 
