@@ -24,19 +24,20 @@ export default function OgImage() {
         <div style={{ display: "flex", alignItems: "center", gap: 20 }}>
           <div
             style={{
-              width: 64,
-              height: 64,
-              borderRadius: 16,
+              width: 68,
+              height: 68,
+              borderRadius: 18,
               background: "#63bc9d",
-              color: "#0e1a14",
               display: "flex",
-              alignItems: "center",
+              alignItems: "flex-end",
               justifyContent: "center",
-              fontSize: 44,
-              fontWeight: 700,
+              gap: 6,
+              padding: "0 13px 15px",
             }}
           >
-            L
+            <div style={{ width: 10, height: 22, background: "#0e1a14", borderRadius: 3 }} />
+            <div style={{ width: 10, height: 32, background: "#0e1a14", borderRadius: 3 }} />
+            <div style={{ width: 10, height: 42, background: "#0e1a14", borderRadius: 3 }} />
           </div>
           <div style={{ fontSize: 34, letterSpacing: -1 }}>{SITE_NAME}</div>
         </div>

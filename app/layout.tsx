@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import { Fraunces, Hanken_Grotesk, Geist_Mono } from "next/font/google";
 import Link from "next/link";
 import { ThemeToggle } from "@/components/ThemeToggle";
+import { Logo, LogoMark } from "@/components/Logo";
 import { JsonLd } from "@/components/JsonLd";
 import {
   SITE_DESCRIPTION,
@@ -133,13 +134,8 @@ function SiteHeader() {
   return (
     <header className="no-print sticky top-0 z-20 border-b border-line/70 bg-paper/85 backdrop-blur-md">
       <div className="mx-auto flex max-w-5xl items-center justify-between px-5 py-4">
-        <Link href="/" className="flex items-baseline gap-2">
-          <span className="font-display text-xl font-medium tracking-tight">
-            LearnAI
-          </span>
-          <span className="hidden text-xs text-ink-3 sm:inline">
-            learn AI, prove it
-          </span>
+        <Link href="/" aria-label="LearnAI home">
+          <Logo />
         </Link>
         <div className="flex items-center gap-2">
           <ThemeToggle />
@@ -159,7 +155,10 @@ function SiteFooter() {
   return (
     <footer className="no-print border-t border-line/70">
       <div className="mx-auto flex max-w-5xl flex-col gap-1 px-5 py-8 text-sm text-ink-3 sm:flex-row sm:items-center sm:justify-between">
-        <span className="font-display text-base text-ink-2">LearnAI</span>
+        <span className="inline-flex items-center gap-2">
+          <LogoMark className="h-5 w-5" />
+          <span className="font-display text-base text-ink-2">LearnAI</span>
+        </span>
         <span>Free and open to everyone. Learn AI, prove it, get certified.</span>
       </div>
     </footer>

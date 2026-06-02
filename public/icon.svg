@@ -1,6 +1,9 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512">
-  <rect width="512" height="512" rx="112" fill="#1e5c45"/>
-  <text x="50%" y="54%" dominant-baseline="middle" text-anchor="middle"
-        font-family="Georgia, 'Times New Roman', serif" font-size="300"
-        font-weight="600" fill="#fbfaf7">L</text>
+  <rect width="512" height="512" rx="116" fill="#1e5c45"/>
+  <g fill="#fbfaf7">
+    <rect x="112" y="250" width="68" height="140" rx="26"/>
+    <rect x="222" y="198" width="68" height="192" rx="26"/>
+    <rect x="332" y="146" width="68" height="244" rx="26"/>
+    <circle cx="366" cy="100" r="30"/>
+  </g>
 </svg>
