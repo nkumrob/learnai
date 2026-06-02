@@ -132,16 +132,16 @@ export default function RootLayout({
 
 function SiteHeader() {
   return (
-    <header className="no-print sticky top-0 z-20 border-b border-line/70 bg-paper/85 backdrop-blur-md">
-      <div className="mx-auto flex max-w-5xl items-center justify-between px-5 py-4">
-        <Link href="/" aria-label="LearnAI home">
+    <header className="no-print sticky top-0 z-20 border-b border-line bg-paper/95 shadow-[0_1px_12px_rgba(26,24,19,0.05)] backdrop-blur-md">
+      <div className="mx-auto flex max-w-5xl items-center justify-between px-5 py-[18px]">
+        <Link href="/" aria-label="LearnAI home" className="transition-opacity hover:opacity-80">
           <Logo />
         </Link>
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-2.5">
           <ThemeToggle />
           <Link
             href="/placement"
-            className="rounded-[var(--r-md)] border border-line-strong bg-surface px-4 py-1.5 text-sm font-medium transition-colors hover:border-accent hover:text-accent"
+            className="rounded-[var(--r-md)] bg-accent px-4 py-2 text-sm font-medium text-accent-ink shadow-sm transition-colors hover:bg-accent-hover"
           >
             Find where to start
           </Link>

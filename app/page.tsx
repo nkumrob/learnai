@@ -82,8 +82,7 @@ export default async function Home() {
       <JsonLd data={faqJsonLd} />
       {/* Hero */}
       <section className="pt-16 pb-10 sm:pt-24">
-        <p className="eyebrow rise rise-1">Free · No signup · Get certified</p>
-        <h1 className="rise rise-2 mt-4 font-display text-[2.4rem] leading-[1.05] font-medium tracking-tight sm:text-5xl">
+        <h1 className="rise rise-2 font-display text-[2.4rem] leading-[1.05] font-medium tracking-tight sm:text-5xl">
           Learn AI, from zero to mastery.{" "}
           <span className="text-accent">Then prove it.</span>
         </h1>
