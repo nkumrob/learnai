@@ -149,18 +149,15 @@ export default function RootLayout({
 
 function SiteHeader() {
   return (
-    <header className="no-print sticky top-0 z-20 border-b border-line bg-paper/95 shadow-[0_1px_12px_rgba(26,24,19,0.05)] backdrop-blur-md">
-      <div className="mx-auto flex max-w-5xl items-center justify-between px-5 py-[18px]">
+    <header className="no-print sticky top-0 z-20 border-b border-line bg-paper/90 shadow-[0_1px_12px_rgba(26,24,19,0.04)] backdrop-blur-md">
+      <div className="mx-auto flex max-w-5xl items-center justify-between gap-3 px-5 py-3.5 sm:px-8">
         <Link href="/" aria-label="LearnAI home" className="transition-opacity hover:opacity-80">
           <Logo />
         </Link>
-        <div className="flex items-center gap-2.5">
+        <div className="flex items-center gap-1.5 sm:gap-2.5">
           <ThemeToggle />
-          <Link
-            href="/placement"
-            className="rounded-[var(--r-md)] bg-accent px-4 py-2 text-sm font-medium text-accent-ink shadow-sm transition-colors hover:bg-accent-hover"
-          >
-            Find where to start
+          <Link href="/placement" className="btn-primary btn-sm">
+            Start free
           </Link>
         </div>
       </div>
@@ -170,14 +167,109 @@ function SiteHeader() {
 
 function SiteFooter() {
   return (
-    <footer className="no-print border-t border-line/70">
-      <div className="mx-auto flex max-w-5xl flex-col gap-1 px-5 py-8 text-sm text-ink-3 sm:flex-row sm:items-center sm:justify-between">
-        <span className="inline-flex items-center gap-2">
-          <LogoMark className="h-5 w-5" />
-          <span className="font-display text-base text-ink-2">LearnAI</span>
-        </span>
-        <span>Free and open to everyone. Learn AI, prove it, get certified.</span>
+    <footer className="no-print mt-16 border-t border-line/70 bg-surface-2/30">
+      <div className="mx-auto max-w-5xl px-5 pt-16 pb-10 sm:px-8 sm:pt-20">
+        {/* Closing line — sets a tone */}
+        <div className="mb-12 max-w-2xl">
+          <p className="font-display text-2xl italic leading-tight text-ink sm:text-3xl">
+            Learn AI properly. Then{" "}
+            <span className="text-accent">prove it.</span>
+          </p>
+          <p className="mt-3 text-ink-2">
+            Free, forever. No signup. No paywall. No ads.
+          </p>
+          <Link href="/placement" className="btn-primary mt-6">
+            Find your level
+            <FooterArrow />
+          </Link>
+        </div>
+
+        <div className="grid gap-10 border-t border-line pt-10 sm:grid-cols-[1.4fr_1fr_1fr_1fr]">
+          <div>
+            <span className="inline-flex items-center gap-2.5">
+              <LogoMark className="h-6 w-6 text-accent" />
+              <span className="text-lg font-bold tracking-[-0.02em] text-ink">
+                LearnAI
+              </span>
+            </span>
+            <p className="mt-3 max-w-xs text-sm text-ink-2">
+              A guided journey from AI literacy to mastery. Five levels, fifty
+              lessons.
+            </p>
+          </div>
+          <FooterCol
+            title="Learn"
+            items={[
+              { label: "Find your level", href: "/placement" },
+              { label: "AI Foundations", href: "/track/fundamentals" },
+              { label: "Prompt Engineering", href: "/track/prompting" },
+              { label: "Productivity", href: "/track/productivity" },
+            ]}
+          />
+          <FooterCol
+            title="Build"
+            items={[
+              { label: "AI Automation", href: "/track/automation" },
+              { label: "Advanced AI", href: "/track/building" },
+            ]}
+          />
+          <FooterCol
+            title="About"
+            items={[
+              { label: "The journey", href: "/#journey" },
+              { label: "How it works", href: "/#sample-lesson" },
+            ]}
+          />
+        </div>
+      </div>
+      <div className="border-t border-line/60">
+        <div className="mx-auto flex max-w-5xl flex-col items-start justify-between gap-2 px-5 py-5 text-xs text-ink-3 sm:flex-row sm:items-center sm:px-8">
+          <span>© {new Date().getFullYear()} LearnAI. Free and open to everyone.</span>
+          <span className="font-mono tabular-nums">
+            v2 · built with patience
+          </span>
+        </div>
       </div>
     </footer>
+  );
+}
+
+function FooterCol({
+  title,
+  items,
+}: {
+  title: string;
+  items: { label: string; href: string }[];
+}) {
+  return (
+    <div>
+      <div className="eyebrow mb-3 text-ink-3">{title}</div>
+      <ul className="space-y-2.5 text-sm">
+        {items.map((i) => (
+          <li key={i.href}>
+            <Link
+              href={i.href}
+              className="text-ink-2 transition-colors hover:text-accent"
+            >
+              {i.label}
+            </Link>
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
+}
+
+function FooterArrow() {
+  return (
+    <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden>
+      <path
+        d="M3 8h10M9 4l4 4-4 4"
+        stroke="currentColor"
+        strokeWidth="1.8"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
   );
 }

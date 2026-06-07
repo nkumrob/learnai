@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import { notFound } from "next/navigation";
 import {
   isTrackSlug,
@@ -14,6 +13,7 @@ import { TRACK_DURATION_HUMAN, TRACK_DURATION_ISO, TRACK_FAQS } from "@/lib/core
 import { absoluteUrl, SITE_NAME, SITE_URL } from "@/lib/core/site";
 import { JsonLd } from "@/components/JsonLd";
 import { TrackBoardClient } from "@/components/TrackBoardClient";
+import { TrackHero } from "@/components/track/TrackHero";
 
 // Statically prerender all 5 track pages. Per-user progress overlays render
 // client-side via TrackBoardClient → /api/progress/[slug].
@@ -111,25 +111,15 @@ export default async function TrackPage({
   }));
 
   return (
-    <div className="mx-auto max-w-2xl px-5 py-12 sm:py-16">
+    <div className="mx-auto max-w-3xl px-5 py-10 sm:px-8 sm:py-14">
       <JsonLd data={courseJsonLd} />
       <JsonLd data={faqJsonLd} />
-      <Link
-        href="/#journey"
-        className="text-sm text-ink-3 transition-colors hover:text-ink"
-      >
-        ← Journey
-      </Link>
 
-      <p className="eyebrow rise rise-1 mt-6">
-        Level {level} · {tier}
-      </p>
-      <h1 className="rise rise-2 mt-2 font-display text-4xl font-medium tracking-tight">
-        {trackDef.title}
-      </h1>
-      <p className="rise rise-3 mt-3 max-w-xl text-lg leading-relaxed text-ink-2">
-        {trackDef.description}
-      </p>
+      <TrackHero
+        slug={slug}
+        description={trackDef.description}
+        totalLessons={staticModules.length}
+      />
 
       <TrackBoardClient slug={slug} modules={staticModules} />
     </div>

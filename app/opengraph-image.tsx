@@ -21,15 +21,23 @@ export default function OgImage() {
           fontFamily: "Georgia, serif",
         }}
       >
-        <div style={{ display: "flex", alignItems: "center", gap: 20 }}>
-          <svg width="68" height="68" viewBox="0 0 512 512">
-            <rect width="512" height="512" rx="120" fill="#63bc9d" />
-            <path
-              d="M150 144 H292 V172 H254 V306 H364 V376 H150 V306 H188 V172 H150 Z"
-              fill="#0e1a14"
-            />
+        <div style={{ display: "flex", alignItems: "center", gap: 18 }}>
+          <svg width="64" height="64" viewBox="0 0 96 96">
+            <rect width="96" height="96" rx="22" fill="#63bc9d" />
+            <g
+              fill="none"
+              stroke="#0e1a14"
+              strokeWidth="10"
+              strokeLinejoin="round"
+              strokeLinecap="round"
+            >
+              <path d="M48 24 L73 72 L23 72 Z" />
+              <path d="M36 57 H60" />
+            </g>
           </svg>
-          <div style={{ fontSize: 34, letterSpacing: -1 }}>{SITE_NAME}</div>
+          <div style={{ fontSize: 36, fontWeight: 800, letterSpacing: -1.5 }}>
+            {SITE_NAME}
+          </div>
         </div>
 
         <div style={{ display: "flex", flexDirection: "column" }}>

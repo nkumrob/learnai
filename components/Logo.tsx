@@ -1,19 +1,19 @@
-// The LearnAI mark: ascending bars rising to a summit - the zero-to-mastery
-// journey. Brand colors are fixed (evergreen tile, cream bars) in both themes,
-// like a real logo.
+// LearnAI — the "Ascent" mark: a geometric A that reads as a peak (mastery), an
+// upward path (zero → mastery), and the letter A (AI). Drawn as precise vector
+// paths; uses currentColor so it adapts to the theme. The same mark doubles as
+// the "A" in the wordmark.
 export function LogoMark({ className }: { className?: string }) {
   return (
     <svg
-      viewBox="0 0 512 512"
+      viewBox="0 0 96 96"
       className={className}
       role="img"
       aria-label="LearnAI"
+      fill="none"
+      stroke="currentColor"
     >
-      <rect width="512" height="512" rx="120" fill="#1e5c45" />
-      <path
-        d="M150 144 H292 V172 H254 V306 H364 V376 H150 V306 H188 V172 H150 Z"
-        fill="#fbfaf7"
-      />
+      <path d="M48 20 L76 76 L20 76 Z" strokeWidth="12" strokeLinejoin="round" />
+      <path d="M35 58 H61" strokeWidth="12" strokeLinecap="round" />
     </svg>
   );
 }
@@ -22,9 +22,9 @@ export function LogoMark({ className }: { className?: string }) {
 export function Logo({ className }: { className?: string }) {
   return (
     <span className={`inline-flex items-center gap-2.5 ${className ?? ""}`}>
-      <LogoMark className="h-8 w-8 shrink-0" />
-      <span className="font-display text-[1.4rem] font-medium leading-none tracking-tight">
-        Learn<span className="text-accent">AI</span>
+      <LogoMark className="h-[26px] w-[26px] shrink-0 text-accent" />
+      <span className="text-[1.34rem] font-extrabold tracking-[-0.03em]">
+        LearnAI
       </span>
     </span>
   );

@@ -7,6 +7,7 @@ import {
   isTrackPassed,
   upsertProgress,
 } from "@/lib/server/db/progress";
+import { recomputeStreak } from "@/lib/server/streak";
 import { gradeQuiz } from "@/lib/core/grading";
 import type { GradeResult } from "@/types/shared";
 
@@ -29,12 +30,18 @@ export async function POST(req: Request) {
   }
 
   const graded = gradeQuiz(module.content.quiz, parsed.data.answers);
-  await upsertProgress(
+  const { wasFirstPass } = await upsertProgress(
     session.id,
     module.id,
     graded.passed ? "passed" : "in_progress",
     graded.score,
   );
+
+  // On a pass, recompute streak (cheap; reads the small pass-timestamp list).
+  let streak: number | undefined;
+  if (graded.passed) {
+    streak = await recomputeStreak(session.id);
+  }
 
   const trackCompleted = graded.passed
     ? await isTrackPassed(session.id, module.trackId)
@@ -50,6 +57,8 @@ export async function POST(req: Request) {
     explanations: graded.explanations,
     trackCompleted,
     trackReadyToCertify,
+    streak,
+    isFirstPass: graded.passed ? wasFirstPass : false,
   };
   return NextResponse.json(result);
 }

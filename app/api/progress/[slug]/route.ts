@@ -2,6 +2,7 @@ import { NextResponse } from "next/server";
 import { getCurrentSession } from "@/lib/server/session";
 import { getTrackView } from "@/lib/server/track-view";
 import { isTrackSlug } from "@/lib/core/track-meta";
+import { isStreakAtRisk } from "@/lib/server/streak";
 
 // Read-only progress feed for client overlays on the (statically rendered)
 // /track/[slug] and /track/[slug]/[order] pages. Anonymous/no-session callers
@@ -46,5 +47,8 @@ export async function GET(
     passedCount: view.passedCount,
     completeAll: view.completeAll,
     passedAll: view.passedAll,
+    streak: session.streakCount,
+    streakAtRisk: isStreakAtRisk(session.streakCount, session.lastPassedAt),
+    hasEmail: !!session.email,
   });
 }

@@ -4,7 +4,9 @@ import { requireSession } from "@/lib/server/session";
 import { getTrackBySlug } from "@/lib/server/db/tracks";
 import { isTrackComplete } from "@/lib/server/db/progress";
 import { issueCertificate } from "@/lib/server/db/certificates";
-import { setLearnerName } from "@/lib/server/db/sessions";
+import { getSession, setLearnerName } from "@/lib/server/db/sessions";
+import { dispatchCertIssued } from "@/lib/server/email/dispatch";
+import { TRACK_LABEL, TRACK_LEVEL } from "@/lib/core/track-meta";
 import type { TrackSlug } from "@/types/shared";
 
 const bodySchema = z.object({
@@ -48,5 +50,19 @@ export async function POST(req: Request) {
     trackId: track.id,
     learnerName: parsed.data.name,
   });
+
+  // Fire-and-forget certificate email if the learner has saved an address.
+  const slug = parsed.data.trackSlug as TrackSlug;
+  const fresh = await getSession(session.id);
+  if (fresh?.email) {
+    const verifyHref = `${process.env.APP_URL ?? "https://learnai.to"}/verify/${cert.verifyToken}`;
+    dispatchCertIssued(fresh, {
+      trackTitle: TRACK_LABEL[slug],
+      level: TRACK_LEVEL[slug],
+      verifyHref,
+      learnerName: parsed.data.name,
+    }).catch(() => {});
+  }
+
   return NextResponse.json(cert);
 }

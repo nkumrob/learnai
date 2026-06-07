@@ -1,8 +1,13 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import confetti from "canvas-confetti";
 import type { Certificate, TrackSlug } from "@/types/shared";
 import { CertificateCard } from "./CertificateCard";
+import { CertificateShareRow } from "./CertificateShareRow";
+import { CertificateNextStep } from "./CertificateNextStep";
+import { TRACK_LEVEL } from "@/lib/core/track-meta";
 
 export function CertificateClaim({
   trackSlug,
@@ -15,7 +20,44 @@ export function CertificateClaim({
   const [name, setName] = useState("");
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
-  const [copied, setCopied] = useState(false);
+  const [justIssued, setJustIssued] = useState(false);
+  const goldFired = useRef(false);
+
+  // On a fresh issue, fire the gold confetti once after the reveal animation.
+  useEffect(() => {
+    if (!cert || !justIssued || goldFired.current) return;
+    goldFired.current = true;
+    const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (reduced) return;
+    const gold = ["#9a7b3f", "#c9a45c", "#e3c280", "#fbfaf7", "#1e5c45"];
+    setTimeout(() => {
+      confetti({
+        particleCount: 120,
+        spread: 80,
+        origin: { y: 0.35 },
+        colors: gold,
+        gravity: 1.15,
+        scalar: 0.95,
+        ticks: 240,
+      });
+    }, 380);
+    setTimeout(() => {
+      confetti({
+        particleCount: 60,
+        angle: 60,
+        spread: 60,
+        origin: { x: 0.1, y: 0.6 },
+        colors: gold,
+      });
+      confetti({
+        particleCount: 60,
+        angle: 120,
+        spread: 60,
+        origin: { x: 0.9, y: 0.6 },
+        colors: gold,
+      });
+    }, 700);
+  }, [cert, justIssued]);
 
   async function claim(e: React.FormEvent) {
     e.preventDefault();
@@ -33,6 +75,7 @@ export function CertificateClaim({
         return;
       }
       setCert(data);
+      setJustIssued(true);
     } catch {
       setError("Couldn't reach the server. Try again.");
     } finally {
@@ -47,67 +90,90 @@ export function CertificateClaim({
         ? `${window.location.origin}${verifyPath}`
         : verifyPath;
 
-    async function copy() {
-      try {
-        await navigator.clipboard.writeText(verifyUrl);
-        setCopied(true);
-        setTimeout(() => setCopied(false), 1800);
-      } catch {
-        /* clipboard unavailable */
-      }
-    }
+    const shareText = `I just earned the LearnAI ${cert.trackTitle} certificate.`;
 
     return (
       <div>
-        <CertificateCard cert={cert} />
-        <div className="no-print mt-6 flex flex-wrap items-center gap-3">
-          <button
-            onClick={() => window.print()}
-            className="rounded-[var(--r-md)] bg-accent px-5 py-2.5 text-sm font-medium text-accent-ink transition-colors hover:bg-accent-hover"
-          >
-            Download / Print
-          </button>
-          <a
-            href={verifyPath}
-            className="rounded-[var(--r-md)] border border-line-strong bg-surface px-5 py-2.5 text-sm font-medium transition-colors hover:border-accent"
-          >
-            View verification page
-          </a>
-          <button
-            onClick={copy}
-            className="rounded-[var(--r-md)] px-4 py-2.5 text-sm font-medium text-ink-2 transition-colors hover:text-ink"
-          >
-            {copied ? "Link copied ✓" : "Copy verify link"}
-          </button>
-        </div>
+        <AnimatePresence>
+          {justIssued && (
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.5 }}
+              className="mb-6 text-center"
+            >
+              <motion.div
+                initial={{ scale: 0.9, opacity: 0 }}
+                animate={{ scale: 1, opacity: 1 }}
+                transition={{ delay: 0.1, type: "spring", stiffness: 200, damping: 18 }}
+                className="display-md text-ink"
+              >
+                Congratulations,{" "}
+                <span className="font-display italic text-accent">
+                  {cert.learnerName.split(/\s+/)[0]}
+                </span>
+                .
+              </motion.div>
+              <motion.p
+                initial={{ opacity: 0, y: 6 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.35, duration: 0.4 }}
+                className="mt-2 text-ink-2"
+              >
+                You finished {cert.trackTitle}.
+              </motion.p>
+            </motion.div>
+          )}
+        </AnimatePresence>
+
+        <motion.div
+          initial={justIssued ? { opacity: 0, y: 18 } : false}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.5, duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+        >
+          <CertificateCard cert={cert} />
+        </motion.div>
+
+        <motion.div
+          initial={justIssued ? { opacity: 0 } : false}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 1.15, duration: 0.4 }}
+        >
+          <CertificateShareRow verifyUrl={verifyUrl} shareText={shareText} />
+          <CertificateNextStep currentLevel={TRACK_LEVEL[trackSlug]} />
+        </motion.div>
       </div>
     );
   }
 
   return (
-    <form onSubmit={claim} className="rounded-[var(--r-lg)] border border-line bg-surface p-6">
-      <label className="block font-medium" htmlFor="name">
+    <form onSubmit={claim} className="card p-7 sm:p-8">
+      <span className="font-display text-base italic text-ink-3">
+        ~ one last thing
+      </span>
+      <label className="mt-1 block font-display text-2xl font-semibold tracking-tight text-ink" htmlFor="name">
         Name to print on the certificate
       </label>
-      <p className="mt-1 text-sm text-ink-2">
-        This is the only personal detail we store - and only on your certificate.
+      <p className="mt-2 text-ink-2">
+        Use the name a recruiter or hiring manager would recognize. This is the
+        only personal detail we ever store on a certificate.
       </p>
       <input
         id="name"
         value={name}
         onChange={(e) => setName(e.target.value)}
-        placeholder="e.g. Robert Appiah"
+        placeholder="Your full name"
         maxLength={80}
         autoComplete="name"
-        className="mt-4 w-full rounded-[var(--r-md)] border border-line bg-paper px-4 py-3 outline-none transition-colors focus:border-accent"
+        className="mt-5 w-full rounded-[var(--r-md)] border border-line bg-paper px-4 py-3 text-lg outline-none transition-colors focus:border-accent"
       />
       {error && <p className="mt-3 text-sm text-danger">{error}</p>}
       <button
         type="submit"
         disabled={loading || name.trim().length === 0}
-        className="mt-5 rounded-[var(--r-md)] bg-accent px-6 py-3 font-medium text-accent-ink shadow-sm transition-colors hover:bg-accent-hover disabled:cursor-not-allowed disabled:opacity-40"
+        className="btn-primary mt-6 disabled:cursor-not-allowed disabled:opacity-50"
       >
-        {loading ? "Issuing…" : "Issue my certificate"}
+        {loading ? "Issuing…" : "Issue my certificate"} →
       </button>
     </form>
   );

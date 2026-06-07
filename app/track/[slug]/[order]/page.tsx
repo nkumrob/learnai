@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import { notFound } from "next/navigation";
 import { getModuleContent } from "@/lib/server/db/tracks";
 import {
@@ -11,20 +10,18 @@ import {
 import { moduleId, TRACK_DEFS } from "@/lib/server/content/tracks-definition";
 import { absoluteUrl, SITE_NAME, SITE_URL } from "@/lib/core/site";
 import { LessonReader } from "@/components/LessonReader";
-import { ModuleQuiz } from "@/components/ModuleQuiz";
-import { TaskCheck } from "@/components/TaskCheck";
+import { TaskCard } from "@/components/lesson/TaskCard";
+import { QuizRunner } from "@/components/lesson/QuizRunner";
+import { LessonShell } from "@/components/lesson/LessonShell";
+import { LessonTopbar } from "@/components/lesson/LessonTopbar";
 import { JsonLd } from "@/components/JsonLd";
 
-// Prerender all 50 lessons. Per-user progress (task done, quiz locked,
-// already-passed) hydrates client-side via /api/progress/[slug].
 export function generateStaticParams() {
   return TRACK_DEFS.flatMap((t) =>
     t.modules.map((m) => ({ slug: t.slug, order: String(m.order) })),
   );
 }
 
-// Stamped at module load — surfaces in JSON-LD dateModified and the visible
-// "Updated" line as a freshness signal for crawlers.
 const CONTENT_DATE_ISO = new Date().toISOString().split("T")[0];
 const CONTENT_DATE_HUMAN = new Date().toLocaleDateString("en-US", {
   month: "long",
@@ -78,7 +75,6 @@ export default async function ModulePage({
   const next = trackDef.modules.find((m) => m.order === orderNum + 1);
   const nextOrder = next ? next.order : null;
 
-  // Strip answers before sending to the client; grading happens server-side.
   const clientQuestions = content.quiz.map((q) => ({
     prompt: q.prompt,
     options: q.options,
@@ -139,42 +135,64 @@ export default async function ModulePage({
     })),
   };
 
+  const modulesStub = trackDef.modules.map((m) => ({
+    order: m.order,
+    title: m.title,
+  }));
+
   return (
-    <div className="mx-auto max-w-2xl px-5 py-12 sm:py-16">
+    <>
       <JsonLd data={lessonJsonLd} />
       <JsonLd data={quizJsonLd} />
-      <Link
-        href={`/track/${slug}`}
-        className="text-sm text-ink-3 transition-colors hover:text-ink"
-      >
-        ← {trackDef.title}
-      </Link>
 
-      <p className="eyebrow rise rise-1 mt-6">
-        Module {current.order} of {trackDef.modules.length}
-      </p>
-      <h1 className="rise rise-2 mt-2 font-display text-4xl font-medium leading-tight tracking-tight">
-        {current.title}
-      </h1>
-      <p className="rise rise-3 mt-3 text-lg text-ink-2">
-        You&apos;ll be able to {lower(current.outcome)}.
-      </p>
-      <p className="mt-2 text-xs text-ink-3">Updated {CONTENT_DATE_HUMAN}</p>
-
-      <article className="mt-9">
-        <LessonReader markdown={content.lesson} />
-      </article>
-
-      <TaskCheck moduleId={id} task={content.task} slug={slug} />
-
-      <ModuleQuiz
-        moduleId={id}
-        slug={slug}
-        nextOrder={nextOrder}
-        questions={clientQuestions}
-        selfFetchProgress
+      <LessonTopbar
+        trackLabel={trackDef.title}
+        trackSlug={slug}
+        moduleOrder={current.order}
+        totalModules={trackDef.modules.length}
+        readMinutes={6}
       />
-    </div>
+
+      <LessonShell
+        trackSlug={slug}
+        trackLabel={trackDef.title}
+        moduleOrder={current.order}
+        modules={modulesStub}
+      >
+        <header className="pb-8">
+          <div className="mb-5 flex items-center gap-2">
+            <span className="chip chip-accent">Level {TRACK_LEVEL[slug]}</span>
+            <span className="chip">{TRACK_TIER[slug]}</span>
+            <span className="chip font-mono tabular-nums">
+              M{current.order} / {trackDef.modules.length}
+            </span>
+          </div>
+          <span className="font-display text-base italic text-ink-3">
+            ~ read
+          </span>
+          <h1 className="display-lg mt-1 text-ink">{current.title}</h1>
+          <p className="mt-4 text-lg leading-relaxed text-ink-2">
+            By the end you&apos;ll be able to {lower(current.outcome)}.
+          </p>
+          <p className="mt-3 text-xs text-ink-3">
+            Updated {CONTENT_DATE_HUMAN}
+          </p>
+        </header>
+
+        <article className="pb-4">
+          <LessonReader markdown={content.lesson} />
+        </article>
+
+        <TaskCard moduleId={id} task={content.task} slug={slug} />
+
+        <QuizRunner
+          moduleId={id}
+          slug={slug}
+          nextOrder={nextOrder}
+          questions={clientQuestions}
+        />
+      </LessonShell>
+    </>
   );
 }
 

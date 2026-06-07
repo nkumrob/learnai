@@ -49,6 +49,37 @@ const STATEMENTS = [
     verify_token TEXT NOT NULL UNIQUE,
     UNIQUE(session_id, track_id)
   )`,
+  `CREATE TABLE IF NOT EXISTS email_events (
+    id TEXT PRIMARY KEY,
+    session_id TEXT NOT NULL REFERENCES sessions(id),
+    type TEXT NOT NULL,
+    sent_at TEXT NOT NULL,
+    opened_at TEXT,
+    clicked_at TEXT
+  )`,
+];
+
+// Additive columns introduced by the v2 redesign. Each is applied with a
+// best-effort ALTER TABLE; SQLite errors with "duplicate column name" when
+// the column already exists, which we silently ignore so the migration is
+// idempotent across reseeds and existing prod data.
+interface AddColumn {
+  table: string;
+  column: string;
+  spec: string;
+}
+
+const ADDITIVE_COLUMNS: AddColumn[] = [
+  // sessions — identity recovery + streak tracking
+  { table: "sessions", column: "email", spec: "TEXT" },
+  { table: "sessions", column: "email_marketing_ok", spec: "INTEGER NOT NULL DEFAULT 1" },
+  { table: "sessions", column: "timezone", spec: "TEXT" },
+  { table: "sessions", column: "streak_count", spec: "INTEGER NOT NULL DEFAULT 0" },
+  { table: "sessions", column: "last_passed_at", spec: "INTEGER" },
+  { table: "sessions", column: "last_seen_at", spec: "INTEGER" },
+  // progress — streak source + time-on-task
+  { table: "progress", column: "passed_at", spec: "INTEGER" },
+  { table: "progress", column: "time_spent_seconds", spec: "INTEGER NOT NULL DEFAULT 0" },
 ];
 
 let initialized = false;
@@ -58,6 +89,19 @@ export async function ensureSchema(): Promise<void> {
   const db = getDb();
   for (const sql of STATEMENTS) {
     await db.execute(sql);
+  }
+  for (const col of ADDITIVE_COLUMNS) {
+    try {
+      await db.execute(
+        `ALTER TABLE ${col.table} ADD COLUMN ${col.column} ${col.spec}`,
+      );
+    } catch (e) {
+      // Column already exists — expected on subsequent runs.
+      const msg = String((e as Error)?.message ?? e);
+      if (!/duplicate column|already exists/i.test(msg)) {
+        throw e;
+      }
+    }
   }
   initialized = true;
 }

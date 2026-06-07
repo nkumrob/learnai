@@ -67,6 +67,12 @@ export interface ModuleProgress {
   score: number | null;
   /** Whether the learner self-attested completing the hands-on task. */
   taskDone: boolean;
+  /** Unix ms of the first pass — null if never passed. */
+  passedAt?: number | null;
+  /** Cumulative seconds the learner has spent on this module. */
+  timeSpentSeconds?: number;
+  /** ISO timestamp of last progress update. */
+  updatedAt?: string | null;
 }
 
 /** Result of grading a quiz submission. */
@@ -81,6 +87,11 @@ export interface GradeResult {
   trackCompleted: boolean;
   /** True if every module is fully done (quiz passed AND task checked). */
   trackReadyToCertify: boolean;
+  /** Current daily-pass streak after this submission. 0 when never passed. */
+  streak?: number;
+  /** True if this is the learner's first-ever quiz pass — used to trigger
+   *  the soft email-capture moment in the celebration overlay. */
+  isFirstPass?: boolean;
 }
 
 /** Result of the placement quiz. */
