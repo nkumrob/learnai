@@ -1,20 +1,44 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
+import type { TrackSlug } from "@/types/shared";
 
 export function TaskCheck({
   moduleId,
   task,
-  initialDone,
+  slug,
+  initialDone = false,
 }: {
   moduleId: string;
   task: string;
-  initialDone: boolean;
+  /** Optional: when provided, the component self-fetches the learner's task
+   *  status from `/api/progress/[slug]` after mount. Lets the page render
+   *  statically for crawlers/anonymous visitors. */
+  slug?: TrackSlug;
+  initialDone?: boolean;
 }) {
   const [done, setDone] = useState(initialDone);
   const [saving, setSaving] = useState(false);
+  const userTouched = useRef(false);
+
+  useEffect(() => {
+    if (!slug || userTouched.current) return;
+    let cancelled = false;
+    fetch(`/api/progress/${slug}`)
+      .then((r) => (r.ok ? r.json() : null))
+      .then((data: { modules?: { id: string; taskDone: boolean }[] } | null) => {
+        if (cancelled || !data?.modules) return;
+        const mine = data.modules.find((m) => m.id === moduleId);
+        if (mine && !userTouched.current) setDone(mine.taskDone);
+      })
+      .catch(() => {});
+    return () => {
+      cancelled = true;
+    };
+  }, [slug, moduleId]);
 
   async function toggle() {
+    userTouched.current = true;
     const next = !done;
     setDone(next); // optimistic
     setSaving(true);

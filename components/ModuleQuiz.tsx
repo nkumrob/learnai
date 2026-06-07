@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import type { GradeResult } from "@/types/shared";
 
@@ -14,15 +14,19 @@ export function ModuleQuiz({
   slug,
   nextOrder,
   questions,
-  alreadyPassed,
-  locked = false,
+  alreadyPassed: alreadyPassedProp,
+  locked: lockedProp,
+  selfFetchProgress = false,
 }: {
   moduleId: string;
   slug: string;
   nextOrder: number | null;
   questions: ClientQuestion[];
-  alreadyPassed: boolean;
+  alreadyPassed?: boolean;
   locked?: boolean;
+  /** When true, fetches /api/progress/[slug] after mount to hydrate
+   *  `alreadyPassed` and `locked`. Lets the lesson page render statically. */
+  selfFetchProgress?: boolean;
 }) {
   const [started, setStarted] = useState(false);
   const [answers, setAnswers] = useState<number[]>(
@@ -31,7 +35,33 @@ export function ModuleQuiz({
   const [result, setResult] = useState<GradeResult | null>(null);
   const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState(false);
+  const [alreadyPassed, setAlreadyPassed] = useState(alreadyPassedProp ?? false);
+  const [locked, setLocked] = useState(lockedProp ?? false);
   const quizRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (!selfFetchProgress) return;
+    let cancelled = false;
+    fetch(`/api/progress/${slug}`)
+      .then((r) => (r.ok ? r.json() : null))
+      .then(
+        (
+          data: {
+            modules?: { id: string; status: string; locked: boolean }[];
+          } | null,
+        ) => {
+          if (cancelled || !data?.modules) return;
+          const mine = data.modules.find((m) => m.id === moduleId);
+          if (!mine) return;
+          setAlreadyPassed(mine.status === "passed");
+          setLocked(mine.locked);
+        },
+      )
+      .catch(() => {});
+    return () => {
+      cancelled = true;
+    };
+  }, [selfFetchProgress, slug, moduleId]);
 
   const allAnswered = answers.every((a) => a >= 0);
   const graded = result !== null;

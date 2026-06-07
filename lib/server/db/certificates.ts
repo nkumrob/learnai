@@ -67,3 +67,22 @@ export async function getByToken(token: string): Promise<Certificate | null> {
   });
   return res.rows[0] ? toCertificate(res.rows[0] as Row) : null;
 }
+
+/** All certificates ever issued, newest first. Used by the sitemap so every
+ *  public /verify/[token] page is discoverable. Safe to call at build time. */
+export async function listAllCerts(): Promise<
+  Array<{ verifyToken: string; issuedAt: string }>
+> {
+  await ensureSchema();
+  const res = await getDb().execute({
+    sql: `SELECT verify_token, issued_at FROM certificates
+          ORDER BY issued_at DESC LIMIT 40000`,
+  });
+  return res.rows.map((r) => {
+    const row = r as Row;
+    return {
+      verifyToken: String(row.verify_token),
+      issuedAt: String(row.issued_at),
+    };
+  });
+}

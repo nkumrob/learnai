@@ -2,18 +2,82 @@
 
 > LearnAI (https://learnai.to) is a free, guided learning journey that takes complete beginners to genuine, demonstrable AI capability. It has five progressive levels and 50 short, hands-on lessons. Every lesson ends with a real task and a quick quiz; finishing a level earns a verifiable certificate. No signup or login is required.
 
-LearnAI is for non-technical professionals and curious beginners who want practical, work-relevant AI skills — not theory. A 3-question placement quiz routes each learner to the right starting level. Content is hand-authored and example-driven. The learning model follows the Literacy → Fluency → Mastery framework.
+Tagline: Learn useful AI skills. Then prove it.
+
+LearnAI is for non-technical professionals and curious beginners who want practical, work-relevant AI skills — not theory. A short placement quiz routes each learner to the right starting level. Content is hand-authored and example-driven. The learning model follows the Literacy → Fluency → Mastery framework.
 
 ## Start here
 - [LearnAI home — the journey map](https://learnai.to/): Overview of the five-level journey and your progress.
 - [Placement quiz](https://learnai.to/placement): A 3-question quiz that recommends where to start.
+- [About the curriculum team](https://learnai.to/about): How lessons are written, reviewed, and updated.
 
 ## The five levels
-- [Level 1 — AI Foundations (Literacy)](https://learnai.to/track/fundamentals): What AI is and isn't, how LLMs work, what AI can and can't do, safe and responsible use, the tools landscape, bias awareness, AI and your job, generative vs traditional software, the human-in-the-loop mindset, core terminology.
-- [Level 2 — Prompt Engineering (Fluency)](https://learnai.to/track/prompting): The four-part prompt, persona prompting, few-shot examples, chain-of-thought, iterative prompting, reusable templates, controlling tone/format, diagnosing bad outputs, system prompts and temperature, domain-specific prompting.
-- [Level 3 — AI for Everyday Productivity (Fluency)](https://learnai.to/track/productivity): Writing, research and summarization, email, meetings, brainstorming, planning, data analysis, learning, content creation, personal finance, job search, building a personal AI system, health and wellness.
-- [Level 4 — AI Automation (Mastery)](https://learnai.to/track/automation): When to automate, APIs and webhooks, no-code automation with Zapier and Make, n8n, adding AI steps to workflows, spotting automatable tasks, building intake and content workflows, guardrails, monitoring, and no-code AI agents.
-- [Level 5 — Advanced & Specialized (Mastery)](https://learnai.to/track/building): RAG (retrieval-augmented generation), no-code chatbots, intermediate data analysis, vibe coding, teaching AI to others, and building a long-term AI learning system.
+- [Level 1 — AI Foundations (Literacy)](https://learnai.to/track/fundamentals): Understand what AI is, what it can and can't do, and how to use it safely. about 90 minutes.
+- [Level 2 — Prompt Engineering (Fluency)](https://learnai.to/track/prompting): Get reliable, high-quality results from any AI tool. No coding. about 90 minutes.
+- [Level 3 — AI for Everyday Productivity (Fluency)](https://learnai.to/track/productivity): Use AI to get real work (and life) done faster. No technical background. about 2 hours.
+- [Level 4 — AI Automation (Mastery)](https://learnai.to/track/automation): Connect tools and build workflows that run without you. Low/no code. about 2 hours.
+- [Level 5 — Advanced & Specialized AI (Mastery)](https://learnai.to/track/building): Design, combine, and innovate: RAG, chatbots, data, coding, and teaching others. about 60 minutes.
+
+## All lessons
+### Level 1: AI Foundations
+- [What AI Actually Is (and Is Not)](https://learnai.to/track/fundamentals/1): You'll be able to explain what AI is versus ML, deep learning, and generative AI in plain language.
+- [How Large Language Models Work](https://learnai.to/track/fundamentals/2): You'll be able to explain how an LLM predicts text and why it hallucinates.
+- [What AI Can and Cannot Do](https://learnai.to/track/fundamentals/3): You'll be able to sort work tasks into what AI handles well versus what needs a human.
+- [Safe and Responsible AI Use](https://learnai.to/track/fundamentals/4): You'll be able to apply a safe-use checklist so you never leak sensitive data.
+- [The AI Tools Landscape](https://learnai.to/track/fundamentals/5): You'll be able to pick the right category of AI tool for a given task.
+- [AI Ethics and Bias Awareness](https://learnai.to/track/fundamentals/6): You'll be able to spot bias signals in AI output and explain their likely cause.
+- [AI and Your Job](https://learnai.to/track/fundamentals/7): You'll be able to map your job tasks into automate, assist, and human-only.
+- [Generative AI vs. Traditional Software](https://learnai.to/track/fundamentals/8): You'll be able to explain why the same prompt can return different answers.
+- [The Human-in-the-Loop Mindset](https://learnai.to/track/fundamentals/9): You'll be able to define your personal verification habit for AI output.
+- [Speaking the Language of AI](https://learnai.to/track/fundamentals/10): You'll be able to use core AI terms correctly in a conversation.
+
+### Level 2: Prompt Engineering
+- [Prompt Engineering Fundamentals](https://learnai.to/track/prompting/1): You'll be able to write prompts with context, instructions, input, and output format.
+- [Role-Playing and Persona Prompting](https://learnai.to/track/prompting/2): You'll be able to use a persona to raise the quality of the output.
+- [Few-Shot and Example-Based Prompting](https://learnai.to/track/prompting/3): You'll be able to teach the AI a format with examples for consistent output.
+- [Chain-of-Thought Prompting](https://learnai.to/track/prompting/4): You'll be able to use step-by-step reasoning to improve accuracy.
+- [Iterative and Multi-Turn Prompting](https://learnai.to/track/prompting/5): You'll be able to reach a polished result by refining across turns.
+- [Prompt Templates and Libraries](https://learnai.to/track/prompting/6): You'll be able to build a saved library of reusable prompts.
+- [Controlling Tone, Style, and Format](https://learnai.to/track/prompting/7): You'll be able to produce the same content in multiple formats and tones.
+- [Diagnosing and Fixing Bad Outputs](https://learnai.to/track/prompting/8): You'll be able to diagnose which part of a prompt failed and fix it.
+- [System Prompts, Temperature, and Context](https://learnai.to/track/prompting/9): You'll be able to configure a system prompt and temperature for a use case.
+- [Prompting for Different Work Domains](https://learnai.to/track/prompting/10): You'll be able to write an effective prompt for a task outside your usual role.
+
+### Level 3: AI for Everyday Productivity
+- [AI Writing: Drafting, Editing, Tone](https://learnai.to/track/productivity/1): You'll be able to turn rough notes into a polished email, summary, and one-pager fast.
+- [AI Research and Summarization](https://learnai.to/track/productivity/2): You'll be able to summarize a long document into key findings and actions.
+- [AI for Email and Communication](https://learnai.to/track/productivity/3): You'll be able to set up a reusable email workflow from a few bullets.
+- [AI for Meeting Prep and Follow-Up](https://learnai.to/track/productivity/4): You'll be able to turn a transcript into decisions, action items, and owners.
+- [AI for Brainstorming and Ideation](https://learnai.to/track/productivity/5): You'll be able to run a structured brainstorm and select the best ideas.
+- [AI for Planning and Project Management](https://learnai.to/track/productivity/6): You'll be able to turn a vague goal into a milestone plan with risks.
+- [AI for Summarizing and Analyzing Data](https://learnai.to/track/productivity/7): You'll be able to get insights from a spreadsheet without writing a formula.
+- [AI for Learning and Development](https://learnai.to/track/productivity/8): You'll be able to use AI as a tutor pitched at the right level for you.
+- [AI for Content: Posts, Slides, Visuals](https://learnai.to/track/productivity/9): You'll be able to produce aligned content across formats from one topic.
+- [AI for Personal Finance and Decisions](https://learnai.to/track/productivity/10): You'll be able to summarize the key terms and risks in a real document.
+- [AI for Job Search and Career](https://learnai.to/track/productivity/11): You'll be able to tailor a resume and run a mock interview with feedback.
+- [Building a Personal AI Workflow System](https://learnai.to/track/productivity/12): You'll be able to describe your personal AI system: tools, prompts, verification.
+- [AI for Health, Wellness, and Goals](https://learnai.to/track/productivity/13): You'll be able to design a personalized 30-day plan with safe verification.
+
+### Level 4: AI Automation
+- [What Automation Is and When to Use It](https://learnai.to/track/automation/1): You'll be able to classify a task as automate now, use AI manually, or keep human.
+- [APIs and How Data Moves Between Tools](https://learnai.to/track/automation/2): You'll be able to explain in plain words how a trigger moves data between apps.
+- [No-Code Automation with Zapier or Make](https://learnai.to/track/automation/3): You'll be able to build a trigger to action to result workflow.
+- [n8n for Intermediate Automation](https://learnai.to/track/automation/4): You'll be able to build a branching workflow with error handling.
+- [Connecting AI to Your Workflows](https://learnai.to/track/automation/5): You'll be able to add an AI judgment step inside an automation.
+- [Spotting Automatable Tasks at Work](https://learnai.to/track/automation/6): You'll be able to audit your week and write an automation spec.
+- [Build a Lead Capture / Intake Automation](https://learnai.to/track/automation/7): You'll be able to build an end-to-end intake automation.
+- [Build an AI-Powered Content Workflow](https://learnai.to/track/automation/8): You'll be able to build a content workflow with a human review checkpoint.
+- [Guardrails and Human Checkpoints](https://learnai.to/track/automation/9): You'll be able to add safety checks that prevent specific failures.
+- [Scheduling, Monitoring, Maintaining](https://learnai.to/track/automation/10): You'll be able to schedule, monitor, and fix a broken automation.
+- [Building a Personal AI Agent (No-Code)](https://learnai.to/track/automation/11): You'll be able to build a no-code agent that completes a multi-step task.
+
+### Level 5: Advanced & Specialized AI
+- [RAG: Retrieval-Augmented Generation](https://learnai.to/track/building/1): You'll be able to explain how RAG grounds AI in your own data.
+- [No-Code AI Chatbots and Assistants](https://learnai.to/track/building/2): You'll be able to plan a chatbot connected to a document source.
+- [AI for Data Analysis (Intermediate)](https://learnai.to/track/building/3): You'll be able to run an AI-assisted analysis and produce a findings brief.
+- [AI for Coding and Vibe Coding](https://learnai.to/track/building/4): You'll be able to build a working tool from a plain-language description.
+- [Teaching AI to Others](https://learnai.to/track/building/5): You'll be able to teach a beginner to complete one useful AI task.
+- [Your Long-Term AI Learning System](https://learnai.to/track/building/6): You'll be able to set up a self-renewing AI learning habit.
 
 ## Key facts
 - Cost: Free. No account or email required.
@@ -21,6 +85,9 @@ LearnAI is for non-technical professionals and curious beginners who want practi
 - Assessment: An auto-graded quiz (pass at 80%) plus a hands-on task per lesson.
 - Credential: A shareable, publicly verifiable certificate per level.
 - Topics covered include: prompt engineering, AI agents, no-code automation (Zapier, Make, n8n), APIs, RAG, and the Model Context Protocol (MCP).
+
+## Optional
+- [Full curriculum text](https://learnai.to/llms-full.txt): Every lesson's full text in a single document.
 
 ## Contact
 - Website: https://learnai.to

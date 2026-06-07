@@ -1,14 +1,39 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import { getByToken } from "@/lib/server/db/certificates";
 import { CertificateCard } from "@/components/CertificateCard";
+import { JsonLd } from "@/components/JsonLd";
+import { absoluteUrl, SITE_NAME, SITE_URL } from "@/lib/core/site";
 
 export const dynamic = "force-dynamic";
 
-export const metadata = {
-  title: "Verify a certificate",
-  description: "Confirm that a LearnAI certificate is genuine.",
-  robots: { index: false, follow: true },
-};
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ token: string }>;
+}): Promise<Metadata> {
+  const { token } = await params;
+  const cert = await getByToken(token);
+  const url = absoluteUrl(`/verify/${token}`);
+  if (!cert) {
+    return {
+      title: "Verify a certificate",
+      description: "Confirm that a LearnAI certificate is genuine.",
+      alternates: { canonical: url },
+      robots: { index: false, follow: true },
+    };
+  }
+  const title = `${cert.learnerName}'s ${cert.trackTitle} certificate`;
+  const description = `${cert.learnerName} earned the LearnAI ${cert.trackTitle} certificate — passed every quiz and completed every hands-on task. Verified by LearnAI.`;
+  return {
+    title,
+    description,
+    alternates: { canonical: url },
+    openGraph: { title, description, url, type: "profile" },
+    twitter: { card: "summary_large_image", title, description },
+    robots: { index: true, follow: true },
+  };
+}
 
 export default async function VerifyPage({
   params,
@@ -44,8 +69,30 @@ export default async function VerifyPage({
     );
   }
 
+  const verifyUrl = absoluteUrl(`/verify/${cert.verifyToken}`);
+  const credentialJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "EducationalOccupationalCredential",
+    "@id": verifyUrl,
+    name: `${cert.trackTitle} — ${SITE_NAME} Certificate`,
+    description: `${cert.learnerName} earned the ${SITE_NAME} ${cert.trackTitle} certificate by passing every quiz (80% threshold) and completing every hands-on task in the level.`,
+    url: verifyUrl,
+    credentialCategory: "Certificate",
+    dateCreated: cert.issuedAt,
+    educationalLevel: cert.trackTitle,
+    identifier: cert.verifyToken,
+    competencyRequired: `Pass every lesson quiz in ${cert.trackTitle} at 80% or higher and complete every hands-on task.`,
+    recognizedBy: { "@type": "Organization", "@id": `${SITE_URL}/#org`, name: SITE_NAME },
+    about: {
+      "@type": "Course",
+      name: cert.trackTitle,
+      provider: { "@type": "Organization", "@id": `${SITE_URL}/#org`, name: SITE_NAME },
+    },
+  };
+
   return (
     <div className="mx-auto max-w-xl px-5 py-12 sm:py-16">
+      <JsonLd data={credentialJsonLd} />
       <div className="mb-7 flex items-center gap-3 rounded-[var(--r-md)] border border-accent/30 bg-accent-faint px-4 py-3">
         <span className="grid h-7 w-7 shrink-0 place-items-center rounded-full bg-accent text-accent-ink">
           <svg width="15" height="15" viewBox="0 0 24 24" fill="none" aria-hidden>

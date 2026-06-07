@@ -4,10 +4,12 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
+    "prebuild": "npm run generate:llms",
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
     "seed": "node --conditions=react-server --import tsx scripts/seed-content.ts",
+    "generate:llms": "node --conditions=react-server --import tsx scripts/generate-llms-txt.ts",
     "test": "vitest run"
   },
   "dependencies": {

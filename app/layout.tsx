@@ -90,6 +90,19 @@ const orgJsonLd = {
       url: SITE_URL,
       description: SITE_DESCRIPTION,
       slogan: SITE_TAGLINE,
+      hasCredential: {
+        "@type": "EducationalOccupationalCredential",
+        credentialCategory: "Certificate",
+        name: `${SITE_NAME} level certificates`,
+      },
+    },
+    {
+      "@type": "Organization",
+      "@id": `${SITE_URL}/#curriculum-team`,
+      name: `${SITE_NAME} Curriculum Team`,
+      url: `${SITE_URL}/about`,
+      description: `${SITE_NAME}'s in-house curriculum team — authors, reviews, and updates every lesson.`,
+      parentOrganization: { "@id": `${SITE_URL}/#org` },
     },
     {
       "@type": "WebSite",
@@ -112,7 +125,6 @@ export default function RootLayout({
       suppressHydrationWarning
       className={`${fraunces.variable} ${hanken.variable} ${geistMono.variable} h-full`}
     >
-      <GoogleAnalytics gaId="G-THE0NJMJVV" />
       <head>
         {/* Apply the saved theme before paint to avoid a flash. */}
         <script
@@ -130,6 +142,7 @@ export default function RootLayout({
         </div>
         <Analytics />
       </body>
+      <GoogleAnalytics gaId="G-THE0NJMJVV" />
     </html>
   );
 }
