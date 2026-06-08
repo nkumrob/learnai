@@ -57,6 +57,23 @@ const STATEMENTS = [
     opened_at TEXT,
     clicked_at TEXT
   )`,
+  // Optional accounts (Phase 7). Anonymous-first remains the default;
+  // accounts are an opt-in cross-device recovery channel.
+  `CREATE TABLE IF NOT EXISTS accounts (
+    id TEXT PRIMARY KEY,
+    email TEXT NOT NULL UNIQUE,
+    primary_session_id TEXT NOT NULL REFERENCES sessions(id),
+    created_at TEXT NOT NULL,
+    last_sign_in_at TEXT
+  )`,
+  `CREATE TABLE IF NOT EXISTS magic_links (
+    token TEXT PRIMARY KEY,
+    email TEXT NOT NULL,
+    pending_session_id TEXT NOT NULL,
+    created_at TEXT NOT NULL,
+    expires_at INTEGER NOT NULL,
+    used_at TEXT
+  )`,
 ];
 
 // Additive columns introduced by the v2 redesign. Each is applied with a
@@ -77,6 +94,7 @@ const ADDITIVE_COLUMNS: AddColumn[] = [
   { table: "sessions", column: "streak_count", spec: "INTEGER NOT NULL DEFAULT 0" },
   { table: "sessions", column: "last_passed_at", spec: "INTEGER" },
   { table: "sessions", column: "last_seen_at", spec: "INTEGER" },
+  { table: "sessions", column: "account_id", spec: "TEXT" },
   // progress — streak source + time-on-task
   { table: "progress", column: "passed_at", spec: "INTEGER" },
   { table: "progress", column: "time_spent_seconds", spec: "INTEGER NOT NULL DEFAULT 0" },

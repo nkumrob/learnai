@@ -10,6 +10,8 @@ import { UpNextList } from "@/components/dashboard/UpNextList";
 import { CertificateGallery } from "@/components/dashboard/CertificateGallery";
 import { EmptyDashboard } from "@/components/dashboard/EmptyDashboard";
 import { WelcomeBackBanner } from "@/components/dashboard/WelcomeBackBanner";
+import { AccountBadge } from "@/components/dashboard/AccountBadge";
+import { SignedInToast } from "@/components/dashboard/SignedInToast";
 
 export const dynamic = "force-dynamic";
 
@@ -19,18 +21,30 @@ export const metadata: Metadata = {
   robots: { index: false, follow: false },
 };
 
-export default async function HomePage() {
+export default async function HomePage({
+  searchParams,
+}: {
+  searchParams: Promise<{ signed_in?: string }>;
+}) {
   const session = await getCurrentSession();
   if (!session) {
-    // The middleware should always set a session cookie; this is a safety
-    // net for an unusual case (e.g. cookies blocked entirely).
     redirect("/");
   }
 
   const data = await getDashboardData(session);
+  const { signed_in } = await searchParams;
 
   return (
     <div className="mx-auto max-w-5xl px-5 pb-20 pt-10 sm:px-8 sm:pt-14">
+      <div className="mb-4 flex items-center justify-end">
+        <AccountBadge
+          email={session.email}
+          signedIn={!!session.accountId}
+        />
+      </div>
+
+      {signed_in === "1" && <SignedInToast email={session.email} />}
+
       {data.isFirstVisit ? (
         <EmptyDashboard
           journey={data.journey}

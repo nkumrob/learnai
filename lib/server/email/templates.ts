@@ -137,6 +137,47 @@ export function streakSaveTemplate({
   };
 }
 
+/** Magic-link sign-in. Differs from the other templates in two ways:
+ *  it has no unsubscribe footer (transactional, not marketing), and the
+ *  primary CTA opens the verify URL with the embedded token. */
+export function magicLinkTemplate({
+  verifyUrl,
+  expiresInMinutes,
+}: {
+  verifyUrl: string;
+  expiresInMinutes: number;
+}): { subject: string; html: string; text: string } {
+  const subject = `Sign in to LearnAI`;
+  const body = `
+    <h1>Sign in.</h1>
+    <p>Click the link below to sign in to LearnAI. The link expires in ${expiresInMinutes} minutes and only works once.</p>
+    <a class="btn" href="${verifyUrl}">Sign me in →</a>
+    <p style="margin-top:18px;font-size:13px;color:#918c7e;">If you didn't request this, you can safely ignore the email — no account was created.</p>
+    <p class="meta" style="margin-top:18px;word-break:break-all;font-size:12px;">If the button doesn't work, paste this URL into your browser:<br><span style="color:#1e5c45;">${verifyUrl}</span></p>
+  `;
+  const html = `<!DOCTYPE html>
+<html lang="en">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Sign in to LearnAI</title>
+<style>
+  body { margin:0; padding:0; background:#fbfaf7; color:#1a1813; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
+  .container { max-width: 560px; margin: 0 auto; padding: 40px 24px; }
+  .card { background: #ffffff; border: 1px solid #e8e3d7; border-radius: 14px; padding: 32px 28px; }
+  h1 { font-family: Georgia, "Times New Roman", serif; font-size: 28px; line-height: 1.15; margin: 0 0 8px; letter-spacing: -0.02em; }
+  p { font-size: 16px; line-height: 1.55; color: #696558; margin: 12px 0; }
+  .btn { display: inline-block; background: #1e5c45; color: #fbfaf7; text-decoration: none; padding: 12px 22px; border-radius: 999px; font-weight: 600; font-size: 15px; margin-top: 16px; }
+  .logo { display: inline-flex; align-items: center; gap: 8px; color: #1a1813; text-decoration: none; font-weight: 700; font-size: 16px; letter-spacing: -0.02em; }
+  .logo span.mark { display: inline-block; width: 14px; height: 14px; border: 2px solid #1e5c45; transform: rotate(45deg); }
+</style></head>
+<body>
+  <div class="container">
+    <a href="https://learnai.to" class="logo"><span class="mark"></span> LearnAI</a>
+    <div class="card" style="margin-top: 24px;">${body}</div>
+  </div>
+</body></html>`;
+  const text = `Sign in to LearnAI: ${verifyUrl}\nThis link expires in ${expiresInMinutes} minutes.`;
+  return { subject, html, text };
+}
+
 export function certIssuedTemplate({
   sessionId,
   trackTitle,

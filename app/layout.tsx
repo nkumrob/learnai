@@ -133,7 +133,10 @@ export default function RootLayout({
           }}
         />
       </head>
-      <body className="relative flex min-h-full flex-col">
+      <body
+        className="relative flex min-h-full flex-col"
+        suppressHydrationWarning
+      >
         <JsonLd data={orgJsonLd} />
         <div className="relative z-[1] flex min-h-full flex-col">
           <SiteHeader />
@@ -154,8 +157,14 @@ function SiteHeader() {
         <Link href="/" aria-label="LearnAI home" className="transition-opacity hover:opacity-80">
           <Logo />
         </Link>
-        <div className="flex items-center gap-1.5 sm:gap-2.5">
+        <div className="flex items-center gap-2 sm:gap-3">
           <ThemeToggle />
+          <Link
+            href="/signin"
+            className="hidden text-sm font-medium text-ink-2 transition-colors hover:text-accent sm:inline-block"
+          >
+            Sign in
+          </Link>
           <Link href="/placement" className="btn-primary btn-sm">
             Start free
           </Link>

@@ -14,6 +14,8 @@ export interface Session {
   streakCount: number;
   lastPassedAt: number | null;
   lastSeenAt: number | null;
+  /** Set when the session is bound to an opted-in account. */
+  accountId: string | null;
 }
 
 type Row = Record<string, unknown>;
@@ -30,6 +32,7 @@ function toSession(r: Row): Session {
     streakCount: r.streak_count == null ? 0 : Number(r.streak_count),
     lastPassedAt: r.last_passed_at == null ? null : Number(r.last_passed_at),
     lastSeenAt: r.last_seen_at == null ? null : Number(r.last_seen_at),
+    accountId: r.account_id == null ? null : String(r.account_id),
   };
 }
 
