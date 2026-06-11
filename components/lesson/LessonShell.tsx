@@ -5,6 +5,7 @@ import Link from "next/link";
 
 interface ModuleStub {
   order: number;
+  slug: string;
   title: string;
 }
 
@@ -104,7 +105,7 @@ export function LessonShell({
                 return (
                   <li key={m.order}>
                     <Link
-                      href={`/track/${trackSlug}/${m.order}`}
+                      href={`/track/${trackSlug}/${m.slug}`}
                       className={`flex items-center gap-2.5 rounded-[var(--r-md)] px-2.5 py-1.5 transition-colors ${
                         isCurrent
                           ? "bg-accent-faint text-accent"

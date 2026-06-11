@@ -86,7 +86,7 @@ export default async function TrackPage({
       "@type": "LearningResource",
       position: m.order,
       name: m.title,
-      url: absoluteUrl(`/track/${slug}/${m.order}`),
+      url: absoluteUrl(`/track/${slug}/${m.slug}`),
       learningResourceType: "Lesson",
       teaches: m.outcome,
     })),
@@ -106,6 +106,7 @@ export default async function TrackPage({
   const staticModules = trackDef.modules.map((m) => ({
     id: moduleId(slug, m.order),
     order: m.order,
+    slug: m.slug,
     title: m.title,
     outcome: m.outcome,
   }));

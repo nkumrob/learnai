@@ -9,6 +9,7 @@ interface StaticModule {
   /** moduleId, of the form `${slug}-${order}` */
   id: string;
   order: number;
+  slug: string;
   title: string;
   outcome: string;
 }
@@ -153,6 +154,7 @@ export function TrackBoardClient({
                 key={m.id}
                 slug={slug}
                 order={m.order}
+                moduleSlug={m.slug}
                 title={m.title}
                 outcome={m.outcome}
                 progress={p ?? null}
@@ -184,6 +186,7 @@ export function TrackBoardClient({
 function ModuleStation({
   slug,
   order,
+  moduleSlug,
   title,
   outcome,
   progress,
@@ -193,6 +196,7 @@ function ModuleStation({
 }: {
   slug: string;
   order: number;
+  moduleSlug: string;
   title: string;
   outcome: string;
   progress: ProgressModule | null;
@@ -269,7 +273,7 @@ function ModuleStation({
           }`}
         >
           <Link
-            href={`/track/${slug}/${order}`}
+            href={`/track/${slug}/${moduleSlug}`}
             className={`group block transition-transform ${stateClass} ${
               locked ? "pointer-events-none" : ""
             }`}

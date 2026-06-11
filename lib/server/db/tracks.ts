@@ -27,6 +27,7 @@ function toModule(r: Row): Module {
     id: String(r.id),
     trackId: String(r.track_id),
     order: Number(r.order),
+    slug: r.slug == null ? "" : String(r.slug),
     title: String(r.title),
     outcome: String(r.outcome),
   };
@@ -124,12 +125,12 @@ export async function upsertTrack(t: Track): Promise<void> {
 export async function upsertModule(m: Module): Promise<void> {
   await ensureSchema();
   await getDb().execute({
-    sql: `INSERT INTO modules (id, track_id, "order", title, outcome)
-          VALUES (?, ?, ?, ?, ?)
+    sql: `INSERT INTO modules (id, track_id, "order", slug, title, outcome)
+          VALUES (?, ?, ?, ?, ?, ?)
           ON CONFLICT(id) DO UPDATE SET
             track_id=excluded.track_id, "order"=excluded."order",
-            title=excluded.title, outcome=excluded.outcome`,
-    args: [m.id, m.trackId, m.order, m.title, m.outcome],
+            slug=excluded.slug, title=excluded.title, outcome=excluded.outcome`,
+    args: [m.id, m.trackId, m.order, m.slug, m.title, m.outcome],
   });
 }
 

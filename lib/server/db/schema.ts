@@ -98,6 +98,9 @@ const ADDITIVE_COLUMNS: AddColumn[] = [
   // progress — streak source + time-on-task
   { table: "progress", column: "passed_at", spec: "INTEGER" },
   { table: "progress", column: "time_spent_seconds", spec: "INTEGER NOT NULL DEFAULT 0" },
+  // modules — url-safe slug used in /track/[slug]/[moduleSlug] routes.
+  // Backfilled from TRACK_DEFS during seed.
+  { table: "modules", column: "slug", spec: "TEXT" },
 ];
 
 let initialized = false;

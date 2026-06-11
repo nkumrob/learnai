@@ -151,7 +151,7 @@ export async function getDashboardData(
         trackProgress: totalInTrack > 0 ? passedInTrack / totalInTrack : 0,
         passedInTrack,
         totalInTrack,
-        href: `/track/${currentTrack.slug}/${resumeModule.order}`,
+        href: `/track/${currentTrack.slug}/${resumeModule.slug}`,
       };
     }
 
@@ -168,7 +168,7 @@ export async function getDashboardData(
         moduleOrder: m.order,
         moduleTitle: m.title,
         estMinutes: 6,
-        href: `/track/${currentTrack.slug}/${m.order}`,
+        href: `/track/${currentTrack.slug}/${m.slug}`,
       });
     }
   }

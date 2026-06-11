@@ -55,7 +55,7 @@ function buildLlmsTxt(): string {
     lines.push(`### Level ${level}: ${t.title}`);
     for (const m of t.modules) {
       lines.push(
-        `- [${m.title}](${SITE_URL}/track/${t.slug}/${m.order}): You'll be able to ${m.outcome}.`,
+        `- [${m.title}](${SITE_URL}/track/${t.slug}/${m.slug}): You'll be able to ${m.outcome}.`,
       );
     }
     lines.push("");
@@ -108,7 +108,7 @@ function buildLlmsFullTxt(): string {
       const content = getAuthoredContent(id);
       lines.push(`## Lesson ${m.order}: ${m.title}`);
       lines.push("");
-      lines.push(`Lesson URL: ${SITE_URL}/track/${t.slug}/${m.order}`);
+      lines.push(`Lesson URL: ${SITE_URL}/track/${t.slug}/${m.slug}`);
       lines.push(`Outcome: You'll be able to ${m.outcome}.`);
       lines.push("");
       if (!content) {

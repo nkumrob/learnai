@@ -14,14 +14,14 @@ interface ClientQuestion {
 interface QuizRunnerProps {
   moduleId: string;
   slug: string;
-  nextOrder: number | null;
+  nextSlug: string | null;
   questions: ClientQuestion[];
 }
 
 export function QuizRunner({
   moduleId,
   slug,
-  nextOrder,
+  nextSlug,
   questions,
 }: QuizRunnerProps) {
   const [started, setStarted] = useState(false);
@@ -272,7 +272,7 @@ export function QuizRunner({
         isFirstPass={result?.isFirstPass}
         hasEmail={hasEmail}
         slug={slug}
-        nextOrder={nextOrder}
+        nextSlug={nextSlug}
         trackCompleted={result?.trackCompleted ?? false}
         trackReadyToCertify={result?.trackReadyToCertify ?? false}
         onClose={() => setShowCelebration(false)}

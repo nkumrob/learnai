@@ -34,7 +34,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   );
 
   const modules: MetadataRoute.Sitemap = TRACK_DEFS.flatMap((t) =>
-    t.modules.map((m) => entry(`/track/${t.slug}/${m.order}`, 0.7, "weekly")),
+    t.modules.map((m) => entry(`/track/${t.slug}/${m.slug}`, 0.7, "weekly")),
   );
 
   const tools: MetadataRoute.Sitemap = TOOL_SLUGS.map((slug) =>

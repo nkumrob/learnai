@@ -14,7 +14,7 @@ interface CelebrationProps {
   isFirstPass?: boolean;
   hasEmail?: boolean;
   slug: string;
-  nextOrder: number | null;
+  nextSlug: string | null;
   trackCompleted: boolean;
   trackReadyToCertify: boolean;
   onClose: () => void;
@@ -29,7 +29,7 @@ export function CelebrationOverlay({
   isFirstPass,
   hasEmail,
   slug,
-  nextOrder,
+  nextSlug,
   trackCompleted,
   trackReadyToCertify,
   onClose,
@@ -105,7 +105,7 @@ export function CelebrationOverlay({
                 isFirstPass={isFirstPass}
                 hasEmail={hasEmail}
                 slug={slug}
-                nextOrder={nextOrder}
+                nextSlug={nextSlug}
                 trackCompleted={trackCompleted}
                 trackReadyToCertify={trackReadyToCertify}
               />
@@ -125,7 +125,7 @@ function PassedBody({
   isFirstPass,
   hasEmail,
   slug,
-  nextOrder,
+  nextSlug,
   trackCompleted,
   trackReadyToCertify,
 }: {
@@ -134,7 +134,7 @@ function PassedBody({
   isFirstPass?: boolean;
   hasEmail?: boolean;
   slug: string;
-  nextOrder: number | null;
+  nextSlug: string | null;
   trackCompleted: boolean;
   trackReadyToCertify: boolean;
 }) {
@@ -179,8 +179,8 @@ function PassedBody({
           <Link href={`/track/${slug}`} className="btn-primary">
             Finish remaining tasks →
           </Link>
-        ) : nextOrder ? (
-          <Link href={`/track/${slug}/${nextOrder}`} className="btn-primary">
+        ) : nextSlug ? (
+          <Link href={`/track/${slug}/${nextSlug}`} className="btn-primary">
             Next lesson →
           </Link>
         ) : (

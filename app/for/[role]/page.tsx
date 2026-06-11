@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { findRole, ROLE_SLUGS, ROLES } from "@/lib/core/roles";
+import { moduleSlugByOrder } from "@/lib/server/content/tracks-definition";
 import { absoluteUrl, SITE_NAME, SITE_URL } from "@/lib/core/site";
 import { JsonLd } from "@/components/JsonLd";
 
@@ -111,7 +112,7 @@ export default async function RolePage({
               key={`${l.trackSlug}-${l.order}`}
               className="rounded-[var(--r-md)] border border-line bg-surface p-4 transition-colors hover:border-accent"
             >
-              <Link href={`/track/${l.trackSlug}/${l.order}`}>
+              <Link href={`/track/${l.trackSlug}/${moduleSlugByOrder(l.trackSlug, l.order)}`}>
                 <div className="font-medium tracking-tight">{l.title}</div>
                 <div className="mt-1 text-sm text-ink-2">{l.why}</div>
                 <div className="mt-1 text-xs text-ink-3">

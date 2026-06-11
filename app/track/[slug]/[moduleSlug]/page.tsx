@@ -7,7 +7,11 @@ import {
   TRACK_LEVEL,
   TRACK_TIER,
 } from "@/lib/core/track-meta";
-import { moduleId, TRACK_DEFS } from "@/lib/server/content/tracks-definition";
+import {
+  findModuleBySlug,
+  moduleId,
+  TRACK_DEFS,
+} from "@/lib/server/content/tracks-definition";
 import { absoluteUrl, SITE_NAME, SITE_URL } from "@/lib/core/site";
 import { LessonReader } from "@/components/LessonReader";
 import { TaskCard } from "@/components/lesson/TaskCard";
@@ -18,7 +22,7 @@ import { JsonLd } from "@/components/JsonLd";
 
 export function generateStaticParams() {
   return TRACK_DEFS.flatMap((t) =>
-    t.modules.map((m) => ({ slug: t.slug, order: String(m.order) })),
+    t.modules.map((m) => ({ slug: t.slug, moduleSlug: m.slug })),
   );
 }
 
@@ -28,23 +32,17 @@ const CONTENT_DATE_HUMAN = new Date().toLocaleDateString("en-US", {
   year: "numeric",
 });
 
-function findModuleDef(slug: string, order: number) {
-  return TRACK_DEFS.find((t) => t.slug === slug)?.modules.find(
-    (m) => m.order === order,
-  );
-}
-
 export async function generateMetadata({
   params,
 }: {
-  params: Promise<{ slug: string; order: string }>;
+  params: Promise<{ slug: string; moduleSlug: string }>;
 }): Promise<Metadata> {
-  const { slug, order } = await params;
+  const { slug, moduleSlug } = await params;
   if (!isTrackSlug(slug)) return {};
-  const m = findModuleDef(slug, Number(order));
+  const m = findModuleBySlug(slug, moduleSlug);
   if (!m) return {};
   const description = `Learn to ${m.outcome}. A free, hands-on AI lesson in LearnAI's ${TRACK_LABEL[slug]} (Level ${TRACK_LEVEL[slug]}), with a quick quiz and a real task.`;
-  const url = absoluteUrl(`/track/${slug}/${order}`);
+  const url = absoluteUrl(`/track/${slug}/${moduleSlug}`);
   return {
     title: m.title,
     description,
@@ -56,31 +54,30 @@ export async function generateMetadata({
 export default async function ModulePage({
   params,
 }: {
-  params: Promise<{ slug: string; order: string }>;
+  params: Promise<{ slug: string; moduleSlug: string }>;
 }) {
-  const { slug, order } = await params;
-  const orderNum = Number(order);
-  if (!isTrackSlug(slug) || !Number.isInteger(orderNum)) notFound();
+  const { slug, moduleSlug } = await params;
+  if (!isTrackSlug(slug)) notFound();
 
   const trackDef = TRACK_DEFS.find((t) => t.slug === slug);
   if (!trackDef) notFound();
 
-  const current = trackDef.modules.find((m) => m.order === orderNum);
+  const current = trackDef.modules.find((m) => m.slug === moduleSlug);
   if (!current) notFound();
 
   const id = moduleId(slug, current.order);
   const content = await getModuleContent(id);
   if (!content) notFound();
 
-  const next = trackDef.modules.find((m) => m.order === orderNum + 1);
-  const nextOrder = next ? next.order : null;
+  const next = trackDef.modules.find((m) => m.order === current.order + 1);
+  const nextSlug = next ? next.slug : null;
 
   const clientQuestions = content.quiz.map((q) => ({
     prompt: q.prompt,
     options: q.options,
   }));
 
-  const lessonUrl = absoluteUrl(`/track/${slug}/${current.order}`);
+  const lessonUrl = absoluteUrl(`/track/${slug}/${current.slug}`);
   const trackUrl = absoluteUrl(`/track/${slug}`);
 
   const lessonJsonLd = {
@@ -137,6 +134,7 @@ export default async function ModulePage({
 
   const modulesStub = trackDef.modules.map((m) => ({
     order: m.order,
+    slug: m.slug,
     title: m.title,
   }));
 
@@ -185,7 +183,7 @@ export default async function ModulePage({
         <QuizRunner
           moduleId={id}
           slug={slug}
-          nextOrder={nextOrder}
+          nextSlug={nextSlug}
           questions={clientQuestions}
         />
       </LessonShell>

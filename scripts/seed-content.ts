@@ -45,6 +45,7 @@ async function main() {
         id: moduleId(def.slug, m.order),
         trackId: track.id,
         order: m.order,
+        slug: m.slug,
         title: m.title,
         outcome: m.outcome,
       };

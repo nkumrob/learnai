@@ -4,7 +4,7 @@
 
 Site: https://learnai.to
 Tagline: Learn useful AI skills. Then prove it.
-Generated: 2026-06-07
+Generated: 2026-06-11
 
 ---
 
@@ -16,7 +16,7 @@ Track URL: https://learnai.to/track/fundamentals
 
 ## Lesson 1: What AI Actually Is (and Is Not)
 
-Lesson URL: https://learnai.to/track/fundamentals/1
+Lesson URL: https://learnai.to/track/fundamentals/what-ai-is
 Outcome: You'll be able to explain what AI is versus ML, deep learning, and generative AI in plain language.
 
 ### Lesson
@@ -89,7 +89,7 @@ Starter: name one AI tool you use that is NOT a chatbot (autocomplete, maps, spa
 
 ## Lesson 2: How Large Language Models Work
 
-Lesson URL: https://learnai.to/track/fundamentals/2
+Lesson URL: https://learnai.to/track/fundamentals/how-llms-work
 Outcome: You'll be able to explain how an LLM predicts text and why it hallucinates.
 
 ### Lesson
@@ -154,7 +154,7 @@ Starter: ask an AI a factual question in your field and check one detail - was i
 
 ## Lesson 3: What AI Can and Cannot Do
 
-Lesson URL: https://learnai.to/track/fundamentals/3
+Lesson URL: https://learnai.to/track/fundamentals/ai-capabilities-and-limits
 Outcome: You'll be able to sort work tasks into what AI handles well versus what needs a human.
 
 ### Lesson
@@ -231,7 +231,7 @@ Starter: take five real tasks from your week and label each 'AI handles well', '
 
 ## Lesson 4: Safe and Responsible AI Use
 
-Lesson URL: https://learnai.to/track/fundamentals/4
+Lesson URL: https://learnai.to/track/fundamentals/safe-ai-use
 Outcome: You'll be able to apply a safe-use checklist so you never leak sensitive data.
 
 ### Lesson
@@ -298,7 +298,7 @@ Starter: apply the 3-line checklist to three things you'd use AI for; for each, 
 
 ## Lesson 5: The AI Tools Landscape
 
-Lesson URL: https://learnai.to/track/fundamentals/5
+Lesson URL: https://learnai.to/track/fundamentals/ai-tools-landscape
 Outcome: You'll be able to pick the right category of AI tool for a given task.
 
 ### Lesson
@@ -369,7 +369,7 @@ Starter: name the right tool category for five real tasks without looking them u
 
 ## Lesson 6: AI Ethics and Bias Awareness
 
-Lesson URL: https://learnai.to/track/fundamentals/6
+Lesson URL: https://learnai.to/track/fundamentals/ai-ethics-and-bias
 Outcome: You'll be able to spot bias signals in AI output and explain their likely cause.
 
 ### Lesson
@@ -436,7 +436,7 @@ Starter: prompt an AI to describe a few job roles and note any stereotyped defau
 
 ## Lesson 7: AI and Your Job
 
-Lesson URL: https://learnai.to/track/fundamentals/7
+Lesson URL: https://learnai.to/track/fundamentals/ai-and-your-job
 Outcome: You'll be able to map your job tasks into automate, assist, and human-only.
 
 ### Lesson
@@ -507,7 +507,7 @@ Starter: list your main job tasks and tag each Automate / Augment / Human. Stret
 
 ## Lesson 8: Generative AI vs. Traditional Software
 
-Lesson URL: https://learnai.to/track/fundamentals/8
+Lesson URL: https://learnai.to/track/fundamentals/generative-vs-traditional-ai
 Outcome: You'll be able to explain why the same prompt can return different answers.
 
 ### Lesson
@@ -573,7 +573,7 @@ Starter: run the same prompt twice and note what changed. Stretch: take a task w
 
 ## Lesson 9: The Human-in-the-Loop Mindset
 
-Lesson URL: https://learnai.to/track/fundamentals/9
+Lesson URL: https://learnai.to/track/fundamentals/human-in-the-loop
 Outcome: You'll be able to define your personal verification habit for AI output.
 
 ### Lesson
@@ -639,7 +639,7 @@ Starter: write your personal 3-point verification habit and stick it where you u
 
 ## Lesson 10: Speaking the Language of AI
 
-Lesson URL: https://learnai.to/track/fundamentals/10
+Lesson URL: https://learnai.to/track/fundamentals/ai-vocabulary
 Outcome: You'll be able to use core AI terms correctly in a conversation.
 
 ### Lesson
@@ -717,7 +717,7 @@ Track URL: https://learnai.to/track/prompting
 
 ## Lesson 1: Prompt Engineering Fundamentals
 
-Lesson URL: https://learnai.to/track/prompting/1
+Lesson URL: https://learnai.to/track/prompting/prompt-engineering-basics
 Outcome: You'll be able to write prompts with context, instructions, input, and output format.
 
 ### Lesson
@@ -795,7 +795,7 @@ Starter: take a message you actually need to write, and run it twice - once as a
 
 ## Lesson 2: Role-Playing and Persona Prompting
 
-Lesson URL: https://learnai.to/track/prompting/2
+Lesson URL: https://learnai.to/track/prompting/persona-prompting
 Outcome: You'll be able to use a persona to raise the quality of the output.
 
 ### Lesson
@@ -861,7 +861,7 @@ Starter: write a persona prompt (role + audience + tone) for a real task and com
 
 ## Lesson 3: Few-Shot and Example-Based Prompting
 
-Lesson URL: https://learnai.to/track/prompting/3
+Lesson URL: https://learnai.to/track/prompting/few-shot-prompting
 Outcome: You'll be able to teach the AI a format with examples for consistent output.
 
 ### Lesson
@@ -931,7 +931,7 @@ Starter: pick a small repeated task (classify, format, label) and write a 3-exam
 
 ## Lesson 4: Chain-of-Thought Prompting
 
-Lesson URL: https://learnai.to/track/prompting/4
+Lesson URL: https://learnai.to/track/prompting/chain-of-thought-prompting
 Outcome: You'll be able to use step-by-step reasoning to improve accuracy.
 
 ### Lesson
@@ -994,7 +994,7 @@ Starter: take a multi-step problem, run it cold, then run it with 'think step by
 
 ## Lesson 5: Iterative and Multi-Turn Prompting
 
-Lesson URL: https://learnai.to/track/prompting/5
+Lesson URL: https://learnai.to/track/prompting/iterative-prompting
 Outcome: You'll be able to reach a polished result by refining across turns.
 
 ### Lesson
@@ -1063,7 +1063,7 @@ Starter: produce a finished piece by iterating at least three times; note what y
 
 ## Lesson 6: Prompt Templates and Libraries
 
-Lesson URL: https://learnai.to/track/prompting/6
+Lesson URL: https://learnai.to/track/prompting/prompt-templates
 Outcome: You'll be able to build a saved library of reusable prompts.
 
 ### Lesson
@@ -1130,7 +1130,7 @@ Starter: build and save 5 named templates for your most frequent tasks, each wit
 
 ## Lesson 7: Controlling Tone, Style, and Format
 
-Lesson URL: https://learnai.to/track/prompting/7
+Lesson URL: https://learnai.to/track/prompting/prompt-tone-and-format
 Outcome: You'll be able to produce the same content in multiple formats and tones.
 
 ### Lesson
@@ -1196,7 +1196,7 @@ Starter: produce the same content as an exec email, a bullet summary, and a Slac
 
 ## Lesson 8: Diagnosing and Fixing Bad Outputs
 
-Lesson URL: https://learnai.to/track/prompting/8
+Lesson URL: https://learnai.to/track/prompting/fix-bad-ai-outputs
 Outcome: You'll be able to diagnose which part of a prompt failed and fix it.
 
 ### Lesson
@@ -1264,7 +1264,7 @@ Starter: take a prompt that gave a bad result and run it through the 5-step chec
 
 ## Lesson 9: System Prompts, Temperature, and Context
 
-Lesson URL: https://learnai.to/track/prompting/9
+Lesson URL: https://learnai.to/track/prompting/system-prompts-and-temperature
 Outcome: You'll be able to configure a system prompt and temperature for a use case.
 
 ### Lesson
@@ -1329,7 +1329,7 @@ Starter: write a system prompt for a recurring use case (e.g., a support tone) a
 
 ## Lesson 10: Prompting for Different Work Domains
 
-Lesson URL: https://learnai.to/track/prompting/10
+Lesson URL: https://learnai.to/track/prompting/prompting-across-domains
 Outcome: You'll be able to write an effective prompt for a task outside your usual role.
 
 ### Lesson
@@ -1411,7 +1411,7 @@ Track URL: https://learnai.to/track/productivity
 
 ## Lesson 1: AI Writing: Drafting, Editing, Tone
 
-Lesson URL: https://learnai.to/track/productivity/1
+Lesson URL: https://learnai.to/track/productivity/ai-writing
 Outcome: You'll be able to turn rough notes into a polished email, summary, and one-pager fast.
 
 ### Lesson
@@ -1476,7 +1476,7 @@ Starter: from rough notes, produce a polished email, a plain-language summary, a
 
 ## Lesson 2: AI Research and Summarization
 
-Lesson URL: https://learnai.to/track/productivity/2
+Lesson URL: https://learnai.to/track/productivity/ai-research-and-summarization
 Outcome: You'll be able to summarize a long document into key findings and actions.
 
 ### Lesson
@@ -1543,7 +1543,7 @@ Starter: take a long document and produce an exec summary with key findings and 
 
 ## Lesson 3: AI for Email and Communication
 
-Lesson URL: https://learnai.to/track/productivity/3
+Lesson URL: https://learnai.to/track/productivity/ai-for-email
 Outcome: You'll be able to set up a reusable email workflow from a few bullets.
 
 ### Lesson
@@ -1609,7 +1609,7 @@ Starter: set up a reusable prompt that turns three bullets into a professional r
 
 ## Lesson 4: AI for Meeting Prep and Follow-Up
 
-Lesson URL: https://learnai.to/track/productivity/4
+Lesson URL: https://learnai.to/track/productivity/ai-for-meetings
 Outcome: You'll be able to turn a transcript into decisions, action items, and owners.
 
 ### Lesson
@@ -1675,7 +1675,7 @@ Starter: take a real meeting transcript (or rough notes) and produce decisions, 
 
 ## Lesson 5: AI for Brainstorming and Ideation
 
-Lesson URL: https://learnai.to/track/productivity/5
+Lesson URL: https://learnai.to/track/productivity/ai-brainstorming
 Outcome: You'll be able to run a structured brainstorm and select the best ideas.
 
 ### Lesson
@@ -1741,7 +1741,7 @@ Starter: run a 20-minute AI brainstorm that yields 10+ distinct ideas, then pick
 
 ## Lesson 6: AI for Planning and Project Management
 
-Lesson URL: https://learnai.to/track/productivity/6
+Lesson URL: https://learnai.to/track/productivity/ai-project-planning
 Outcome: You'll be able to turn a vague goal into a milestone plan with risks.
 
 ### Lesson
@@ -1808,7 +1808,7 @@ Starter: turn a vague goal into a 90-day plan with milestones, dependencies, and
 
 ## Lesson 7: AI for Summarizing and Analyzing Data
 
-Lesson URL: https://learnai.to/track/productivity/7
+Lesson URL: https://learnai.to/track/productivity/ai-for-data-analysis
 Outcome: You'll be able to get insights from a spreadsheet without writing a formula.
 
 ### Lesson
@@ -1875,7 +1875,7 @@ Starter: upload a spreadsheet and get an insight summary with 3 findings, one ch
 
 ## Lesson 8: AI for Learning and Development
 
-Lesson URL: https://learnai.to/track/productivity/8
+Lesson URL: https://learnai.to/track/productivity/ai-as-a-tutor
 Outcome: You'll be able to use AI as a tutor pitched at the right level for you.
 
 ### Lesson
@@ -1941,7 +1941,7 @@ Starter: have AI explain a concept in your field at beginner, intermediate, and 
 
 ## Lesson 9: AI for Content: Posts, Slides, Visuals
 
-Lesson URL: https://learnai.to/track/productivity/9
+Lesson URL: https://learnai.to/track/productivity/ai-content-creation
 Outcome: You'll be able to produce aligned content across formats from one topic.
 
 ### Lesson
@@ -2008,7 +2008,7 @@ Starter: take one topic and produce a LinkedIn post, a 5-slide outline, and a vi
 
 ## Lesson 10: AI for Personal Finance and Decisions
 
-Lesson URL: https://learnai.to/track/productivity/10
+Lesson URL: https://learnai.to/track/productivity/ai-for-personal-finance
 Outcome: You'll be able to summarize the key terms and risks in a real document.
 
 ### Lesson
@@ -2073,7 +2073,7 @@ Starter: have AI summarize the key terms and risks in a real (redacted) contract
 
 ## Lesson 11: AI for Job Search and Career
 
-Lesson URL: https://learnai.to/track/productivity/11
+Lesson URL: https://learnai.to/track/productivity/ai-for-job-search
 Outcome: You'll be able to tailor a resume and run a mock interview with feedback.
 
 ### Lesson
@@ -2139,7 +2139,7 @@ Starter: produce a tailored resume and cover letter for a specific job in under 
 
 ## Lesson 12: Building a Personal AI Workflow System
 
-Lesson URL: https://learnai.to/track/productivity/12
+Lesson URL: https://learnai.to/track/productivity/personal-ai-workflow
 Outcome: You'll be able to describe your personal AI system: tools, prompts, verification.
 
 ### Lesson
@@ -2205,7 +2205,7 @@ Starter: write your personal AI system - tool stack, prompt library, verificatio
 
 ## Lesson 13: AI for Health, Wellness, and Goals
 
-Lesson URL: https://learnai.to/track/productivity/13
+Lesson URL: https://learnai.to/track/productivity/ai-for-health-and-goals
 Outcome: You'll be able to design a personalized 30-day plan with safe verification.
 
 ### Lesson
@@ -2277,7 +2277,7 @@ Track URL: https://learnai.to/track/automation
 
 ## Lesson 1: What Automation Is and When to Use It
 
-Lesson URL: https://learnai.to/track/automation/1
+Lesson URL: https://learnai.to/track/automation/automation-basics
 Outcome: You'll be able to classify a task as automate now, use AI manually, or keep human.
 
 ### Lesson
@@ -2342,7 +2342,7 @@ Starter: audit five recurring tasks and tag each 'automate now', 'use AI manuall
 
 ## Lesson 2: APIs and How Data Moves Between Tools
 
-Lesson URL: https://learnai.to/track/automation/2
+Lesson URL: https://learnai.to/track/automation/apis-and-data-flow
 Outcome: You'll be able to explain in plain words how a trigger moves data between apps.
 
 ### Lesson
@@ -2405,7 +2405,7 @@ Starter: in plain English, describe what happens when a form submission triggers
 
 ## Lesson 3: No-Code Automation with Zapier or Make
 
-Lesson URL: https://learnai.to/track/automation/3
+Lesson URL: https://learnai.to/track/automation/no-code-automation
 Outcome: You'll be able to build a trigger to action to result workflow.
 
 ### Lesson
@@ -2470,7 +2470,7 @@ Starter: build and turn on one real automation (e.g., 'new form response -> add 
 
 ## Lesson 4: n8n for Intermediate Automation
 
-Lesson URL: https://learnai.to/track/automation/4
+Lesson URL: https://learnai.to/track/automation/n8n-automation
 Outcome: You'll be able to build a branching workflow with error handling.
 
 ### Lesson
@@ -2537,7 +2537,7 @@ Starter: in n8n, build a 3-node flow with one conditional branch and a basic err
 
 ## Lesson 5: Connecting AI to Your Workflows
 
-Lesson URL: https://learnai.to/track/automation/5
+Lesson URL: https://learnai.to/track/automation/ai-in-workflows
 Outcome: You'll be able to add an AI judgment step inside an automation.
 
 ### Lesson
@@ -2604,7 +2604,7 @@ Starter: build a workflow where an AI step classifies incoming data (e.g., ticke
 
 ## Lesson 6: Spotting Automatable Tasks at Work
 
-Lesson URL: https://learnai.to/track/automation/6
+Lesson URL: https://learnai.to/track/automation/find-automatable-tasks
 Outcome: You'll be able to audit your week and write an automation spec.
 
 ### Lesson
@@ -2672,7 +2672,7 @@ Starter: audit your week and find two automation candidates, each with a one-lin
 
 ## Lesson 7: Build a Lead Capture / Intake Automation
 
-Lesson URL: https://learnai.to/track/automation/7
+Lesson URL: https://learnai.to/track/automation/lead-capture-automation
 Outcome: You'll be able to build an end-to-end intake automation.
 
 ### Lesson
@@ -2741,7 +2741,7 @@ Starter: build an intake automation end to end (capture -> validate -> classify 
 
 ## Lesson 8: Build an AI-Powered Content Workflow
 
-Lesson URL: https://learnai.to/track/automation/8
+Lesson URL: https://learnai.to/track/automation/ai-content-workflow
 Outcome: You'll be able to build a content workflow with a human review checkpoint.
 
 ### Lesson
@@ -2807,7 +2807,7 @@ Starter: build a workflow that turns structured input into a review-ready draft 
 
 ## Lesson 9: Guardrails and Human Checkpoints
 
-Lesson URL: https://learnai.to/track/automation/9
+Lesson URL: https://learnai.to/track/automation/automation-guardrails
 Outcome: You'll be able to add safety checks that prevent specific failures.
 
 ### Lesson
@@ -2870,7 +2870,7 @@ Starter: take a naive automation idea and add two guardrails, explaining the fai
 
 ## Lesson 10: Scheduling, Monitoring, Maintaining
 
-Lesson URL: https://learnai.to/track/automation/10
+Lesson URL: https://learnai.to/track/automation/automation-monitoring
 Outcome: You'll be able to schedule, monitor, and fix a broken automation.
 
 ### Lesson
@@ -2932,7 +2932,7 @@ Starter: set up a scheduled automation, review its run log, simulate a failure, 
 
 ## Lesson 11: Building a Personal AI Agent (No-Code)
 
-Lesson URL: https://learnai.to/track/automation/11
+Lesson URL: https://learnai.to/track/automation/no-code-ai-agent
 Outcome: You'll be able to build a no-code agent that completes a multi-step task.
 
 ### Lesson
@@ -3003,7 +3003,7 @@ Track URL: https://learnai.to/track/building
 
 ## Lesson 1: RAG: Retrieval-Augmented Generation
 
-Lesson URL: https://learnai.to/track/building/1
+Lesson URL: https://learnai.to/track/building/rag-retrieval-augmented-generation
 Outcome: You'll be able to explain how RAG grounds AI in your own data.
 
 ### Lesson
@@ -3072,7 +3072,7 @@ Starter: explain in plain English how RAG differs from a normal prompt, and one 
 
 ## Lesson 2: No-Code AI Chatbots and Assistants
 
-Lesson URL: https://learnai.to/track/building/2
+Lesson URL: https://learnai.to/track/building/no-code-chatbots
 Outcome: You'll be able to plan a chatbot connected to a document source.
 
 ### Lesson
@@ -3139,7 +3139,7 @@ Starter: plan a chatbot - pick a document source, define its scope, list 5 test 
 
 ## Lesson 3: AI for Data Analysis (Intermediate)
 
-Lesson URL: https://learnai.to/track/building/3
+Lesson URL: https://learnai.to/track/building/ai-data-analysis-advanced
 Outcome: You'll be able to run an AI-assisted analysis and produce a findings brief.
 
 ### Lesson
@@ -3206,7 +3206,7 @@ Starter: run an AI-assisted analysis on a multi-tab spreadsheet and produce a fi
 
 ## Lesson 4: AI for Coding and Vibe Coding
 
-Lesson URL: https://learnai.to/track/building/4
+Lesson URL: https://learnai.to/track/building/ai-coding
 Outcome: You'll be able to build a working tool from a plain-language description.
 
 ### Lesson
@@ -3271,7 +3271,7 @@ Starter: build and run one working tool (a script, a simple page, or an automati
 
 ## Lesson 5: Teaching AI to Others
 
-Lesson URL: https://learnai.to/track/building/5
+Lesson URL: https://learnai.to/track/building/teaching-ai
 Outcome: You'll be able to teach a beginner to complete one useful AI task.
 
 ### Lesson
@@ -3339,7 +3339,7 @@ Starter: run a 20-minute session with someone new to AI - get them to complete o
 
 ## Lesson 6: Your Long-Term AI Learning System
 
-Lesson URL: https://learnai.to/track/building/6
+Lesson URL: https://learnai.to/track/building/ai-learning-system
 Outcome: You'll be able to set up a self-renewing AI learning habit.
 
 ### Lesson

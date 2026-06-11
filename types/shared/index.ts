@@ -26,6 +26,8 @@ export interface Module {
   id: string;
   trackId: string;
   order: number;
+  /** URL-safe identifier, e.g. "what-ai-is". Unique within a track. */
+  slug: string;
   title: string;
   /** "You'll be able to ___" outcome statement. */
   outcome: string;
