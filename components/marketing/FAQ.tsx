@@ -7,32 +7,32 @@ interface FAQItem {
 const ITEMS: FAQItem[] = [
   {
     q: "Is LearnAI really free?",
-    a: "Yes. All 50 lessons, all 5 certificates, no signup. We may add an optional supporter tier later, but the full curriculum will stay free.",
+    a: "Yes. The whole curriculum, every certificate, no signup required. We may add an optional supporter tier one day — the core will stay free.",
     tag: "Pricing",
   },
   {
     q: "How long does each lesson take?",
-    a: "Five to ten minutes. A short read, one hands-on task you do in ChatGPT, Claude, or another AI tool, and a 4-question quiz. Easy to fit into a coffee break.",
+    a: "Five to ten minutes. You read a short bit, then you actually use AI to do something — in ChatGPT, Claude, or whichever tool fits — and we check that it stuck. Coffee-break sized.",
     tag: "Format",
   },
   {
     q: "Do I need any prior experience?",
-    a: "No. The placement quiz routes complete beginners to Level 1 (AI Foundations) and people with some experience to where they’ll actually learn something new. Automation and productivity levels are no-code.",
+    a: "No. The placement puts complete beginners at Level 1 and people with some experience further along — wherever you'll actually learn something new. Automation and productivity levels are no-code.",
     tag: "Onboarding",
   },
   {
-    q: "What’s the certificate worth?",
-    a: "Each certificate is issued with a public verification link anyone can check. It’s not accredited by a university, but it proves you’ve passed every quiz and completed every task at that level — which is more than most AI credentials.",
+    q: "What's the credential worth?",
+    a: "Every certificate has a public verification URL anyone can check — recruiters, hiring managers, your future self. It's not university-accredited, but it proves you can actually do the work, which is more than most AI credentials.",
     tag: "Certificate",
   },
   {
     q: "What if I close the tab — do I lose progress?",
-    a: "No. Your progress is tied to a cookie, and you can drop an email after your first quiz so we can email you a resume link if cookies clear or you switch devices.",
+    a: "No. Your progress is saved to your browser by default. If you want it on multiple devices or want it permanent, you can sign in with a one-tap email link — no password.",
     tag: "Progress",
   },
   {
     q: "Why is it called LearnAI?",
-    a: "Because that’s literally what you’ll do. We figured the name should match the brief.",
+    a: "Because that's literally what you'll do. We figured the name should match the brief.",
     tag: "About",
   },
 ];

@@ -7,13 +7,14 @@ export function HowItWorks() {
             ~ the rhythm
           </span>
           <h2 className="display-md mt-2 text-ink">
-            Three small habits.{" "}
-            <span className="font-display italic text-accent">Real skill.</span>
+            How it{" "}
+            <span className="font-display italic text-accent">works.</span>
           </h2>
         </div>
         <p className="text-ink-2 sm:text-right">
-          Most courses ask you to watch. This one asks you to do. The whole
-          thing is built around one tight loop, repeated 50 times.
+          Other AI courses ask you to watch. This one asks you to do. Real
+          tools, real practice. By the end you won&apos;t just understand AI —
+          you&apos;ll use it.
         </p>
       </div>
 
@@ -41,23 +42,23 @@ export function HowItWorks() {
           <Step
             n={1}
             tint="sky"
-            label="Find your level"
-            detail="A 30-second placement quiz routes you to the level that fits — no starting from chapter one if you don't need to."
+            label="Find where to start"
+            detail="A quick placement puts you at the level that fits — no starting from chapter one if you already know your way around."
             align="left"
           />
           <Step
             n={2}
             tint="accent"
-            label="Read · Try · Check"
-            detail="Five-minute read, one small thing to do with AI, four-question quiz. Pass at 80% to unlock the next lesson. Repeat."
+            label="Use AI on real work"
+            detail="Each lesson hands you a real task in ChatGPT, Claude, or another tool. Do the thing. Learn by doing."
             align="center"
             featured
           />
           <Step
             n={3}
             tint="sun"
-            label="Earn the certificate"
-            detail="Finish all 10 lessons in a level, get a certificate with a public verification link. Add it to LinkedIn."
+            label="Earn the credential"
+            detail="Finish a level and you walk away with a certificate anyone can verify. Add it to LinkedIn. Show your manager."
             align="right"
           />
         </ol>

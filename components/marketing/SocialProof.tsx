@@ -40,8 +40,8 @@ export function SocialProof() {
           </h2>
         </div>
         <p className="text-ink-2 sm:text-right">
-          Not "watch a course about AI." Actually use it on real work — and
-          have something to show for it after.
+          Not &quot;I watched the course.&quot; Actually used the tools on real
+          work. Got a credential for it.
         </p>
       </div>
 

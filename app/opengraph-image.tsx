@@ -42,7 +42,7 @@ export default function OgImage() {
 
         <div style={{ display: "flex", flexDirection: "column" }}>
           <div style={{ fontSize: 82, lineHeight: 1.05, letterSpacing: -2 }}>
-            Learn AI, from zero
+            Stop watching AI courses.
           </div>
           <div
             style={{
@@ -52,8 +52,9 @@ export default function OgImage() {
               letterSpacing: -2,
             }}
           >
-            <span>to mastery.&nbsp;</span>
-            <span style={{ color: "#63bc9d" }}>Then prove it.</span>
+            <span>Start&nbsp;</span>
+            <span style={{ color: "#63bc9d", fontStyle: "italic" }}>using</span>
+            <span>&nbsp;AI.</span>
           </div>
         </div>
 
@@ -66,11 +67,11 @@ export default function OgImage() {
             color: "#a8a294",
           }}
         >
-          <span>Free</span>
+          <span>Free, forever</span>
           <span>·</span>
-          <span>5 levels, 50 lessons</span>
+          <span>Verifiable credential</span>
           <span>·</span>
-          <span>Get certified</span>
+          <span>No signup needed</span>
         </div>
       </div>
     ),

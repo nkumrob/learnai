@@ -110,8 +110,8 @@ export async function CertificateFeed() {
           <span className="font-display italic text-accent">verifiable.</span>
         </h2>
         <p className="mt-4 text-ink-2">
-          Each has a public URL anyone can check. Recruiters, your manager, your
-          future self — no one has to take your word for it.
+          Each one has a public URL anyone can check. Recruiters, your
+          manager, your future self — no one has to take your word for it.
         </p>
       </div>
 

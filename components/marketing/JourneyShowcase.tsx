@@ -51,8 +51,8 @@ export function JourneyShowcase({
           </h2>
         </div>
         <p className="text-ink-2 sm:text-right">
-          You don&apos;t have to start at Level 1. The placement quiz routes you
-          to the level that fits what you already know.
+          Skip what you know. The placement quiz puts you where you&apos;ll
+          actually learn something.
         </p>
       </div>
 

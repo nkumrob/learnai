@@ -181,14 +181,14 @@ function SiteFooter() {
         {/* Closing line — sets a tone */}
         <div className="mb-12 max-w-2xl">
           <p className="font-display text-2xl italic leading-tight text-ink sm:text-3xl">
-            Learn AI properly. Then{" "}
-            <span className="text-accent">prove it.</span>
+            Stop watching. Start{" "}
+            <span className="text-accent">using.</span>
           </p>
           <p className="mt-3 text-ink-2">
-            Free, forever. No signup. No paywall. No ads.
+            Free, forever. No signup needed.
           </p>
           <Link href="/placement" className="btn-primary mt-6">
-            Find your level
+            Find where to start
             <FooterArrow />
           </Link>
         </div>

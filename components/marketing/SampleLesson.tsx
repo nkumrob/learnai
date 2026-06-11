@@ -18,9 +18,9 @@ export function SampleLesson() {
           </h2>
         </div>
         <p className="text-ink-2 sm:text-right">
-          Every lesson takes five to eight minutes — a short read, one small
-          hands-on task, and a four-question quiz. Pass at 80% to unlock the
-          next one.
+          About six minutes per lesson. You use AI on real work — and we make
+          sure it sticks. Keep going. Walk away with a credential that proves
+          you can actually use this stuff.
         </p>
       </div>
 

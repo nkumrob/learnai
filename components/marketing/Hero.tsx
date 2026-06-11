@@ -10,24 +10,16 @@ export function Hero({ resumeHref, resumeLevel, certCount }: HeroProps) {
   return (
     <section className="relative grid items-center gap-12 pt-12 pb-14 sm:pt-20 sm:pb-20 lg:grid-cols-[1.15fr_1fr] lg:gap-16">
       <div>
-        <div className="rise rise-1 mb-6 inline-flex items-center gap-2">
-          <span className="chip chip-accent">
-            <SparkIcon />
-            Free · 5 levels · 50 lessons
-          </span>
-        </div>
-
         <h1 className="rise rise-2 display-xl text-ink">
-          Learn AI properly.
+          Stop watching AI courses.
           <br />
-          <span className="font-display italic text-accent">Prove it</span> with
-          a certificate.
+          Start <span className="font-display italic text-accent">using</span> AI.
         </h1>
 
         <p className="rise rise-3 mt-6 max-w-xl text-lg leading-relaxed text-ink-2 sm:text-xl">
-          A guided journey from zero to capable. Read for five minutes, do one
-          small thing with AI, take a quick quiz. No signup. No paywall. Just
-          work that adds up.
+          Most AI courses ask you to watch a video. We ask you to actually use
+          the tools — on real work. Real practice. Real skill. A credential
+          that says you can use AI, not just talk about it.
         </p>
 
         <div className="rise rise-4 mt-8 flex flex-wrap items-center gap-3">
@@ -38,7 +30,7 @@ export function Hero({ resumeHref, resumeLevel, certCount }: HeroProps) {
             </Link>
           ) : (
             <Link href="/placement" className="btn-primary">
-              Find your level
+              Find where to start
               <ArrowIcon />
             </Link>
           )}
@@ -47,22 +39,11 @@ export function Hero({ resumeHref, resumeLevel, certCount }: HeroProps) {
           </a>
         </div>
 
-        <div className="rise rise-5 mt-7 flex flex-wrap items-center gap-x-6 gap-y-2 text-sm text-ink-3">
-          <span className="inline-flex items-center gap-2">
-            <DotIcon className="text-positive" />
-            {certCount != null && certCount > 0
-              ? `${certCount.toLocaleString()} certificates earned`
-              : "Verifiable certificates"}
-          </span>
-          <span className="inline-flex items-center gap-2">
-            <DotIcon className="text-sun" />
-            30-second placement
-          </span>
-          <span className="inline-flex items-center gap-2">
-            <DotIcon className="text-sky" />
-            Works in your browser
-          </span>
-        </div>
+        {certCount != null && certCount > 0 && (
+          <p className="rise rise-5 mt-7 text-sm text-ink-3">
+            {certCount.toLocaleString()} certificates earned · free forever.
+          </p>
+        )}
       </div>
 
       {/* Right-column lesson artifact — proves the product is real */}
@@ -176,19 +157,6 @@ function Option({
   );
 }
 
-function SparkIcon() {
-  return (
-    <svg width="11" height="11" viewBox="0 0 12 12" fill="none" aria-hidden>
-      <path
-        d="M6 1v3M6 8v3M1 6h3M8 6h3M2.5 2.5l2 2M7.5 7.5l2 2M2.5 9.5l2-2M7.5 4.5l2-2"
-        stroke="currentColor"
-        strokeWidth="1.5"
-        strokeLinecap="round"
-      />
-    </svg>
-  );
-}
-
 function FlameIcon() {
   return (
     <svg width="11" height="12" viewBox="0 0 12 14" fill="none" aria-hidden>
@@ -228,10 +196,3 @@ function CheckSmall() {
   );
 }
 
-function DotIcon({ className }: { className?: string }) {
-  return (
-    <svg width="6" height="6" viewBox="0 0 6 6" className={className} aria-hidden>
-      <circle cx="3" cy="3" r="3" fill="currentColor" />
-    </svg>
-  );
-}
