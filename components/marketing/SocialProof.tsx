@@ -31,10 +31,7 @@ export function SocialProof() {
     <section className="py-16 sm:py-24">
       <div className="mb-12 grid items-end gap-6 sm:grid-cols-[1.4fr_1fr]">
         <div>
-          <span className="font-display text-base italic text-ink-3">
-            ~ from learners
-          </span>
-          <h2 className="display-md mt-2 text-ink">
+          <h2 className="display-md text-ink">
             Built for people who want to{" "}
             <span className="font-display italic text-accent">use</span> AI.
           </h2>

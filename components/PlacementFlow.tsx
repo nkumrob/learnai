@@ -92,13 +92,7 @@ export function PlacementFlow() {
             exit={{ opacity: 0, x: -24 }}
             transition={{ duration: 0.32, ease: [0.16, 1, 0.3, 1] }}
           >
-            <span
-              className="font-display text-base italic text-ink-3"
-              aria-hidden
-            >
-              ~ question {step + 1}
-            </span>
-            <h2 className="display-lg mt-2 text-ink">{question.prompt}</h2>
+            <h2 className="display-lg text-ink">{question.prompt}</h2>
 
             <ol className="mt-8 space-y-3">
               {question.options.map((opt, i) => (

@@ -148,10 +148,7 @@ export function CertificateClaim({
 
   return (
     <form onSubmit={claim} className="card p-7 sm:p-8">
-      <span className="font-display text-base italic text-ink-3">
-        ~ one last thing
-      </span>
-      <label className="mt-1 block font-display text-2xl font-semibold tracking-tight text-ink" htmlFor="name">
+      <label className="block font-display text-2xl font-semibold tracking-tight text-ink" htmlFor="name">
         Name to print on the certificate
       </label>
       <p className="mt-2 text-ink-2">

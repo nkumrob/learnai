@@ -140,11 +140,11 @@ export default async function VerifyPage({
       </div>
 
       <section className="mt-10 rounded-[var(--r-lg)] border border-dashed border-line bg-surface-2/40 p-6">
-        <span className="font-display text-base italic text-ink-3">
-          ~ what this proves
-        </span>
+        <h2 className="font-display text-lg font-semibold tracking-tight text-ink">
+          What this proves
+        </h2>
         <p className="mt-2 text-ink-2 leading-relaxed">
-          The recipient passed every quiz in <strong>{cert.trackTitle}</strong>{" "}
+          The recipient passed every check in <strong>{cert.trackTitle}</strong>{" "}
           at 80% or higher AND self-attested completion of every hands-on task.
           LearnAI is a free, public AI education platform with verifiable
           credentials.

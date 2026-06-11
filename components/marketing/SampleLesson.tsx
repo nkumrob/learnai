@@ -8,10 +8,7 @@ export function SampleLesson() {
     >
       <div className="mb-12 grid items-end gap-6 sm:grid-cols-[1.4fr_1fr] sm:gap-12">
         <div>
-          <span className="font-display text-base italic text-ink-3">
-            ~ a lesson, end to end
-          </span>
-          <h2 className="display-md mt-2 text-ink">
+          <h2 className="display-md text-ink">
             Read.{" "}
             <span className="font-display italic text-accent">Try it.</span>{" "}
             Check.

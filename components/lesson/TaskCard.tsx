@@ -98,10 +98,7 @@ export function TaskCard({
 
   return (
     <section className="mt-10 border-t border-line pt-10">
-      <span className="font-display text-base italic text-ink-3">
-        ~ try it
-      </span>
-      <h2 className="mt-1 font-display text-2xl font-semibold tracking-tight text-ink">
+      <h2 className="font-display text-2xl font-semibold tracking-tight text-ink">
         Your task
       </h2>
       <p className="mt-3 text-lg leading-relaxed text-ink-2">{task}</p>

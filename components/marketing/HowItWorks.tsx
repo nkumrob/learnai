@@ -3,10 +3,7 @@ export function HowItWorks() {
     <section className="band py-16 sm:py-24">
       <div className="mb-14 grid items-end gap-6 sm:grid-cols-[1.4fr_1fr]">
         <div>
-          <span className="eyebrow font-display italic" style={{ letterSpacing: "0.02em", textTransform: "none", fontSize: "0.95rem" }}>
-            ~ the rhythm
-          </span>
-          <h2 className="display-md mt-2 text-ink">
+          <h2 className="display-md text-ink">
             How it{" "}
             <span className="font-display italic text-accent">works.</span>
           </h2>

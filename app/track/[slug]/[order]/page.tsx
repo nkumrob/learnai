@@ -167,10 +167,7 @@ export default async function ModulePage({
               M{current.order} / {trackDef.modules.length}
             </span>
           </div>
-          <span className="font-display text-base italic text-ink-3">
-            ~ read
-          </span>
-          <h1 className="display-lg mt-1 text-ink">{current.title}</h1>
+          <h1 className="display-lg text-ink">{current.title}</h1>
           <p className="mt-4 text-lg leading-relaxed text-ink-2">
             By the end you&apos;ll be able to {lower(current.outcome)}.
           </p>

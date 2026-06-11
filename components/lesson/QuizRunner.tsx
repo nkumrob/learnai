@@ -143,10 +143,7 @@ export function QuizRunner({
       <section ref={rootRef} className="mt-12 border-t border-line pt-10">
         <div className="card grid gap-4 p-6 sm:grid-cols-[1fr_auto] sm:items-center sm:gap-6 sm:p-8">
           <div>
-            <span className="font-display text-base italic text-ink-3">
-              ~ check
-            </span>
-            <h2 className="mt-1 font-display text-2xl font-semibold tracking-tight text-ink">
+            <h2 className="font-display text-2xl font-semibold tracking-tight text-ink">
               Check your understanding
             </h2>
             <p className="mt-2 text-ink-2">

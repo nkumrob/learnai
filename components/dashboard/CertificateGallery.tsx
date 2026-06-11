@@ -21,19 +21,16 @@ export function CertificateGallery({
           Certificates
         </h2>
         <div className="card flex flex-col items-start gap-2 border-dashed bg-surface-2/30 p-7">
-          <span className="font-display text-lg italic text-ink-3">
-            ~ once you finish a level
-          </span>
-          <span className="mt-1 font-display text-2xl font-semibold tracking-tight text-ink">
+          <span className="font-display text-2xl font-semibold tracking-tight text-ink">
             Your first certificate is{" "}
             <span className="italic text-accent">
-              {totalLevels} earned away
+              {totalLevels} levels away
             </span>
             .
           </span>
           <p className="mt-1 text-ink-2">
-            Each level you complete earns a verifiable certificate with a
-            public URL.
+            Each level you finish earns a verifiable certificate with a public
+            URL.
           </p>
         </div>
       </section>

@@ -16,10 +16,7 @@ export default async function SignInPage({
   return (
     <div className="mx-auto max-w-md px-5 py-16 sm:py-24">
       <div className="mb-8">
-        <span className="font-display text-base italic text-ink-3">
-          ~ welcome back
-        </span>
-        <h1 className="display-md mt-1 text-ink">Sign in.</h1>
+        <h1 className="display-md text-ink">Sign in.</h1>
         <p className="mt-3 text-ink-2">
           Enter your email. We&apos;ll send you a one-tap sign-in link. No
           password, no signup form. We already have you.

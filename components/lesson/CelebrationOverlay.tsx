@@ -201,9 +201,6 @@ function PassedBody({
           transition={{ delay: 0.55 }}
           className="mt-7 border-t border-line pt-5"
         >
-          <span className="font-display text-sm italic text-ink-3">
-            ~ before you go
-          </span>
           <EmailCapture compact />
         </motion.div>
       )}

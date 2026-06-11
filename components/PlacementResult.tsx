@@ -57,9 +57,6 @@ export function PlacementResultCard({ result }: { result: PlacementResult }) {
         transition={{ delay: 0.1, duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
         className="mb-7 inline-flex items-center gap-3"
       >
-        <span className="font-display text-base italic text-ink-3">
-          ~ start here
-        </span>
         <span className={`chip ${TIER_TINT[tier]}`}>{tier}</span>
         <span className="chip">Level {level}</span>
       </motion.div>
