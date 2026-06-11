@@ -165,7 +165,7 @@ function PassedBody({
           className="mt-5 flex items-center justify-center gap-2 rounded-full bg-sun-soft px-4 py-2 text-sm font-medium text-sun-ink"
         >
           <FlameIcon /> {streak} day streak
-          {streak === 1 ? " starts now" : " — keep it going"}
+          {streak === 1 ? " starts now" : ", keep it going"}
         </motion.div>
       )}
 

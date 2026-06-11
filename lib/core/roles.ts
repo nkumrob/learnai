@@ -21,7 +21,7 @@ export const ROLES: Role[] = [
     plural: "teachers",
     headline: "AI for teachers: a free, hands-on starting path",
     intro:
-      "Teachers, professors, and instructional designers are using AI to plan units, generate differentiated practice, draft IEP-aligned content, give faster formative feedback, and stay one step ahead of students who are already using it. LearnAI's free curriculum is built for working professionals — no math, no coding, and a verifiable certificate for your professional-development records.",
+      "Teachers, professors, and instructional designers are using AI to plan units, generate differentiated practice, draft IEP-aligned content, give faster formative feedback, and stay one step ahead of students who are already using it. LearnAI's free curriculum is built for working professionals, no math, no coding, and a verifiable certificate for your professional-development records.",
     useCases: [
       {
         title: "Generate differentiated practice in minutes, not hours",
@@ -46,7 +46,7 @@ export const ROLES: Role[] = [
       {
         title: "Build your personal AI workflow system",
         detail:
-          "Level 3 Module 12 walks you through designing your own AI workflow — what you delegate, what you keep, your verification habit.",
+          "Level 3 Module 12 walks you through designing your own AI workflow, what you delegate, what you keep, your verification habit.",
       },
     ],
     recommendedLessons: [
@@ -65,7 +65,7 @@ export const ROLES: Role[] = [
       {
         question: "Is this aligned with district policy?",
         answer:
-          "LearnAI's curriculum is policy-neutral but emphasizes safe-use practices (Level 1 Module 4) that align with most district AI policies — no student PII in prompts, verify output, disclose AI assistance.",
+          "LearnAI's curriculum is policy-neutral but emphasizes safe-use practices (Level 1 Module 4) that align with most district AI policies, no student PII in prompts, verify output, disclose AI assistance.",
       },
       {
         question: "Can I use the certificate for PD credit?",
@@ -80,7 +80,7 @@ export const ROLES: Role[] = [
     plural: "marketers",
     headline: "AI for marketers: from prompting to agent-powered workflows",
     intro:
-      "Marketing was the first function to absorb AI at scale — and the bar for what AI can do moves up every quarter. LearnAI's free curriculum takes you from prompting that actually works to building no-code automations that draft, route, and publish content with human review checkpoints.",
+      "Marketing was the first function to absorb AI at scale, and the bar for what AI can do moves up every quarter. LearnAI's free curriculum takes you from prompting that actually works to building no-code automations that draft, route, and publish content with human review checkpoints.",
     useCases: [
       {
         title: "Stop writing 'rewrite this' prompts that produce slop",
@@ -90,7 +90,7 @@ export const ROLES: Role[] = [
       {
         title: "Build a content production line with quality gates",
         detail:
-          "Level 4 Module 8 walks through a no-code content workflow with an explicit human-review checkpoint — the missing ingredient most agencies skip.",
+          "Level 4 Module 8 walks through a no-code content workflow with an explicit human-review checkpoint, the missing ingredient most agencies skip.",
       },
       {
         title: "Auto-summarize meetings and turn them into briefs",
@@ -100,7 +100,7 @@ export const ROLES: Role[] = [
       {
         title: "Connect AI to your CRM, CMS, and analytics",
         detail:
-          "Level 4 (AI Automation) shows you how to wire ChatGPT or Claude into Zapier, Make, or n8n — the integration layer between AI and your existing martech stack.",
+          "Level 4 (AI Automation) shows you how to wire ChatGPT or Claude into Zapier, Make, or n8n, the integration layer between AI and your existing martech stack.",
       },
       {
         title: "Build a no-code AI agent for content briefs",
@@ -109,7 +109,7 @@ export const ROLES: Role[] = [
       },
     ],
     recommendedLessons: [
-      { trackSlug: "prompting", order: 1, title: "Prompt Engineering Fundamentals", why: "The four-part prompt — the marketing baseline" },
+      { trackSlug: "prompting", order: 1, title: "Prompt Engineering Fundamentals", why: "The four-part prompt, the marketing baseline" },
       { trackSlug: "prompting", order: 7, title: "Controlling Tone, Style, and Format", why: "Brand voice consistency" },
       { trackSlug: "productivity", order: 9, title: "AI for Content: Posts, Slides, Visuals", why: "Cross-format content production" },
       { trackSlug: "automation", order: 3, title: "No-Code Automation with Zapier or Make", why: "The integration layer" },
@@ -120,7 +120,7 @@ export const ROLES: Role[] = [
       {
         question: "Will AI-generated content rank in Google?",
         answer:
-          "Yes — Google's official position (March 2026) is that AI-assisted content with named human review, original perspective, and topical depth performs well. Thin, unattributed AI content is what gets penalized.",
+          "Yes, Google's official position (March 2026) is that AI-assisted content with named human review, original perspective, and topical depth performs well. Thin, unattributed AI content is what gets penalized.",
       },
       {
         question: "What tools should I learn first?",
@@ -130,7 +130,7 @@ export const ROLES: Role[] = [
       {
         question: "How long until I can ship something useful?",
         answer:
-          "Most marketers ship a useful AI-assisted workflow in under 90 minutes — typically a meeting-notes-to-brief flow or an SEO brief generator. Level 4 lessons walk through real examples.",
+          "Most marketers ship a useful AI-assisted workflow in under 90 minutes, typically a meeting-notes-to-brief flow or an SEO brief generator. Level 4 lessons walk through real examples.",
       },
     ],
   },
@@ -140,17 +140,17 @@ export const ROLES: Role[] = [
     plural: "recruiters",
     headline: "AI for recruiters: write better outreach, screen smarter, save 5 hours a week",
     intro:
-      "Recruiting is high-volume, repetitive, and language-heavy — the exact shape of work AI is good at. LearnAI's free curriculum covers prompting, automation, and the safe-use practices recruiters need given EEOC scrutiny on AI screening.",
+      "Recruiting is high-volume, repetitive, and language-heavy, the exact shape of work AI is good at. LearnAI's free curriculum covers prompting, automation, and the safe-use practices recruiters need given EEOC scrutiny on AI screening.",
     useCases: [
       {
         title: "Stop sending obvious AI outreach",
         detail:
-          "Level 2 (Prompt Engineering) teaches few-shot and persona patterns that produce outreach that reads like you wrote it — not like a generic AI template.",
+          "Level 2 (Prompt Engineering) teaches few-shot and persona patterns that produce outreach that reads like you wrote it, not like a generic AI template.",
       },
       {
         title: "Summarize 200-line resumes in one paragraph with consistency",
         detail:
-          "Level 3 Module 2 (AI Research and Summarization) covers the prompt patterns that give consistent summaries across hundreds of resumes — the basis for fair comparison.",
+          "Level 3 Module 2 (AI Research and Summarization) covers the prompt patterns that give consistent summaries across hundreds of resumes, the basis for fair comparison.",
       },
       {
         title: "Use AI safely without violating EEOC or NYC AEDT rules",
@@ -160,7 +160,7 @@ export const ROLES: Role[] = [
       {
         title: "Build a no-code intake automation",
         detail:
-          "Level 4 Module 7 walks through a real lead-capture automation that maps directly to candidate intake — form → ATS → first-touch email.",
+          "Level 4 Module 7 walks through a real lead-capture automation that maps directly to candidate intake, form → ATS → first-touch email.",
       },
       {
         title: "Run AI-assisted candidate research",
@@ -180,7 +180,7 @@ export const ROLES: Role[] = [
       {
         question: "Can I use AI to screen candidates?",
         answer:
-          "Depends on jurisdiction. NYC AEDT requires bias audits for automated decision tools. EEOC has issued guidance that disparate-impact rules apply. LearnAI's framing throughout: use AI to assist your decisions, not make them — keep the human in the loop.",
+          "Depends on jurisdiction. NYC AEDT requires bias audits for automated decision tools. EEOC has issued guidance that disparate-impact rules apply. LearnAI's framing throughout: use AI to assist your decisions, not make them, keep the human in the loop.",
       },
       {
         question: "What about AI-generated resumes from candidates?",
@@ -190,7 +190,7 @@ export const ROLES: Role[] = [
       {
         question: "Will recruiters be replaced by AI?",
         answer:
-          "Not the role — but the work shape changes. Recruiters who fluently use AI for the high-volume parts (sourcing, summarization, scheduling, outreach) free up time for the parts that matter most: candidate experience, hiring-manager partnership, and reference-checking judgment.",
+          "Not the role, but the work shape changes. Recruiters who fluently use AI for the high-volume parts (sourcing, summarization, scheduling, outreach) free up time for the parts that matter most: candidate experience, hiring-manager partnership, and reference-checking judgment.",
       },
     ],
   },
@@ -200,7 +200,7 @@ export const ROLES: Role[] = [
     plural: "lawyers",
     headline: "AI for lawyers: practical skills, safe-use practices, and what the bar actually expects",
     intro:
-      "Multiple bar associations have issued guidance (2024–2026) that lawyers must understand AI well enough to use it competently and supervise it appropriately. LearnAI's free curriculum is structured exactly for this: working knowledge, with strong emphasis on safe use, bias awareness, and verification — without assuming prior technical background.",
+      "Multiple bar associations have issued guidance (2024-2026) that lawyers must understand AI well enough to use it competently and supervise it appropriately. LearnAI's free curriculum is structured exactly for this: working knowledge, with strong emphasis on safe use, bias awareness, and verification, without assuming prior technical background.",
     useCases: [
       {
         title: "Use AI for first-pass document review without leaking privileged data",
@@ -208,24 +208,24 @@ export const ROLES: Role[] = [
           "Level 1 Module 4 (Safe and Responsible AI Use) covers what data should and should not go into a public AI tool, and what to ask your firm's IT before using a tool with client matters.",
       },
       {
-        title: "Draft and refine — never publish unedited AI output",
+        title: "Draft and refine, never publish unedited AI output",
         detail:
           "Level 2 Module 8 (Diagnosing and Fixing Bad Outputs) is the verification discipline the bar guidance assumes you have.",
       },
       {
         title: "Summarize depositions, briefs, and discovery efficiently",
         detail:
-          "Level 3 Module 2 + Level 5 Module 1 (RAG) cover how to use AI on long documents — and how RAG-based legal tools (Harvey, CoCounsel, Lexis+ AI) actually work under the hood.",
+          "Level 3 Module 2 + Level 5 Module 1 (RAG) cover how to use AI on long documents, and how RAG-based legal tools (Harvey, CoCounsel, Lexis+ AI) actually work under the hood.",
       },
       {
         title: "Spot AI hallucinations before they cite a non-existent case",
         detail:
-          "Level 1 Module 2 (How LLMs Work) explains why hallucinations happen and where they're most likely — the foundation for the verification habit you need.",
+          "Level 1 Module 2 (How LLMs Work) explains why hallucinations happen and where they're most likely, the foundation for the verification habit you need.",
       },
       {
         title: "Understand what your firm's AI tools (Harvey, CoCounsel) actually do",
         detail:
-          "Level 5 covers RAG and agents — the architecture under every major legal AI product. Learn the patterns once and you can evaluate any vendor demo.",
+          "Level 5 covers RAG and agents, the architecture under every major legal AI product. Learn the patterns once and you can evaluate any vendor demo.",
       },
     ],
     recommendedLessons: [
@@ -245,12 +245,12 @@ export const ROLES: Role[] = [
       {
         question: "Can I use ChatGPT for client work?",
         answer:
-          "Not the consumer ChatGPT with client data — those inputs may be used for training. Use enterprise plans (ChatGPT Enterprise, Claude for Work) or firm-deployed RAG tools that contractually exclude training. Level 1 Module 4 covers this in detail.",
+          "Not the consumer ChatGPT with client data, those inputs may be used for training. Use enterprise plans (ChatGPT Enterprise, Claude for Work) or firm-deployed RAG tools that contractually exclude training. Level 1 Module 4 covers this in detail.",
       },
       {
         question: "Is there a certificate I can show the bar?",
         answer:
-          "LearnAI's certificate is publicly verifiable and demonstrates completion of a structured AI-literacy curriculum. It's not bar-accredited CLE — for that you'll want to check your state bar's approved providers — but it's a credible demonstration of working knowledge.",
+          "LearnAI's certificate is publicly verifiable and demonstrates completion of a structured AI-literacy curriculum. It's not bar-accredited CLE, for that you'll want to check your state bar's approved providers, but it's a credible demonstration of working knowledge.",
       },
     ],
   },
@@ -260,7 +260,7 @@ export const ROLES: Role[] = [
     plural: "founders",
     headline: "AI for founders: build, ship, and operate without hiring a data scientist",
     intro:
-      "Solo founders and small teams have a unique advantage in 2026: every part of running a company — marketing, support, ops, hiring, even initial code — can be done by a capable founder + AI. LearnAI's free curriculum takes you from prompting basics to building automation and no-code agents that run parts of your business while you work on something else.",
+      "Solo founders and small teams have a unique advantage in 2026: every part of running a company, marketing, support, ops, hiring, even initial code, can be done by a capable founder + AI. LearnAI's free curriculum takes you from prompting basics to building automation and no-code agents that run parts of your business while you work on something else.",
     useCases: [
       {
         title: "Ship first versions without engineering hires",
@@ -275,7 +275,7 @@ export const ROLES: Role[] = [
       {
         title: "Build your own marketing content production line",
         detail:
-          "Level 4 Module 8 walks through a no-code AI content workflow with a human-review checkpoint — exactly what a solo founder needs to publish consistently without an editor.",
+          "Level 4 Module 8 walks through a no-code AI content workflow with a human-review checkpoint, exactly what a solo founder needs to publish consistently without an editor.",
       },
       {
         title: "Use AI as your operating system, not just a chat",
@@ -285,7 +285,7 @@ export const ROLES: Role[] = [
       {
         title: "Build a customer-facing AI feature without an ML team",
         detail:
-          "Level 5 Module 2 (No-Code AI Chatbots and Assistants) and Module 1 (RAG) cover the patterns under every AI-feature SaaS launched in 2025–2026.",
+          "Level 5 Module 2 (No-Code AI Chatbots and Assistants) and Module 1 (RAG) cover the patterns under every AI-feature SaaS launched in 2025-2026.",
       },
     ],
     recommendedLessons: [
@@ -300,17 +300,17 @@ export const ROLES: Role[] = [
       {
         question: "Should I learn to code now that AI can write it?",
         answer:
-          "You should learn enough to read code, run it, and debug obvious mistakes — even when AI writes the first draft. Level 5 Module 4 (Vibe Coding) covers exactly this level: capable user, not engineer.",
+          "You should learn enough to read code, run it, and debug obvious mistakes, even when AI writes the first draft. Level 5 Module 4 (Vibe Coding) covers exactly this level: capable user, not engineer.",
       },
       {
         question: "What AI tools should a solo founder pay for?",
         answer:
-          "A common 2026 stack: Claude or ChatGPT Pro ($20), Cursor or Claude Code ($20), one automation tool (Zapier/Make/n8n, $10–20), one writing tool (or just Claude). ~$70/mo for an entire AI-augmented operations layer.",
+          "A common 2026 stack: Claude or ChatGPT Pro ($20), Cursor or Claude Code ($20), one automation tool (Zapier/Make/n8n, $10-20), one writing tool (or just Claude). ~$70/mo for an entire AI-augmented operations layer.",
       },
       {
         question: "Will AI build my product for me?",
         answer:
-          "It will help you build it 3–10x faster than you would alone. It won't replace product judgment, distribution skill, or the discipline of shipping. Founders who ship AI-augmented products win — not founders who wait for AI to do it for them.",
+          "It will help you build it 3-10x faster than you would alone. It won't replace product judgment, distribution skill, or the discipline of shipping. Founders who ship AI-augmented products win, not founders who wait for AI to do it for them.",
       },
     ],
   },

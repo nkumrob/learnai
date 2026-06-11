@@ -17,7 +17,7 @@ export async function generateMetadata({
   const { tool } = await params;
   const hub = findToolHub(tool);
   if (!hub) return {};
-  const title = `Learn ${hub.name} free — 2026 guide`;
+  const title = `Learn ${hub.name} free, 2026 guide`;
   const description = `${hub.tagline} ${hub.intro.split(". ")[0]}.`;
   const url = absoluteUrl(`/tools/${tool}`);
   return {
@@ -38,7 +38,7 @@ export default async function ToolHubPage({
   if (!hub) notFound();
 
   const url = absoluteUrl(`/tools/${tool}`);
-  const title = `Learn ${hub.name} free — 2026 guide`;
+  const title = `Learn ${hub.name} free, 2026 guide`;
 
   const articleJsonLd = {
     "@context": "https://schema.org",

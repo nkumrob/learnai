@@ -95,7 +95,7 @@ export function StatTiles({ stats }: { stats: DashboardStats }) {
           <div className="mt-1 text-[10px] uppercase tracking-[0.14em] text-ink-3">
             {stats.thisWeekMinutes > 0
               ? `+${fmtHours(stats.thisWeekMinutes)} this week`
-              : "this week: —"}
+              : "no time logged yet"}
           </div>
         </div>
       </div>

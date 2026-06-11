@@ -3,7 +3,7 @@ import { SignInForm } from "@/components/SignInForm";
 
 export const metadata: Metadata = {
   title: "Sign in",
-  description: "Sign in to LearnAI with your email — no password.",
+  description: "Sign in to LearnAI with your email. No password.",
   robots: { index: false, follow: false },
 };
 
@@ -22,7 +22,7 @@ export default async function SignInPage({
         <h1 className="display-md mt-1 text-ink">Sign in.</h1>
         <p className="mt-3 text-ink-2">
           Enter your email. We&apos;ll send you a one-tap sign-in link. No
-          password, no signup form — we already have you.
+          password, no signup form. We already have you.
         </p>
       </div>
       <SignInForm initialError={errorCopy(error)} />

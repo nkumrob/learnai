@@ -7,10 +7,10 @@ const url = absoluteUrl("/about");
 
 export const metadata: Metadata = {
   title: `About the ${SITE_NAME} Curriculum Team`,
-  description: `Who writes ${SITE_NAME}'s lessons, how the curriculum is reviewed and updated, and the principles behind every lesson — accuracy, accessibility, hands-on practice, and verifiable competency.`,
+  description: `Who writes ${SITE_NAME}'s lessons, how the curriculum is reviewed and updated, and the principles behind every lesson. Accuracy, accessibility, hands-on practice, and verifiable competency.`,
   alternates: { canonical: url },
   openGraph: {
-    title: `About — ${SITE_NAME}`,
+    title: `About · ${SITE_NAME}`,
     description: `How the ${SITE_NAME} curriculum is built, reviewed, and updated.`,
     url,
     type: "profile",
@@ -31,12 +31,12 @@ const PRINCIPLES = [
   {
     title: "No assumed background",
     detail:
-      "Levels 1–4 assume zero math, zero code, and zero prior AI experience. Level 5 introduces vibe coding and RAG concepts — still without requiring a software engineering background.",
+      "Levels 1 to 4 assume zero math, zero code, and zero prior AI experience. Level 5 introduces vibe coding and RAG concepts, still without requiring a software engineering background.",
   },
   {
     title: "Verifiable competency",
     detail:
-      "Quizzes pass at 80% — high enough to require understanding, low enough to allow honest mistakes. Hands-on tasks are self-attested. Certificates are publicly verifiable so anyone can audit the claim.",
+      "Checks pass at 80%, high enough to require understanding, low enough to allow honest mistakes. Hands-on tasks are self-attested. Certificates are publicly verifiable so anyone can audit the claim.",
   },
   {
     title: "Free and open access",
@@ -48,8 +48,8 @@ const PRINCIPLES = [
 const REVIEW_PROCESS = [
   "Outline review against the 'You'll be able to ___' outcome for the module.",
   "Draft pass focused on accuracy + working examples in current tool versions.",
-  "Quiz design pass — questions test understanding, not memorization, with explanations that reinforce learning.",
-  "Task design pass — the hands-on activity must be completable in under 5 minutes with the tools the learner already has.",
+  "Check design pass. Questions test understanding, not memorization, with explanations that reinforce learning.",
+  "Task design pass. The hands-on activity must be completable in under 5 minutes with the tools the learner already has.",
   "Final read-through for clarity, tone, and prerequisite coverage.",
   "Re-review on any tool change (Zapier UI redesign, n8n version bump, OpenAI or Anthropic API change) that affects shown screenshots or examples.",
 ];
@@ -61,7 +61,7 @@ export default function AboutPage() {
     "@id": `${SITE_URL}/#curriculum-team`,
     name: `${SITE_NAME} Curriculum Team`,
     url,
-    description: `${SITE_NAME}'s in-house curriculum team — responsible for authoring, reviewing, and updating every lesson in the ${SITE_NAME} curriculum.`,
+    description: `${SITE_NAME}'s in-house curriculum team. Responsible for authoring, reviewing, and updating every lesson in the ${SITE_NAME} curriculum.`,
     parentOrganization: { "@id": `${SITE_URL}/#org` },
     knowsAbout: [
       "Prompt engineering",
@@ -121,7 +121,7 @@ export default function AboutPage() {
         </p>
         <p className="mt-3 text-ink-2">
           We don&apos;t cover machine-learning engineering, model fine-tuning, or
-          ML research — for those, we recommend{" "}
+          ML research. For those, we recommend{" "}
           <a
             href="https://www.deeplearning.ai"
             target="_blank"
@@ -170,7 +170,7 @@ export default function AboutPage() {
           How we use AI to write about AI
         </h2>
         <p className="mt-2 text-ink-2">
-          We use AI assistance for drafting and editing — it would be strange
+          We use AI assistance for drafting and editing. It would be strange
           not to, given the subject. Every lesson is then reviewed by a human
           for accuracy, working examples, and clarity. No lesson ships without
           human review, and every example is verified to work in the current

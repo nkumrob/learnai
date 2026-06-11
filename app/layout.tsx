@@ -101,7 +101,7 @@ const orgJsonLd = {
       "@id": `${SITE_URL}/#curriculum-team`,
       name: `${SITE_NAME} Curriculum Team`,
       url: `${SITE_URL}/about`,
-      description: `${SITE_NAME}'s in-house curriculum team — authors, reviews, and updates every lesson.`,
+      description: `${SITE_NAME}'s in-house curriculum team. Authors, reviews, and updates every lesson.`,
       parentOrganization: { "@id": `${SITE_URL}/#org` },
     },
     {

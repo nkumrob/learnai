@@ -24,7 +24,7 @@ export const TOOL_HUBS: ToolHub[] = [
     category: "Automation",
     tagline: "The open-source workflow automation platform for AI-native teams.",
     intro:
-      "n8n is the most powerful no/low-code automation tool for working professionals in 2026. It runs anywhere — your laptop, a $5 VPS, or the n8n cloud — and connects 400+ apps with branching logic, error handling, and built-in AI nodes for OpenAI, Anthropic, and Ollama. LearnAI's Level 4 (AI Automation) teaches n8n as the bridge from Zapier-style 'one-trigger-one-action' automations to real branching workflows.",
+      "n8n is the most powerful no/low-code automation tool for working professionals in 2026. It runs anywhere, your laptop, a $5 VPS, or the n8n cloud, and connects 400+ apps with branching logic, error handling, and built-in AI nodes for OpenAI, Anthropic, and Ollama. LearnAI's Level 4 (AI Automation) teaches n8n as the bridge from Zapier-style 'one-trigger-one-action' automations to real branching workflows.",
     why: [
       "Self-hostable: keep customer data on infrastructure you control, which most legal/compliance teams now require.",
       "First-class AI nodes: OpenAI, Anthropic, Ollama, and HuggingFace work out of the box; no glue code.",
@@ -52,9 +52,9 @@ export const TOOL_HUBS: ToolHub[] = [
           "No. n8n's visual editor is no-code for the majority of workflows. You can drop into a Code node for JavaScript when you need custom logic, but the LearnAI lessons cover only the visual builder.",
       },
       {
-        question: "n8n vs Zapier — which should I learn first?",
+        question: "n8n vs Zapier, which should I learn first?",
         answer:
-          "Learn Zapier or Make first if you've never automated anything (LearnAI Level 4 Module 3). Move to n8n when you need branching, error handling, or self-hosting — typically when you have 3+ automations or any compliance requirement.",
+          "Learn Zapier or Make first if you've never automated anything (LearnAI Level 4 Module 3). Move to n8n when you need branching, error handling, or self-hosting, typically when you have 3+ automations or any compliance requirement.",
       },
       {
         question: "Can n8n connect to ChatGPT and Claude?",
@@ -64,7 +64,7 @@ export const TOOL_HUBS: ToolHub[] = [
       {
         question: "Do I earn a certificate for learning n8n on LearnAI?",
         answer:
-          "Yes — finishing Level 4 (AI Automation) earns the verifiable AI Automation certificate, which covers n8n alongside Zapier, Make, APIs, and no-code AI agents.",
+          "Yes, finishing Level 4 (AI Automation) earns the verifiable AI Automation certificate, which covers n8n alongside Zapier, Make, APIs, and no-code AI agents.",
       },
     ],
     externalDocs: { label: "n8n official docs", url: "https://docs.n8n.io" },
@@ -75,15 +75,15 @@ export const TOOL_HUBS: ToolHub[] = [
     category: "Protocol",
     tagline: "The open protocol that lets AI assistants talk to your tools and data.",
     intro:
-      "The Model Context Protocol (MCP) is Anthropic's open standard for connecting AI assistants to external systems — local files, SaaS APIs, databases, dev tools. Released late 2024 and adopted by Anthropic, OpenAI, and Microsoft Copilot in 2025–2026, MCP is the missing layer that turns chat AI into agent AI without custom integration code. LearnAI's Level 5 covers MCP at the level a working professional needs to use it (not the protocol internals).",
+      "The Model Context Protocol (MCP) is Anthropic's open standard for connecting AI assistants to external systems, local files, SaaS APIs, databases, dev tools. Released late 2024 and adopted by Anthropic, OpenAI, and Microsoft Copilot in 2025 to 2026, MCP is the missing layer that turns chat AI into agent AI without custom integration code. LearnAI's Level 5 covers MCP at the level a working professional needs to use it (not the protocol internals).",
     why: [
       "Vendor-neutral: a single MCP server works across Claude, ChatGPT, Cursor, Windsurf, and Copilot.",
-      "Right-sized for working professionals: most people use MCP servers, not build them — and using is straightforward.",
+      "Right-sized for working professionals: most people use MCP servers, not build them, and using is straightforward.",
       "The bridge from 'AI chats' to 'AI does things' without writing integrations from scratch.",
       "Open spec, open source: no vendor can rugpull it.",
     ],
     howToLearn:
-      "Start with LearnAI Level 5 (Advanced & Specialized AI) — the RAG and chatbots lessons cover the same patterns MCP exposes. Then install one production MCP server (e.g., the filesystem or GitHub server) inside Claude Desktop or Cursor.",
+      "Start with LearnAI Level 5 (Advanced & Specialized AI), the RAG and chatbots lessons cover the same patterns MCP exposes. Then install one production MCP server (e.g., the filesystem or GitHub server) inside Claude Desktop or Cursor.",
     lessons: [
       { trackSlug: "building", order: 1, title: "RAG: Retrieval-Augmented Generation" },
       { trackSlug: "building", order: 2, title: "No-Code AI Chatbots and Assistants" },
@@ -93,12 +93,12 @@ export const TOOL_HUBS: ToolHub[] = [
       {
         question: "What is MCP in plain English?",
         answer:
-          "MCP (Model Context Protocol) is a common language that AI assistants use to ask external tools for help — 'read this file', 'query this database', 'open this PR'. Without MCP, every AI/tool combination needs a custom integration. With MCP, one server works everywhere.",
+          "MCP (Model Context Protocol) is a common language that AI assistants use to ask external tools for help, 'read this file', 'query this database', 'open this PR'. Without MCP, every AI/tool combination needs a custom integration. With MCP, one server works everywhere.",
       },
       {
         question: "Do I need to know how to code to use MCP?",
         answer:
-          "No. Using a pre-built MCP server (filesystem, GitHub, Notion, Postgres) is point-and-click in Claude Desktop, Cursor, or Windsurf. Building your own MCP server requires Python or TypeScript — but that's only ~5% of MCP users.",
+          "No. Using a pre-built MCP server (filesystem, GitHub, Notion, Postgres) is point-and-click in Claude Desktop, Cursor, or Windsurf. Building your own MCP server requires Python or TypeScript, but that's only ~5% of MCP users.",
       },
       {
         question: "Who supports MCP in 2026?",
@@ -113,7 +113,7 @@ export const TOOL_HUBS: ToolHub[] = [
       {
         question: "How do I learn MCP free?",
         answer:
-          "LearnAI's Level 5 is the free option. Anthropic's official MCP tutorials are also free but assume you can code. Most paid alternatives ($30–$200) on Udemy are videos of the same Anthropic tutorials.",
+          "LearnAI's Level 5 is the free option. Anthropic's official MCP tutorials are also free but assume you can code. Most paid alternatives ($30-$200) on Udemy are videos of the same Anthropic tutorials.",
       },
     ],
     externalDocs: { label: "Model Context Protocol spec", url: "https://modelcontextprotocol.io" },
@@ -126,13 +126,13 @@ export const TOOL_HUBS: ToolHub[] = [
     intro:
       "Claude Code is Anthropic's command-line AI coding tool. It edits your repo directly, runs tests, opens PRs, and works inside your existing workflow without a separate IDE. By mid-2026 it's the default tool of choice for engineers who want AI assistance without changing editors. LearnAI's vibe-coding lesson (Level 5, Module 4) is the fastest way to get capable with Claude Code without prior coding background.",
     why: [
-      "Lives in your terminal — no new editor, no context switch.",
+      "Lives in your terminal, no new editor, no context switch.",
       "Reads your actual codebase before suggesting changes (no hallucinated APIs).",
-      "Has Claude Skills, MCP support, and direct tool use — it can run tests, hit your DB, deploy.",
+      "Has Claude Skills, MCP support, and direct tool use, it can run tests, hit your DB, deploy.",
       "Pricing: $20/mo Pro plan or pay-per-use via the Anthropic API.",
     ],
     howToLearn:
-      "LearnAI Level 5 Module 4 (Vibe Coding) walks through using Claude Code to build a working tool from a plain-language description — no prior coding required.",
+      "LearnAI Level 5 Module 4 (Vibe Coding) walks through using Claude Code to build a working tool from a plain-language description, no prior coding required.",
     lessons: [
       { trackSlug: "building", order: 4, title: "AI for Coding and Vibe Coding" },
     ],
@@ -148,14 +148,14 @@ export const TOOL_HUBS: ToolHub[] = [
           "No, but a basic mental model of files, folders, and terminals helps. LearnAI's vibe coding lesson is designed for people with zero prior programming background.",
       },
       {
-        question: "Claude Code vs Cursor vs Copilot — which to learn?",
+        question: "Claude Code vs Cursor vs Copilot, which to learn?",
         answer:
-          "Claude Code if you live in the terminal or want a project-level agent. Cursor if you want an IDE with AI built in. Copilot if you already use VS Code or JetBrains and want lightweight inline suggestions. LearnAI covers the principles — once you know one, the others are easy.",
+          "Claude Code if you live in the terminal or want a project-level agent. Cursor if you want an IDE with AI built in. Copilot if you already use VS Code or JetBrains and want lightweight inline suggestions. LearnAI covers the principles, once you know one, the others are easy.",
       },
       {
         question: "Can Claude Code use MCP servers?",
         answer:
-          "Yes. Claude Code reads your ~/.claude.json and any project-level .claude/config — MCP servers configured there get full tool access.",
+          "Yes. Claude Code reads your ~/.claude.json and any project-level .claude/config, MCP servers configured there get full tool access.",
       },
     ],
     externalDocs: {
@@ -169,11 +169,11 @@ export const TOOL_HUBS: ToolHub[] = [
     category: "Coding",
     tagline: "The AI-first code editor built on VS Code.",
     intro:
-      "Cursor is a fork of VS Code with AI baked in at the editor level — inline edits, multi-file refactors, an agent pane that runs tools and tests, and tab-complete that understands your whole codebase. It's what most engineers reach for when they want an IDE-shaped product (not a terminal tool like Claude Code).",
+      "Cursor is a fork of VS Code with AI baked in at the editor level, inline edits, multi-file refactors, an agent pane that runs tools and tests, and tab-complete that understands your whole codebase. It's what most engineers reach for when they want an IDE-shaped product (not a terminal tool like Claude Code).",
     why: [
       "Familiar VS Code keymap and extension ecosystem.",
       "Multi-file refactors that actually work, with diff preview.",
-      "MCP server support — same tool integrations as Claude Code and ChatGPT.",
+      "MCP server support, same tool integrations as Claude Code and ChatGPT.",
       "Free tier covers light use; Pro is $20/mo.",
     ],
     howToLearn:
@@ -190,10 +190,10 @@ export const TOOL_HUBS: ToolHub[] = [
       {
         question: "Do I need to know how to code to use Cursor?",
         answer:
-          "Not for basic use — the chat pane works like ChatGPT but with file context. LearnAI's vibe coding lesson teaches the prompting patterns that get useful output without prior programming.",
+          "Not for basic use, the chat pane works like ChatGPT but with file context. LearnAI's vibe coding lesson teaches the prompting patterns that get useful output without prior programming.",
       },
       {
-        question: "Cursor vs Claude Code — what's the difference?",
+        question: "Cursor vs Claude Code, what's the difference?",
         answer:
           "Cursor is an IDE; Claude Code is a CLI. Use Cursor if you want a visual editor, Claude Code if you want a project-level agent in your terminal. Both use the same underlying models.",
       },
@@ -204,11 +204,11 @@ export const TOOL_HUBS: ToolHub[] = [
     slug: "zapier",
     name: "Zapier",
     category: "Automation",
-    tagline: "The original no-code automation platform — 7,000+ app integrations.",
+    tagline: "The original no-code automation platform, 7,000+ app integrations.",
     intro:
       "Zapier is the easiest place to start with automation. Its 'one trigger, one or two actions' Zaps cover 80% of small-team needs and connect to 7,000+ apps. LearnAI's Level 4 introduces Zapier as the on-ramp before moving to Make and n8n for branching workflows.",
     why: [
-      "Easiest learning curve of any automation tool — most people build their first useful Zap in 10 minutes.",
+      "Easiest learning curve of any automation tool, most people build their first useful Zap in 10 minutes.",
       "Massive integration catalog: if it's a SaaS app, Zapier connects to it.",
       "Built-in AI by Zapier features for chat, structured output, and document parsing.",
       "Free tier covers 100 tasks/month; paid plans start at $19.99/mo.",
@@ -226,7 +226,7 @@ export const TOOL_HUBS: ToolHub[] = [
       {
         question: "Is Zapier free?",
         answer:
-          "Yes for up to 100 tasks/month on the free tier — enough for one or two personal workflows. Paid plans start at $19.99/mo (Professional) for higher limits and multi-step Zaps.",
+          "Yes for up to 100 tasks/month on the free tier, enough for one or two personal workflows. Paid plans start at $19.99/mo (Professional) for higher limits and multi-step Zaps.",
       },
       {
         question: "Do I need to know how to code to use Zapier?",
@@ -234,7 +234,7 @@ export const TOOL_HUBS: ToolHub[] = [
           "No. Zapier is fully no-code with a drag-and-drop builder. The LearnAI lessons cover only the visual builder.",
       },
       {
-        question: "Zapier vs Make vs n8n — which to learn?",
+        question: "Zapier vs Make vs n8n, which to learn?",
         answer:
           "Zapier for the simplest learning curve and the biggest integration catalog. Make for multi-step workflows on a budget. n8n when you need self-hosting, advanced branching, or AI workflows you control end-to-end.",
       },
@@ -245,7 +245,7 @@ export const TOOL_HUBS: ToolHub[] = [
     slug: "make",
     name: "Make",
     category: "Automation",
-    tagline: "Visual workflow automation — Zapier's nearest competitor.",
+    tagline: "Visual workflow automation, Zapier's nearest competitor.",
     intro:
       "Make (formerly Integromat) is a visual automation platform that sits between Zapier and n8n in complexity. Its scenario editor lets you build multi-branch workflows visually with deeper logic than Zapier, often at a lower price for the same workload. LearnAI Level 4 covers Make alongside Zapier.",
     why: [
@@ -265,15 +265,15 @@ export const TOOL_HUBS: ToolHub[] = [
       {
         question: "Is Make free?",
         answer:
-          "Yes for up to 1,000 operations/month. Paid plans start at $10.59/mo (Core) — typically 2-3x cheaper than Zapier for the same multi-step workload.",
+          "Yes for up to 1,000 operations/month. Paid plans start at $10.59/mo (Core), typically 2-3x cheaper than Zapier for the same multi-step workload.",
       },
       {
-        question: "Make vs Zapier — what's the difference?",
+        question: "Make vs Zapier, what's the difference?",
         answer:
           "Make has a more powerful visual editor and is cheaper for multi-step workflows. Zapier has more integrations and an easier learning curve. Most teams start on Zapier and migrate complex workflows to Make.",
       },
       {
-        question: "Make vs n8n — what's the difference?",
+        question: "Make vs n8n, what's the difference?",
         answer:
           "Make is hosted-only and proprietary. n8n is self-hostable and open-source. Choose Make for simplicity, n8n for control and AI-native features.",
       },

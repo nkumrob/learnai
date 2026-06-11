@@ -18,7 +18,7 @@ export function Hero({ resumeHref, resumeLevel, certCount }: HeroProps) {
 
         <p className="rise rise-3 mt-6 max-w-xl text-lg leading-relaxed text-ink-2 sm:text-xl">
           Most AI courses ask you to watch a video. We ask you to actually use
-          the tools — on real work. Real practice. Real skill. A credential
+          the tools, on real work. Real practice. Real skill. A credential
           that says you can use AI, not just talk about it.
         </p>
 

@@ -32,7 +32,7 @@ export function SocialProof() {
       <div className="mb-12 grid items-end gap-6 sm:grid-cols-[1.4fr_1fr]">
         <div>
           <span className="font-display text-base italic text-ink-3">
-            — from learners
+            ~ from learners
           </span>
           <h2 className="display-md mt-2 text-ink">
             Built for people who want to{" "}

@@ -13,8 +13,8 @@ export function HowItWorks() {
         </div>
         <p className="text-ink-2 sm:text-right">
           Other AI courses ask you to watch. This one asks you to do. Real
-          tools, real practice. By the end you won&apos;t just understand AI —
-          you&apos;ll use it.
+          tools, real practice. By the end you won&apos;t just understand AI.
+          You&apos;ll use it.
         </p>
       </div>
 
@@ -43,7 +43,7 @@ export function HowItWorks() {
             n={1}
             tint="sky"
             label="Find where to start"
-            detail="A quick placement puts you at the level that fits — no starting from chapter one if you already know your way around."
+            detail="A quick placement puts you at the level that fits, so you don't start from chapter one if you already know your way around."
             align="left"
           />
           <Step

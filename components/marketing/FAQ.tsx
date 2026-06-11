@@ -7,27 +7,27 @@ interface FAQItem {
 const ITEMS: FAQItem[] = [
   {
     q: "Is LearnAI really free?",
-    a: "Yes. The whole curriculum, every certificate, no signup required. We may add an optional supporter tier one day — the core will stay free.",
+    a: "Yes. The whole curriculum, every certificate, no signup required. We may add an optional supporter tier one day, but the core will stay free.",
     tag: "Pricing",
   },
   {
     q: "How long does each lesson take?",
-    a: "Five to ten minutes. You read a short bit, then you actually use AI to do something — in ChatGPT, Claude, or whichever tool fits — and we check that it stuck. Coffee-break sized.",
+    a: "Five to ten minutes. You read a short bit, then you actually use AI to do something in ChatGPT, Claude, or whichever tool fits, and we check that it stuck. Coffee-break sized.",
     tag: "Format",
   },
   {
     q: "Do I need any prior experience?",
-    a: "No. The placement puts complete beginners at Level 1 and people with some experience further along — wherever you'll actually learn something new. Automation and productivity levels are no-code.",
+    a: "No. The placement puts complete beginners at Level 1, and people with some experience further along, wherever you'll actually learn something new. Automation and productivity levels are no-code.",
     tag: "Onboarding",
   },
   {
     q: "What's the credential worth?",
-    a: "Every certificate has a public verification URL anyone can check — recruiters, hiring managers, your future self. It's not university-accredited, but it proves you can actually do the work, which is more than most AI credentials.",
+    a: "Every certificate has a public verification URL anyone can check. Recruiters, hiring managers, your future self. It's not university-accredited, but it proves you can actually do the work, which is more than most AI credentials.",
     tag: "Certificate",
   },
   {
-    q: "What if I close the tab — do I lose progress?",
-    a: "No. Your progress is saved to your browser by default. If you want it on multiple devices or want it permanent, you can sign in with a one-tap email link — no password.",
+    q: "What if I close the tab? Do I lose progress?",
+    a: "No. Your progress is saved to your browser by default. If you want it on multiple devices, or want it permanent, you can sign in with a one-tap email link. No password.",
     tag: "Progress",
   },
   {
@@ -42,7 +42,7 @@ export function FAQ() {
     <section className="py-16 sm:py-24">
       <div className="mb-12 grid items-end gap-6 sm:grid-cols-[1.4fr_1fr]">
         <div>
-          <span className="eyebrow tabular-nums text-ink-3">§ 06 — questions</span>
+          <span className="eyebrow tabular-nums text-ink-3">§ 06 · questions</span>
           <h2 className="display-md mt-2 text-ink">
             Quick answers.{" "}
             <span className="font-display italic text-accent">No fine print.</span>

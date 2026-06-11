@@ -18,7 +18,7 @@ export function SampleLesson() {
           </h2>
         </div>
         <p className="text-ink-2 sm:text-right">
-          About six minutes per lesson. You use AI on real work — and we make
+          About six minutes per lesson. You use AI on real work, and we make
           sure it sticks. Keep going. Walk away with a credential that proves
           you can actually use this stuff.
         </p>
@@ -39,12 +39,12 @@ export function SampleLesson() {
           <div className="flex-1 px-6 py-6 leading-relaxed text-ink-2">
             <p>
               A language model doesn&apos;t look up answers. It predicts the
-              next most likely token — a chunk of text — given everything that
+              next most likely token (a chunk of text) given everything that
               came before. That single mechanism, repeated thousands of times
               per response, is what makes ChatGPT feel like a thinker.
             </p>
             <aside className="mt-5 rounded-[var(--r-md)] border-l-2 border-accent bg-accent-faint/60 px-4 py-3">
-              <span className="font-semibold text-accent">Key idea —</span>{" "}
+              <span className="font-semibold text-accent">Key idea.</span>{" "}
               <span className="text-ink">
                 Models don&apos;t reason. They predict. Most failure modes
                 follow from that one fact.
@@ -94,7 +94,7 @@ export function SampleLesson() {
                 <CheckIcon /> Correct
               </span>
               <span className="text-ink-2">
-                +1 — that&apos;s the whole game.
+                +1, that&apos;s the whole game.
               </span>
             </div>
           </div>

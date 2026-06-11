@@ -28,7 +28,7 @@ const WHAT_YOULL_LEARN: Record<string, string[]> = {
     "Research that actually cites real sources",
   ],
   automation: [
-    "Zapier and Make basics — visual workflows",
+    "Zapier and Make basics, visual workflows",
     "n8n for power users; multi-step agents",
     "Webhooks, branching, and scheduled runs",
   ],

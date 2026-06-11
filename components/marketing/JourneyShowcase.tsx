@@ -43,7 +43,7 @@ export function JourneyShowcase({
     <section id="journey" className="scroll-mt-24 py-16 sm:py-24">
       <div className="mb-12 grid items-end gap-6 sm:grid-cols-[1.4fr_1fr]">
         <div>
-          <span className="eyebrow tabular-nums text-ink-3">§ 03 — the journey</span>
+          <span className="eyebrow tabular-nums text-ink-3">§ 03 · the journey</span>
           <h2 className="display-md mt-2 text-ink">
             Five levels.{" "}
             <span className="font-display italic text-accent">Literacy</span>{" "}

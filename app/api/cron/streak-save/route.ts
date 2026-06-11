@@ -9,7 +9,7 @@ import { TRACK_LABEL, TRACK_LEVEL } from "@/lib/core/track-meta";
 import { dispatchStreakSave } from "@/lib/server/email/dispatch";
 
 /** Daily ~5pm UTC sweep: ping learners with an active streak who haven't
- *  passed anything today yet — one chance to save the streak. */
+ *  passed anything today yet, one chance to save the streak. */
 export async function GET(req: Request) {
   const auth = req.headers.get("authorization") ?? "";
   const expected = `Bearer ${process.env.CRON_SECRET ?? ""}`;

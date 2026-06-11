@@ -42,7 +42,7 @@ export function AccountBadge({ email, signedIn }: AccountBadgeProps) {
         .map((p) => p[0])
         .join("")
         .toUpperCase()
-    : "—";
+    : "?";
 
   return (
     <div className="relative">
@@ -65,7 +65,7 @@ export function AccountBadge({ email, signedIn }: AccountBadgeProps) {
           <div className="border-b border-line px-4 py-3">
             <div className="eyebrow text-ink-3">Signed in as</div>
             <div className="mt-0.5 truncate text-sm font-medium text-ink">
-              {email ?? "—"}
+              {email ?? "Anonymous"}
             </div>
           </div>
           <button

@@ -35,7 +35,7 @@ export function Greeting({
     if (isFirstVisit)
       return "Take the 30-second placement quiz and start your first lesson.";
     if (daysSinceLastSeen >= 7)
-      return "Pick up right where you left off — Level still remembers you.";
+      return "Pick up right where you left off. Level still remembers you.";
     if (resumeMinutes != null)
       return `You're about ${resumeMinutes} minutes from your next quiz pass.`;
     return "Keep going. Today's lesson is one tap away.";

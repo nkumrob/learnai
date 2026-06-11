@@ -30,7 +30,7 @@ export async function generateMetadata({
     };
   }
   const title = `${cert.learnerName}'s ${cert.trackTitle} certificate`;
-  const description = `${cert.learnerName} earned the LearnAI ${cert.trackTitle} certificate — passed every quiz and completed every hands-on task. Verified by LearnAI.`;
+  const description = `${cert.learnerName} earned the LearnAI ${cert.trackTitle} certificate. Passed every check and completed every hands-on task. Verified by LearnAI.`;
   return {
     title,
     description,
@@ -77,7 +77,7 @@ export default async function VerifyPage({
     "@context": "https://schema.org",
     "@type": "EducationalOccupationalCredential",
     "@id": verifyUrl,
-    name: `${cert.trackTitle} — ${SITE_NAME} Certificate`,
+    name: `${cert.trackTitle} · ${SITE_NAME} Certificate`,
     description: `${cert.learnerName} earned the ${SITE_NAME} ${cert.trackTitle} certificate by passing every quiz (80% threshold) and completing every hands-on task in the level.`,
     url: verifyUrl,
     credentialCategory: "Certificate",

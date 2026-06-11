@@ -11,7 +11,7 @@ export const metadata: Metadata = {
 };
 
 /**
- * The placement uses a stripped chrome — no full SiteHeader/SiteFooter — so
+ * The placement uses a stripped chrome, no full SiteHeader/SiteFooter, so
  * the flow feels like a focused chamber. The root layout's header & footer
  * are hidden via `body:has(.placement-chrome)` rules in globals.css.
  */

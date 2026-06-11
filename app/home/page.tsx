@@ -17,7 +17,7 @@ export const dynamic = "force-dynamic";
 
 export const metadata: Metadata = {
   title: "Home",
-  description: "Your LearnAI dashboard — streak, progress, and what's next.",
+  description: "Your LearnAI dashboard. Streak, progress, and what's next.",
   robots: { index: false, follow: false },
 };
 

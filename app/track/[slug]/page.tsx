@@ -78,7 +78,7 @@ export default async function TrackPage({
     },
     educationalCredentialAwarded: {
       "@type": "EducationalOccupationalCredential",
-      name: `${trackDef.title} — ${SITE_NAME} Certificate`,
+      name: `${trackDef.title} · ${SITE_NAME} Certificate`,
       credentialCategory: "Certificate",
       url: certUrl,
     },

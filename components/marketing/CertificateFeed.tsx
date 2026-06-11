@@ -111,7 +111,7 @@ export async function CertificateFeed() {
         </h2>
         <p className="mt-4 text-ink-2">
           Each one has a public URL anyone can check. Recruiters, your
-          manager, your future self — no one has to take your word for it.
+          manager, your future self. No one has to take your word for it.
         </p>
       </div>
 
