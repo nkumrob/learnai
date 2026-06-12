@@ -3,10 +3,7 @@ import type { ModuleContent } from "@/types/shared";
 // Level 5 - Advanced & Specialized AI (Mastery). Topics 45-50.
 export const building: Record<string, ModuleContent> = {
   "building-1": {
-    lesson: `**TL;DR - A normal LLM only knows its training data. RAG (Retrieval-Augmented Generation) fetches the relevant parts of _your_ documents and puts them in the prompt - so the AI answers from your knowledge, with citations. It's an open-book exam.**
-
-## Why it matters
-RAG is what makes AI genuinely useful for organization-specific knowledge: internal help desks, "ask our docs", product Q&A. It's current, private, and citable - without retraining a model.
+    lesson: `**Retrieval-augmented generation (RAG) is a technique where, instead of relying only on what a large language model learned during training, you first retrieve the most relevant chunks from your own documents and paste them into the prompt as context**, so the model answers from your knowledge with citations. The mechanism has four steps: prepare your docs by splitting them into chunks and storing them in a search index (often a vector database like Pinecone or pgvector that searches by meaning), retrieve the few most relevant chunks for a question, augment the prompt with those chunks, then generate the grounded answer. For instance, asking "what is our refund window" makes the system fetch the policy chunk and the model answers from your real policy. NotebookLM, Custom GPTs, and Claude Projects let you try RAG today without code, while developers build with LangChain or LlamaIndex. RAG is cheaper and more updatable than fine-tuning for "answer from our docs" problems.
 
 ## How it works (4 steps)
 \`\`\`
@@ -44,10 +41,7 @@ You don't have to code it: **NotebookLM** is RAG you can use today (upload docs,
   },
 
   "building-2": {
-    lesson: `**TL;DR - You can build a genuinely useful chatbot with no code by connecting an assistant to your documents (RAG) and giving it a narrow scope and a graceful "I don't know".**
-
-## Why it matters
-Chatbots are the most visible enterprise AI use, and non-technical people can now ship one - an internal FAQ bot, an onboarding guide, a policy assistant - without a developer.
+    lesson: `**Building a no-code AI chatbot means connecting an assistant to a specific document source through RAG, giving it a narrow scope, and setting it to gracefully admit uncertainty with a human handoff**, so non-developers can ship internal FAQ bots, onboarding guides, or policy assistants without writing code. The mechanism is platform-provided: Custom GPTs (ChatGPT), Claude Projects, and dedicated builders like Flowise, Voiceflow, and n8n let you upload documents, write a system prompt that defines the scope ("answer only from the handbook"), and share the bot via link or embed. For instance, an HR assistant scoped to the employee handbook can answer questions about leave, benefits, and policies, while saying "I am not sure, contact HR" when a question falls outside scope. The hard part is not building, it is testing and scoping: start narrow, test with five real questions including a tricky edge case, and only expand the scope once the bot is solid.
 
 ## Worked example - an HR assistant
 \`\`\`
@@ -83,10 +77,7 @@ No-code builders: **Custom GPTs** (attach files, share), **Claude Projects**, an
   },
 
   "building-3": {
-    lesson: `**TL;DR - Intermediate data work means connecting real data to AI for repeatable insight, anomaly detection, and dashboards - and always verifying how a number was reached.**
-
-## Why it matters
-Data fluency is one of the most in-demand AI-adjacent skills in every industry. Going past copy-paste to connected, repeatable analysis is a genuine career lever.
+    lesson: `**Intermediate AI data analysis means connecting real datasets to a tool that runs actual computation, then prompting for trends, anomalies, and a recommended action with a clear "show your work" requirement**, going past one-off copy-paste into repeatable analysis you can defend. The strongest non-developer combo today is ChatGPT Data Analysis (which writes and runs real Python on your uploaded file, so the math is computed rather than predicted) and Gemini in Google Sheets or BigQuery (which brings AI to where your data lives). The mechanism that keeps it honest: describe the tabs and columns up front, ask for trends plus anomalies (not just a summary), require a recommendation tied to the data, and have it show how it computed the key numbers. For instance, "upload this multi-tab sales workbook, flag the region with the unusual dip and a likely cause, output a one-page findings brief with two recommended actions" produces something you can present. Verify one number by hand before sharing.
 
 ## Worked example
 \`\`\`
@@ -122,10 +113,7 @@ Data fluency is one of the most in-demand AI-adjacent skills in every industry. 
   },
 
   "building-4": {
-    lesson: `**TL;DR - "Vibe coding" means building working software by describing it in plain language - with tools like Cursor, Replit, Claude, or Lovable - without being a trained developer. Clear thinking and testing matter more than syntax.**
-
-## Why it matters
-Non-developers can now solve their own software problems: a script to rename files, a simple internal tool, a small web app. Google's AI certificate even teaches "AI for app building" as a core skill.
+    lesson: `**Vibe coding is the practice of building working software by describing it in plain language and iterating against errors, using AI coding tools like Cursor, Claude Code, GitHub Copilot, Replit, or Lovable**, where clear thinking and relentless testing matter more than memorizing syntax. The mechanism is a tight loop: describe the goal, inputs, and outputs in plain English, let the AI generate the code, run it, paste any error back to the AI for a fix, and repeat in small steps. Cursor and GitHub Copilot live inside a real editor (VS Code style), while Replit, Lovable, and Bolt build and host whole apps from a description, and Claude and ChatGPT are great for scripts and explaining existing code. For instance, "build a web page that takes a list of names and emails one per line and outputs a formatted CSV with a copy button" works as a starting prompt, then you iterate until it runs. Build small, test always.
 
 ## Worked example - build in small steps
 \`\`\`
@@ -159,10 +147,7 @@ Run it, see what's wrong, paste the error back, iterate until it works.
   },
 
   "building-5": {
-    lesson: `**TL;DR - Teaching AI to someone else is the clearest sign you've mastered it. It forces you to organize what you know and exposes your own gaps. Meet people where they are, and get them a real win fast.**
-
-## Why it matters
-AI fluency frameworks rank "can teach it" as the top mastery signal. Teaching also multiplies your impact - a team that uses AI well beats a lone expert.
+    lesson: `**Teaching AI to others is the clearest signal you have mastered the material yourself, because it forces you to organize what you know, exposes gaps in your understanding, and turns a personal skill into team capability.** Every serious AI fluency framework treats "can teach it" as the top mastery indicator. The mechanism for a useful twenty-minute session is short and concrete: ask the learner their actual task ("the email you dread writing"), do it together with one prompt to ChatGPT or Claude so they get a real win in ten minutes, show the four-part prompt structure on that real example, answer their privacy and accuracy concerns honestly, and leave them with one reusable template they will actually use. For instance, helping a teammate draft a polite decline turns into both a finished email and a template they keep. Skip jargon, use their context not abstract demos, and address worries directly because that is where trust is built.
 
 ## Worked example - a 20-minute session
 \`\`\`
@@ -199,10 +184,7 @@ The "explain it to a colleague" test is the same bar this whole journey uses for
   },
 
   "building-6": {
-    lesson: `**TL;DR - AI changes faster than any course can track. The final meta-skill is a self-renewing learning system: a few trusted sources, a way to evaluate new tools, a maintained prompt library, and a hype filter. A habit beats a static credential.**
-
-## Why it matters
-A certificate ages; a learning habit compounds. The people who stay capable aren't the ones who learned AI once - they're the ones who keep a light, sustainable update loop.
+    lesson: `**A long-term AI learning system is a small, sustainable habit for staying current as the tools change: a few trusted sources skimmed on a fixed cadence, a rule for evaluating new tools, a maintained prompt library, and a hype filter that keeps you from chasing every shiny launch.** The mechanism is a twenty-minute weekly ritual rather than a course: skim two or three trusted sources (the official blogs of OpenAI, Anthropic, and Google DeepMind for what is actually shipping, plus a curated newsletter like Ben's Bites or Latent Space for the broader picture), note one thing to try next week, update your prompt library if something improved, and decide whether each new trend solves a real problem you have. For instance, a Friday afternoon ritual takes twenty minutes and beats two hours of weekday doomscrolling. A certificate ages, a learning habit compounds, and that is the actual mark of mastery.
 
 ## Worked example - a weekly ritual
 \`\`\`

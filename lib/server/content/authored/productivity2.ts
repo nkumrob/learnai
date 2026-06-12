@@ -3,10 +3,7 @@ import type { ModuleContent } from "@/types/shared";
 // Level 3 - AI for Everyday Productivity (Fluency). Topics 28-33.
 export const productivity2: Record<string, ModuleContent> = {
   "productivity-8": {
-    lesson: `**TL;DR - AI is a patient tutor that explains anything at exactly your level, generates practice, and gives feedback. Use it to understand - then verify facts elsewhere.**
-
-## Why it matters
-Personalized tutoring used to be expensive. Now you can get an expert-level explanation, pitched to you, on demand - one of AI's most life-changing everyday uses.
+    lesson: `**Using AI as a tutor means asking a model like Claude or ChatGPT to explain any topic at the exact level you need, generate practice problems, and grade your answers**, turning a chatbot into the personalized expert tutor that used to cost real money. The mechanism is level-matched explanation: you tell the model your starting point ("explain compound interest like I am twelve, then at intermediate level with the formula") and it adapts depth, vocabulary, and examples to match. For instance, NotebookLM can turn your uploaded study materials into a summary, a study guide, or even an audio overview, and ChatGPT's voice mode lets you have a back-and-forth conversation while walking. Always cross-check facts you will be tested or quoted on, because AI can be confidently wrong, and pair reading with active practice: ask for five practice questions and have the model grade your answers.
 
 ## Worked example - learn anything, your way
 \`\`\`
@@ -41,10 +38,7 @@ Path:     "I want to learn [X] in 4 weeks - outline a plan."
   },
 
   "productivity-9": {
-    lesson: `**TL;DR - Turn one idea into many aligned pieces - a post, a slide outline, an image prompt - all in the same voice. Always add your own perspective so it isn't generic.**
-
-## Why it matters
-Content is table-stakes for personal brand and small teams. AI removes the reformatting grind so you can produce across channels from a single idea.
+    lesson: `**Using AI for content production means turning one idea into many aligned pieces (a LinkedIn post, a five-slide outline, an image prompt) in a single session, with the message held constant and only the format changing across channels.** The mechanism is multi-format generation guided by one core message: prompt Claude or ChatGPT to take your topic and produce the post (hook plus value plus question), the slide outline (one idea per slide with a closing ask), and a visual prompt for a hero image in the same voice. Then pair the words with design tools: Canva Magic or Gamma for slides, and Midjourney, DALL-E, or Ideogram for visuals (Ideogram handles text-in-image especially well). For instance, "why small teams should automate intake" can become a post, a deck, and a hero image in under an hour. Always add your own story, stat, or perspective so the output doesn't read as generic AI content.
 
 ## Worked example - one topic, many formats
 \`\`\`
@@ -80,10 +74,7 @@ Voice:  keep the message constant; change only the shape.
   },
 
   "productivity-10": {
-    lesson: `**TL;DR - AI is a patient interpreter for dense documents - leases, policies, offers. Use it to understand terms and prep questions, not as a lawyer or advisor, and never paste truly sensitive data publicly.**
-
-## Why it matters
-Financial and legal documents are information-dense and stressful. AI can decode them and surface hidden risks in minutes - lowering anxiety and helping you ask the right questions.
+    lesson: `**Using AI for personal finance and dense documents means asking a model like Claude or ChatGPT to translate leases, insurance policies, loan offers, and benefits packets into plain English, surface hidden risks, and prepare the questions you should ask**, while treating it as an interpreter rather than a lawyer or financial advisor. The mechanism is the model's strength at compressing legal-style language and surfacing patterns: it can rank the unusual clauses in a redacted lease, compare two health plans across cost, coverage, and the catch, or list five questions to ask before signing. For instance, "summarize the key terms in this redacted apartment lease, flag anything unusual or risky, and list five questions I should ask before signing" turns thirty pages into a one-screen brief. Always redact account numbers and personal data before pasting, and confirm any binding decision (contracts, taxes, medical bills) with a qualified professional rather than acting on AI output alone.
 
 ## Worked example
 \`\`\`
@@ -117,10 +108,7 @@ Here is a (redacted) apartment lease. In plain English:
   },
 
   "productivity-11": {
-    lesson: `**TL;DR - AI is a serious edge in a job search - it surfaces skills you undersell, tailors your resume to each role, and runs realistic interview practice with feedback.**
-
-## Why it matters
-The hidden value is self-awareness: AI spots transferable strengths you'd never list. And tailoring + practice are exactly where most candidates underinvest.
+    lesson: `**Using AI for a job search means feeding your background and a target job description into Claude or ChatGPT and asking the model to rewrite your resume bullets to match the role, surface transferable skills you are underselling, and run a realistic mock interview with feedback.** The mechanism is the model's pattern fluency across thousands of resumes and job descriptions: it can identify which past achievements map to the role's stated needs and tighten bullets around impact plus metrics. For instance, "rewrite my top five resume bullets for this product manager role, lead with impact plus numbers, then ask me five likely interview questions and critique my answers" produces a tailored draft plus practice in one session. ChatGPT's voice mode makes mock interviews feel real enough to build confidence. Personalize heavily because recruiters spot generic AI applications instantly, never invent experience, and treat AI as a coach for real achievements rather than a fabricator.
 
 ## Worked example - tailor + practice
 \`\`\`
@@ -155,10 +143,7 @@ Skills:    "What transferable skills do I have for [X] that I'm underselling?"
   },
 
   "productivity-12": {
-    lesson: `**TL;DR - Sporadic AI use gives sporadic results. Build a personal system - which tool for which job, a prompt library, verification habits, and a rule for when NOT to use AI - and the returns compound.**
-
-## Why it matters
-The top 10% of AI users aren't using secret tools - they have a _system_. It's what turns scattered experiments into a durable, compounding skill.
+    lesson: `**A personal AI workflow system is a documented setup that pairs a default tool stack, a small prompt library, a verification habit, and a clear rule for when not to use AI**, so your AI use becomes a repeatable practice rather than sporadic experiments. The top ten percent of AI users aren't reaching for secret tools, they have a system, and that is what turns scattered wins into compounding skill. For instance, a working setup might be Claude for writing, Perplexity for sourced research, ChatGPT for data analysis, and Zapier for automation, plus a six-template prompt library (weekly update, decline, summarize a call) kept in Notion, plus the rule "always verify facts and numbers, never paste client data, never let AI make the final call." Write it down as a one-page playbook, share it with teammates if relevant, and revisit it every few months as the tools change.
 
 ## Worked example - one person's system
 \`\`\`
@@ -193,10 +178,7 @@ Write it down - a one-page "AI playbook" in **Notion** or a doc. Teams that shar
   },
 
   "productivity-13": {
-    lesson: `**TL;DR - AI is genuinely useful in daily life - meal plans, workouts, habits, decisions. Personal wins build the motivation and habit that carry into work. For anything medical, understand and plan - don't diagnose.**
-
-## Why it matters
-The learners who find personal wins stick with AI and get better at it. And life admin is full of exactly the "structure this for me" tasks AI is great at.
+    lesson: `**Using AI for health, wellness, and personal goals means asking Claude, ChatGPT, or Gemini to design tailored meal plans, workout routines, habit trackers, and thirty-day plans that match your constraints**, while strictly using the tool for understanding and preparation rather than diagnosis or medical advice. The mechanism is targeted personalization: the more honest constraints you give (time available, equipment, any limitation, current level), the more usable the plan, and a request like "build a thirty-day beginner workout, three days a week, no equipment, thirty minutes each, with weekly check-ins and safe progression" returns something you can start tomorrow. For instance, AI can also walk you through a real decision by asking five clarifying questions first, or explain a general health question in plain English and tell you what to ask a doctor. For anything binding or medical, confirm with a qualified professional, keep personal health data out of public tools, and never rely on AI in an emergency.
 
 ## Worked example
 \`\`\`

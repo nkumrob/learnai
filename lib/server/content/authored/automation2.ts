@@ -3,10 +3,7 @@ import type { ModuleContent } from "@/types/shared";
 // Level 4 - AI Automation (Fluency to Mastery). Topics 40-44.
 export const automation2: Record<string, ModuleContent> = {
   "automation-7": {
-    lesson: `**TL;DR - Build a lead-capture / intake automation: capture a form submission, validate it, let AI classify it, route it, and notify. It's a universal business problem that teaches every core skill at once.**
-
-## Why it matters
-Intake (leads, support tickets, applications) is everywhere, and building it once exercises triggers, validation, an AI decision, branching, and notifications - the whole toolkit.
+    lesson: `**A lead capture or intake automation is an end-to-end workflow that takes form submissions, validates them, uses an AI step to classify intent, routes each one to the right destination, and notifies the right person**, exercising every core skill (triggers, validation, AI classification, branching, notifications) in a single build. The mechanism in Zapier, Make, or n8n is straightforward: a form trigger captures the submission, a validation node checks for a real email and required fields (and stops if not), an AI node classifies intent as sales, support, or spam, branching sends sales to your CRM, support to a helpdesk, and spam to drop, and a final step posts a one-line summary to the right Slack channel. For instance, a Google Forms submission for "request a demo" can be in HubSpot with a Slack ping in seconds. This exact pattern powers real businesses, and once you build one intake flow, support tickets and job applications follow the same shape.
 
 ## Worked example - the build
 \`\`\`
@@ -44,10 +41,7 @@ Build it in **Zapier/Make** (simplest) or **n8n** (more control). This exact pat
   },
 
   "automation-8": {
-    lesson: `**TL;DR - A content workflow takes input (a topic or brief), drafts something with AI, and routes it for human review before anything publishes. High ROI, with a non-negotiable human checkpoint.**
-
-## Why it matters
-Content workflows are among the highest-value automations for individuals and small teams - the boring drafting is handled, while judgment and brand stay human.
+    lesson: `**An AI-powered content workflow is an automation that takes a structured input (a topic or brief from a sheet), drafts a piece with AI, and routes it to a human review step before anything publishes**, on the non-negotiable principle that AI drafts and humans approve. The mechanism in Zapier, Make, or n8n is a chain: a trigger fires on a new row in a "content ideas" sheet, an AI node (calling Claude or ChatGPT) drafts a post using the topic plus brand-voice notes plus examples of past good posts, the draft saves to a review folder or sends for approval, and only after human edit does it publish. For instance, a weekly newsletter brief can become a review-ready draft plus a hero image prompt for Midjourney or Ideogram in one run. Never auto-publish AI content, and feed the model your past posts so drafts sound like you rather than generic AI.
 
 ## Worked example - the build
 \`\`\`
@@ -82,10 +76,7 @@ Build with **Zapier/Make/n8n** plus an AI step (ChatGPT/Claude). Pair with conte
   },
 
   "automation-9": {
-    lesson: `**TL;DR - Automation acts on your behalf, so when it's wrong it's wrong automatically and at scale. Guardrails - validation, human approval, constraints, error handling - make it fail safely.**
-
-## Why it matters
-An unguarded automation that breaks can email the wrong people, refund the wrong amounts, or spam your customers - fast. Guardrails are the difference between a tool and a liability.
+    lesson: `**Guardrails in automation are the safety mechanisms that prevent a workflow from causing damage when it goes wrong, specifically input validation, human-in-the-loop approval on risky actions, constraints on AI output, error handling, and blast-radius limits like rate caps and spend caps.** They matter because automation acts on your behalf, so when it is wrong it is wrong automatically and at scale, which is the difference between a tool and a liability. The mechanism is to layer the four guardrails into every workflow you build in Zapier, Make, or n8n: validate inputs before any action (no valid email then stop), queue refunds for one-click human approval, constrain the AI to allowed values like "urgent / normal / spam," and handle errors with retry, skip, or alert paths so failures never go silent. For instance, launch new automations in "notify only" dry-run mode first ("would have sent X") before letting them act for real, which catches surprises.
 
 ## Worked example - before / after
 > **Naive:** auto-reply bot emails _every_ sender, including the angry CEO, with a generic message.
@@ -117,10 +108,7 @@ Bonus: limit the blast radius - rate limits, spend caps, a daily max.
   },
 
   "automation-10": {
-    lesson: `**TL;DR - Automation you don't watch will silently fail. Schedule it, monitor the run logs, and maintain it when apps change. Maintenance is the work beginners forget.**
-
-## Why it matters
-A workflow that quietly stops can cost you for weeks before you notice. The unglamorous habit of checking run history is what keeps automation trustworthy.
+    lesson: `**Maintaining an automation means scheduling it on a clear cadence or trigger, checking its run history regularly, turning on failure alerts, and updating connections when an app changes its API or a token expires**, because an automation you do not watch will silently fail and cost you for weeks before you notice. The mechanism is built into every platform: Zapier, Make, and n8n all show execution history per workflow and can email you on failed runs, while self-hosted n8n gives you full logs. For instance, a weekly Google Sheets export can stop because a Google OAuth token expired, but because you check the run log you see the failed runs in days, not months, reconnect the account, re-run, and you are done. The goal is not zero failures, it is catching them fast and recovering cleanly, and a ten-minute monthly habit of checking your most important workflows is what keeps automation trustworthy.
 
 ## Worked example - catch a failure
 > A weekly report automation stops because a Google token expired.
@@ -151,10 +139,7 @@ Debug:     read the failed step -> fix the cause -> re-run.
   },
 
   "automation-11": {
-    lesson: `**TL;DR - An AI agent is given a goal and a set of tools and decides the steps itself - the level beyond fixed workflows. No-code tools now make simple agents accessible, with you supervising.**
-
-## Why it matters
-A workflow you scripted does exactly A then B then C. An agent figures out the steps to reach a goal - handling open-ended tasks you couldn't fully script. It's where automation is heading.
+    lesson: `**An AI agent is a system that is given a goal and a set of tools and decides the steps to reach the goal itself, looping through think-then-use-a-tool-then-observe until done**, unlike a fixed workflow that runs the exact steps you scripted. No-code agent builders include n8n's AI Agent node (with memory and tool use), Zapier's AI Agents, and Make's AI features, while frameworks like CrewAI and LangChain serve the technical. The mechanism requires four ingredients: a clear single goal, a small set of tools the agent can call (web search, calendar, email, a database), short-term memory of earlier steps, and a reasoning loop that picks the next action. For instance, "research this company and draft a meeting-prep brief" can be given to an n8n agent with web-search and email-draft tools, and it will search, read, and write the brief while you review the result. Keep tools few and add human approval on risky actions.
 
 ## Worked example - workflow vs agent
 > **Workflow:** "When a form comes in, add a row and email me." (you scripted every step)

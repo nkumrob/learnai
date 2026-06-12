@@ -3,10 +3,7 @@ import type { ModuleContent } from "@/types/shared";
 // Level 3 - AI for Everyday Productivity (Fluency). Topics 21-27.
 export const productivity: Record<string, ModuleContent> = {
   "productivity-1": {
-    lesson: `**TL;DR - Let AI write the first draft, then you steer. Editing 80% of a draft beats writing 100% from a blank page.**
-
-## Why it matters
-Writing is the most widely useful AI skill - nearly a fifth of US workers already use AI for it, mostly drafting and editing. The blank page is the slow part; reacting to a draft is fast.
+    lesson: `**Using AI for writing means letting a model like Claude, ChatGPT, or Gemini produce a first draft from rough notes, then steering it through small edits**, because editing a draft you can react to is faster than writing one hundred percent from a blank page. Writing is the most widely useful AI skill at work, and a Pew Research survey found nearly a fifth of US workers already use AI primarily for drafting and editing. The mechanism is the model's strength at language patterns: feed it a few bullets, a tone target, and a length limit, and it returns a near-final email in seconds. For instance, "turn these notes into a warm under-120-word email to a client asking to move Thursday's call to Friday, offer two times" produces something sendable. To get your own voice, paste two past messages and ask the model to "match this voice" rather than describing the style abstractly.
 
 ## Worked example - rough notes to draft
 \`\`\`
@@ -40,10 +37,7 @@ For everyday writing, **ChatGPT**, **Claude**, and **Gemini** are all excellent;
   },
 
   "productivity-2": {
-    lesson: `**TL;DR - Don't say "summarize" - say who it's for and why. A purpose-built summary turns hours of reading into minutes.**
-
-## Why it matters
-Knowledge work is reading before doing. AI compresses that cycle - but a generic summary is nearly useless. Tell it the reader and the goal and you get exactly what you need to act.
+    lesson: `**AI research and summarization is the practice of feeding a long document into an assistant and asking for a purpose-built compression, specifying who the reader is and what they need to do with it, instead of asking the generic "summarize this."** Claude and Gemini handle very large inputs in a single context window, and dedicated research tools like Perplexity and NotebookLM ground their answers in real sources with footnoted citations, which is what makes them safer than a plain chatbot for facts. The mechanism is targeted extraction: telling the model "summarize this eight-page report for a busy exec as three bullets on what changed, one bullet on the biggest risk, and one bullet on the recommended next action" returns something usable in seconds. For instance, NotebookLM lets you upload your own PDFs and ask questions only those files can answer. Treat any AI research output as leads to verify, not as proof.
 
 ## Worked example
 \`\`\`
@@ -79,10 +73,7 @@ For sourced research use a tool that cites: **Perplexity** (live, footnoted answ
   },
 
   "productivity-3": {
-    lesson: `**TL;DR - Email eats your day. Use AI to summarize threads, draft replies from bullets, and template the messages you send weekly.**
-
-## Why it matters
-Email is one of the highest time-costs in knowledge work. AI can read a thread, tell you what's needed, and draft a reply in the time it takes to read this sentence.
+    lesson: `**Using AI for email means letting an assistant summarize incoming threads, draft replies from a few bullets, and templatize the messages you send every week**, turning one of the highest time-costs in knowledge work into minutes. The mechanism is task-specific prompting: instead of a vague request, ask "what is the decision in this thread, and what do they need from me," or "turn these three bullets into a professional reply under one hundred and twenty words, end with a clear next step." Gmail's "Help me write" (powered by Gemini) and Outlook with Microsoft Copilot now draft and summarize directly inside the inbox, while Claude and ChatGPT give you finer control over tone for high-stakes messages. For instance, save your recurring replies (polite decline, follow-up, intro) as templates with slots so weekly emails become near-instant. Always redact names and numbers before pasting sensitive threads into public tools.
 
 ## Worked example - bullets to reply
 \`\`\`
@@ -117,10 +108,7 @@ The AI is built right into inboxes now: **Gmail's "Help me write"** (Gemini) and
   },
 
   "productivity-4": {
-    lesson: `**TL;DR - Let AI handle the scaffolding around meetings - agendas, briefings, transcript summaries, and follow-ups - so you can focus on the actual conversation.**
-
-## Why it matters
-Prep, notes, and follow-up consume more time than the meeting itself. AI does the busywork; you do the thinking and the relationships.
+    lesson: `**Using AI for meeting prep and follow-up means delegating the agenda, briefing, transcript summary, and recap email to an assistant or notetaker so you can focus on the conversation itself**, while the model produces decisions, action items with owners and due dates, and a follow-up draft. AI notetakers like Otter, Fireflies, and Granola, along with built-in tools in Zoom, Microsoft Teams, and Google Meet, transcribe and summarize calls automatically. For prep, Claude or ChatGPT can turn a goal into a thirty-minute time-boxed agenda or a one-page briefing on a person or company from a few notes. For instance, after a planning call, ask the assistant to extract decisions made, action items with owner plus due date, and open questions from the transcript, and you get a clean recap in minutes instead of typing for half an hour. Always tell attendees a notetaker is on, both as etiquette and as legal requirement in some jurisdictions.
 
 ## Worked example - transcript to recap
 \`\`\`
@@ -155,10 +143,7 @@ Dedicated notetakers - **Otter**, **Fireflies**, **Granola**, and built-in ones 
   },
 
   "productivity-5": {
-    lesson: `**TL;DR - Creativity stays human, but AI massively widens the option space you choose from. Use it as a tireless thought partner, not an answer machine.**
-
-## Why it matters
-You still judge and decide - but AI can generate 15 angles in the time it takes you to think of two, and play devil's advocate without ego. More options, better decisions.
+    lesson: `**Using AI for brainstorming means treating Claude, ChatGPT, or Gemini as a tireless thought partner that generates fifteen options in the time it would take you to think of two, plays devil's advocate without ego, and reframes assumptions**, while you stay the judge of what is good. The mechanism is the model's pattern-rich generation: prompted for distinct unconventional options across multiple styles, it covers more of the idea space than a human alone, and prompted to find the three biggest holes in a plan, it surfaces weaknesses you would defend out of habit. For instance, naming a budgeting app for students can begin with "give me fifteen distinct names across playful, calm, and bold styles, pick your three favorites and say why, then poke holes for trademark or clarity problems," producing a real shortlist in one session. Always ask for distinct, unconventional options rather than just "ideas" to avoid bland defaults.
 
 ## Worked example - a structured brainstorm
 \`\`\`
@@ -193,10 +178,7 @@ Any assistant brainstorms well; **Claude** and **ChatGPT** are strong thought pa
   },
 
   "productivity-6": {
-    lesson: `**TL;DR - AI turns a vague goal into a structured plan with milestones, dependencies, and risks - getting you out of your head and into next actions in one session.**
-
-## Why it matters
-Planning quality determines execution quality. AI helps non-planners think in sequences and spot the gaps they'd otherwise hit later.
+    lesson: `**Using AI for planning and project management means turning a vague goal into a structured plan with milestones, dependencies, risks, and concrete next actions in one session with Claude, ChatGPT, or Notion AI**, getting you out of your head and into doable steps. The mechanism is the model's strength at sequencing and pattern-matching against thousands of similar plans it has seen in training data, so it spots gaps that non-planners would hit weeks later. For instance, "turn 'launch a new service offering by Q3' into a ninety-day plan with milestones, dependencies, the top three risks with a mitigation for each, then ask me what I am forgetting" produces a working plan plus pressure-test questions. The practical move is to convert the AI's output into a checklist or table you paste into Notion, Asana, or your task manager so it becomes a living plan rather than a pretty document you do not act on.
 
 ## Worked example - goal to plan
 \`\`\`
@@ -232,10 +214,7 @@ For living plans, paste AI's output into **Notion** (Notion AI can expand it), a
   },
 
   "productivity-7": {
-    lesson: `**TL;DR - Upload a spreadsheet and ask questions in plain English. AI data tools find trends, clean data, and make charts - no formulas required. Just verify the numbers.**
-
-## Why it matters
-Data analysis used to need SQL or Excel skills. Now anyone can ask "what does this tell me?" and get an answer - a genuine superpower for non-analysts.
+    lesson: `**AI for data analysis means uploading a spreadsheet or CSV to a tool like ChatGPT Data Analysis or Gemini in Google Sheets and asking questions in plain English, with the tool finding trends, cleaning data, and producing charts without you writing formulas.** The mechanism matters: ChatGPT Data Analysis writes and runs real Python on your file, so the math is actual computation rather than predicted text, which is why its numbers are trustworthy (still verify the setup). For instance, uploading a sales CSV with columns Date, Region, Product, and Revenue and asking "summarize the top three trends, flag any month that dropped more than twenty percent, make a chart of monthly revenue and recommend one action, ask before assuming" returns a one-page brief in minutes. Always describe the columns up front so the model does not misread them, and anonymize any sensitive data or use a private enterprise tier before uploading.
 
 ## Worked example
 \`\`\`
