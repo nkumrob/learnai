@@ -3,10 +3,7 @@ import type { ModuleContent } from "@/types/shared";
 // Level 4 - AI Automation (Fluency to Mastery). Topics 34-39.
 export const automation: Record<string, ModuleContent> = {
   "automation-1": {
-    lesson: `**TL;DR - Using AI manually means you prompt and it responds. Automation means systems run without you. The skill is judging _what_ to automate - frequent, rule-based, low-judgment tasks - and what to leave alone.**
-
-## Why it matters
-Many people automate too early or too much, then spend more time fixing brittle workflows than they saved. Good judgment about candidates is the whole game.
+    lesson: `**Automation is software that runs a sequence of steps without you, triggered by an event like a form submission, an incoming email, or a schedule**, and the core skill is judging which tasks belong in an automation versus which belong in manual AI use or pure human work. The test is whether the task is frequent, follows the same steps each time, has a clear trigger, and requires low judgment, because tools like Zapier, Make, and n8n excel exactly there. For instance, "log every contact-form submission to a sheet and send a Slack alert" is an automate-now task (frequent, rule-based, clear trigger), "draft a tricky reply to an upset customer" stays manual AI (needs your judgment), and "decide our pricing" stays fully human (high-stakes, rare). The AI automation pattern is always trigger then AI understands or transforms the data then action, and the smart first move is automating one annoying step reliably.
 
 ## Worked example - sort your tasks
 > "Log every contact-form submission to a sheet and Slack me." -> **automate** (frequent, rule-based, clear trigger).
@@ -40,10 +37,7 @@ Automation lives in **Zapier**, **Make**, and **n8n** (next lessons). Plain auto
   },
 
   "automation-2": {
-    lesson: `**TL;DR - Automation rests on apps talking to each other. An API is how one app sends data to another; a webhook is a "ping" when something happens. You won't write code, but you need the mental model to debug.**
-
-## Why it matters
-Even no-code tools break - a key expires, a field changes. If you understand how data moves, you can reason about _where_ it broke instead of guessing.
+    lesson: `**An API (application programming interface) is the channel one app uses to send data to or request data from another app, and a webhook is an automatic "ping" one app sends when something happens**, like a new form submission, which fires the next step in a workflow. Together they are how Zapier, Make, and n8n move data between Google Sheets, Slack, Gmail, HubSpot, and thousands of other tools without you writing code. The mechanism in a no-code tool is straightforward: a webhook trigger fires, the workflow passes the data through API calls to actions in other apps, and an authorized connection (your logged-in account) grants the permission to act. For instance, a form submission can fire a webhook that adds a row to a sheet, sends a welcome email, and posts to Slack, all in one run. When something breaks, walk the flow: trigger, data, auth, action.
 
 ## Worked example - trace the flow
 > A new form submission **fires a webhook** -> the workflow sends that data via **APIs** to:
@@ -75,10 +69,7 @@ You rarely touch raw APIs in **Zapier/Make/n8n** - they wrap them in friendly st
   },
 
   "automation-3": {
-    lesson: `**TL;DR - Zapier and Make connect thousands of apps with no code. Every automation is Trigger -> Action -> Result. Start with one flow that removes a recurring annoyance.**
-
-## Why it matters
-No-code automation is the most accessible path to real ROI for non-technical people. Zapier alone connects 6,000+ apps; you can wire up a useful workflow in an afternoon.
+    lesson: `**Zapier and Make are no-code automation platforms that let you connect thousands of apps and run workflows shaped as Trigger then Action then Result, with no coding required.** Zapier is the friendliest starting point and connects to over six thousand apps including Gmail, Slack, Google Sheets, HubSpot, and Notion, while Make uses a visual canvas with branching and loops, more power, and generous pricing. The mechanism is straightforward: a trigger (a new form response, a new email, a schedule) fires the workflow, and one or more actions in other apps run with the trigger data passed through. For instance, "new response in a Google Form" triggers two actions: "add a row to a Google Sheet" and "send a Slack message to #leads," and you can build it in an afternoon. Both platforms now have AI steps built in for classify, draft, and summarize tasks, which is what the next lessons cover.
 
 ## Worked example - your first build
 \`\`\`
@@ -112,10 +103,7 @@ Rule: pick the simplest tool that does the job; you can graduate later.
   },
 
   "automation-4": {
-    lesson: `**TL;DR - n8n is open-source and self-hostable, with branching, loops, error handling, and direct HTTP - more power and control than Zapier, and no per-task pricing.**
-
-## Why it matters
-When you outgrow simple linear flows - you need "if urgent do X, else Y", retries, or data privacy - n8n is the step up. It's the most-discussed tool in the AI automation community for good reason.
+    lesson: `**n8n is an open-source, self-hostable workflow automation platform with branching, loops, error handling, direct HTTP requests, and built-in AI and LangChain nodes**, giving you more control than Zapier or Make and no per-task pricing. You use it by chaining nodes on a visual canvas: a trigger node fires the workflow (a webhook, a schedule, a Gmail event), data passes through processing nodes, and conditional nodes route the flow based on the data. For instance, a support-email workflow can trigger on a new email, use an AI node to classify it as urgent, normal, or spam, then branch: urgent goes to Slack, normal creates a ticket, spam is archived, with an error path that logs failures and alerts you. Choose n8n when you need branching, error handling, self-hosting for data privacy, or n8n's AI Agent node with memory for building no-code agents. n8n Cloud is fine to learn on before self-hosting.
 
 ## Worked example - a branching flow
 \`\`\`
@@ -151,10 +139,7 @@ Stay on Zapier/Make when: you want the simplest possible setup.
   },
 
   "automation-5": {
-    lesson: `**TL;DR - Plain automation moves data. AI automation adds a judgment step in the middle - classify, summarize, draft, extract - using an AI node. That's what makes a workflow feel intelligent.**
-
-## Why it matters
-Most real value isn't moving data from A to B - it's _understanding_ the data and deciding what happens next. The AI node is where that judgment lives.
+    lesson: `**Connecting AI to your workflows means adding a step inside an automation that calls a model like ChatGPT, Claude, or Gemini to classify, summarize, extract, or draft**, turning a flow that just moves data into one that actually understands and routes it. The mechanism is a dedicated AI node in your automation tool: n8n has AI and LangChain nodes, Make has AI modules, and Zapier offers AI steps and Agents, all of which let you write a small prompt that processes the incoming data before the next action runs. For instance, a feedback workflow can trigger on new submissions, send each to an AI node prompted "classify sentiment as positive or negative and topic as billing, bug, or feature, output JSON," then branch on those fields so negative bugs alert engineering and feature requests land in a roadmap sheet. Constrain the AI to fixed allowed values and validate its output before the next step, and use a cheap fast model for simple classification.
 
 ## Worked example - the upgrade
 \`\`\`
@@ -190,10 +175,7 @@ Every major tool now has this: **n8n** AI nodes, **Make** AI modules, **Zapier**
   },
 
   "automation-6": {
-    lesson: `**TL;DR - Most people don't know where to look for automation wins. A quick task audit finds them: score each recurring task, then write a one-line spec for the best candidates.**
-
-## Why it matters
-You can't automate what you haven't spotted. A simple audit of your week turns "AI sounds useful" into a concrete list of things to build.
+    lesson: `**Spotting automatable tasks means running a quick audit of your recurring work and scoring each task on four criteria (frequent, same steps each time, clear trigger, low judgment), then writing a one-line automation spec for the best candidates** so the build is obvious before you open a tool. The mechanism is simple scoring against a rubric: tasks that score yes on all four belong in Zapier, Make, or n8n; tasks that score yes on the first three but require judgment belong in AI-assisted manual workflows; tasks that score low on most criteria stay human. For instance, "copy leads to CRM" scores yes on all four (automate), "write weekly update" scores yes on three but needs judgment (AI-assist), and "approve refunds" stays human. The automation spec captures trigger, steps including any AI step, output, and risk in four lines, which is how consultants find automation ROI in any team or business.
 
 ## Worked example - the audit
 \`\`\`

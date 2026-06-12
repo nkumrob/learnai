@@ -3,10 +3,7 @@ import type { ModuleContent } from "@/types/shared";
 // Level 2 - Prompt Engineering (Literacy to Fluency). Topics 11-15.
 export const prompting: Record<string, ModuleContent> = {
   "prompting-1": {
-    lesson: `**TL;DR - A strong prompt has four parts: context, instruction, input, and output format. Add them and unreliable results become repeatable ones.**
-
-## Why it matters
-The exact same model can hand you junk or gold depending only on how you ask. "Rewrite this" gives a random paragraph; a structured prompt gives the email you'd actually send. Because every other AI skill - writing, research, automation - runs on prompts, this is the highest-leverage thing you can learn. In studies, structured prompts have cut task time dramatically and raised output quality across the board.
+    lesson: `**Prompt engineering is the practice of writing inputs for a large language model that reliably produce the output you want, and the foundational technique is to include four parts in every prompt: context, instruction, input, and format.** Context describes who the AI is and the situation ("you are a support agent for a calm, premium brand"). Instruction is the one clear task. Input is the raw material to work from. Format is the exact shape of the answer ("under eighty words, apologize, give the fix, give a timeline"). This four-part structure is model-agnostic and works the same in ChatGPT, Claude, Gemini, and Copilot. For instance, "write about onboarding" returns a generic essay, while the same request wrapped in context, instruction, input, and format returns a near-final email that needs a five-second tweak. Because every other AI skill from research to automation runs on prompts, this is the highest-leverage thing to learn early.
 
 ## The four parts
 - **Context** - who the AI is and the situation. _"You are a support agent for a calm, premium brand."_
@@ -53,10 +50,7 @@ The four-part structure is **model-agnostic**: it works the same in **ChatGPT**,
   },
 
   "prompting-2": {
-    lesson: `**TL;DR - Start a prompt with "You are a [role]" and you anchor the AI's tone, depth, and perspective. A persona often does more for quality than any other single change.**
-
-## Why it matters
-Without a role, the model picks a bland average voice. Give it a role and it pulls from the patterns of that expert - a teacher simplifies, a lawyer flags risk, an editor tightens. You're choosing which specialist shows up.
+    lesson: `**Persona prompting (also called role prompting) is the technique of starting a prompt with "you are a [specific role]" so the AI anchors its tone, depth, and perspective to the patterns of that expertise**, often delivering a bigger quality jump than any other single change. Without a role, models like ChatGPT, Claude, and Gemini default to a bland average voice. With a role, they pull from the patterns of that specialist, so a CFO prompt leads with the numbers that matter, a senior editor tightens prose, and a B2B copywriter prompt frames messages for busy founders. For instance, "explain this budget" returns a flat summary, while "you are a CFO explaining this budget to a smart non-financial team, lead with the three things that matter and flag one risk" returns something clearer and better pitched. Save your best personas as Custom GPTs, Claude Projects, or Gemini Gems so they persist.
 
 ## Worked example - same task, different persona
 > **Bare:** "Explain this budget." -> a flat, generic summary.
@@ -91,10 +85,7 @@ In **ChatGPT** you can bake a persona into "Custom Instructions" or a Custom GPT
   },
 
   "prompting-3": {
-    lesson: `**TL;DR - Show the AI 2-3 examples of what you want before the real request. "Few-shot" prompting locks in format and voice far better than describing them in words.**
-
-## Why it matters
-Telling the model "use a friendly tone" is fuzzy. _Showing_ it two friendly examples is exact. Few-shot is the most reliable way to get consistent, on-brand output - for labels, templated copy, data extraction, anything repeated.
+    lesson: `**Few-shot prompting is a technique where you include two to four worked examples of the input-and-output pattern you want before the real request**, teaching the model the exact format and voice through demonstration rather than description. The approach was popularized in the 2020 GPT-3 paper from OpenAI, which showed that frontier models can learn a new task from a handful of examples in the prompt itself, no fine-tuning needed. The mechanism works because language models are pattern completers, so a clean, consistent pattern in the prompt pulls the next output toward the same shape. For instance, to classify customer reviews as POSITIVE, NEGATIVE, or NEUTRAL, three labeled examples followed by an unlabeled review will produce a one-word answer in the same format every time. Few-shot is the backbone of reliable automations and API calls, because when AI feeds another system, examples are how you guarantee the shape.
 
 ## Worked example
 \`\`\`
@@ -133,10 +124,7 @@ Few-shot works in every assistant and is the backbone of reliable **automations*
   },
 
   "prompting-4": {
-    lesson: `**TL;DR - For anything with steps or reasoning, add "think step by step" before the answer. This one phrase sharply cuts mistakes.**
-
-## Why it matters
-Without it, the model jumps to a plausible-sounding answer and skips the working - so it errs on math, logic, and multi-part problems. Forcing it to reason out loud catches those errors before the final answer.
+    lesson: `**Chain-of-thought (CoT) prompting is a technique where you instruct a large language model to reason through a problem step by step before giving a final answer**, instead of jumping straight to the result. The approach was introduced in the 2022 Wei et al. paper from Google Research and reliably improves accuracy on math, logic, and multi-part questions because models trained on internet text are better at solving problems when they generate intermediate reasoning ahead of the conclusion. In practice, that looks like adding "think step by step" to the prompt, or providing a few examples that include the reasoning. The technique is supported in Claude, ChatGPT, and Gemini, and newer reasoning models like OpenAI's o-series and Claude's extended thinking do it internally. For everyday work, anywhere you would say "the AI rushed and got it wrong," chain-of-thought is the simplest reliability win you can get without changing tools or paying more.
 
 ## Worked example - before / after
 > **Prompt:** "A meeting starts at 2:45pm, runs 90 minutes, then a 20-minute break, then 45 minutes. When does it end?"
@@ -168,10 +156,7 @@ Newer **reasoning models** - OpenAI's o-series and **Claude's extended thinking*
   },
 
   "prompting-5": {
-    lesson: `**TL;DR - Treat AI like a conversation, not a vending machine. Get a rough draft, then refine with small, specific nudges. Iterating beats trying to write one perfect prompt.**
-
-## Why it matters
-The best AI users operate in a loop - ask, react, redirect - rather than expecting perfection in one shot. Each small correction steers the result, and you stay in control of the outcome.
+    lesson: `**Iterative prompting is the practice of treating an AI chat as a conversation rather than a single vending-machine request, where you get a rough draft and then refine it across two to four short follow-ups instead of trying to write one perfect prompt.** The mechanism is that Claude, ChatGPT, and Gemini use the whole conversation as context, so each turn builds on the last, and small specific nudges ("warmer," "cut by half," "lead with the ask") steer the result more precisely than a giant up-front instruction. For instance, drafting a follow-up email to a quiet lead goes: ask for a draft, reply "warmer and shorter, four sentences max," then "add one specific reason to reconnect this week," and you reach a sendable result in three turns. The best AI users operate in this loop because every small correction stays easy to judge and they keep control of the final output.
 
 ## Worked example - the refine loop
 \`\`\`

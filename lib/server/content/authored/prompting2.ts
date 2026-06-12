@@ -3,10 +3,7 @@ import type { ModuleContent } from "@/types/shared";
 // Level 2 - Prompt Engineering (Literacy to Fluency). Topics 16-20.
 export const prompting2: Record<string, ModuleContent> = {
   "prompting-6": {
-    lesson: `**TL;DR - A great prompt you use once is wasted. Save your best prompts as templates with fill-in slots and you build a personal toolkit that compounds.**
-
-## Why it matters
-If you write similar prompts every week - status updates, replies, summaries - you're re-solving a solved problem each time. A saved template turns a good prompt into a one-click tool, and a small library can cover most of your repetitive writing.
+    lesson: `**A prompt template is a reusable prompt structure with fill-in slots for the changing input, and a prompt library is a small collection of named templates kept in a notes doc, Custom GPT, Claude Project, or Gemini Gem** so you stop re-solving the same writing problem every week. The mechanism is straightforward: each saved template captures the context, instructions, and format that took you effort to get right, so next time you change only the variable parts and the rest of the prompt stays correct. For instance, a "Weekly update" template with the slot [PASTE NOTES] turns ten minutes of fiddling into thirty seconds of pasting. The practical move is to keep five to ten named templates for your most frequent tasks (weekly update, polite decline, summarize a call, reply from bullets, rewrite for execs), improve them when results are slightly off, and re-save the better version.
 
 ## Worked example
 \`\`\`
@@ -42,10 +39,7 @@ Every tool has a home for this: **ChatGPT** Custom GPTs and saved prompts, **Cla
   },
 
   "prompting-7": {
-    lesson: `**TL;DR - Most weak output is a format problem: too long, wrong shape, wrong voice. Direct the format, tone, and length explicitly and quality jumps immediately.**
-
-## Why it matters
-Beginners accept whatever shape the model returns. Pros specify it. The fastest path from "meh" to "professional" is telling the model exactly how the answer should look and sound.
+    lesson: `**Controlling tone, style, and format means explicitly directing the shape, voice, and length of AI output instead of accepting whatever the model returns by default**, and it is the fastest path from a generic answer to a professional one. Models like Claude, ChatGPT, and Gemini will follow instructions like "answer as a markdown table," "use a confident formal tone," or "exactly five bullets, under one hundred words," because each constraint narrows the space of plausible next tokens. For instance, the same meeting notes can become a five-sentence executive email, a five-bullet summary, or a two-line casual Slack message simply by switching the format line at the end of the prompt. Asking for a table makes comparisons instantly usable, and asking for JSON is what lets AI feed spreadsheets and downstream automations in Zapier, Make, or n8n. Most weak output is a format problem, and naming the format fixes it.
 
 ## Worked example - one input, three shapes
 > From the same notes:
@@ -80,10 +74,7 @@ Asking for a **table** or **JSON** is especially powerful: tables make compariso
   },
 
   "prompting-8": {
-    lesson: `**TL;DR - When output is wrong, vague, or off-tone, don't blame the AI - diagnose which prompt part failed and fix that. Bad output is feedback on your prompt.**
-
-## Why it matters
-Beginners give up after one bad result. Experts treat it like debugging: each failure points to a missing piece. Fix the piece and the next attempt works.
+    lesson: `**Diagnosing bad AI output means treating a weak result as feedback on your prompt rather than proof the model is broken, then walking a short checklist to find the missing piece: context, instruction, input, format, or examples.** The mechanism is that most failures from ChatGPT, Claude, or Gemini map cleanly to a specific prompt gap: too generic usually means missing context or persona, wrong length or shape means no format specified, made-up facts means it lacked the data or live access, inconsistent results means no examples and high temperature, and off-tone means tone was unstated. For instance, if a draft email keeps coming back robotic, add a persona ("you are a warm but direct account manager") and paste two past messages as voice samples, rather than rewriting the prompt from scratch. Experts treat this like debugging: change one thing, re-run, and learn what mattered, which beats restarting every time.
 
 ## Worked example - the diagnosis table
 > | Symptom | Likely cause | Fix |
@@ -120,10 +111,7 @@ This diagnose-and-iterate habit is the difference between "AI is unreliable" and
   },
 
   "prompting-9": {
-    lesson: `**TL;DR - Three power-user controls: a system prompt (standing behavior), temperature (creativity vs consistency), and the context window (how much it can hold). They turn good prompting into reliable systems.**
-
-## Why it matters
-These don't change _what_ you ask - they change _how reliably_ you get it. They're what separates a competent user from someone who can make AI behave the same way every time, at scale.
+    lesson: `**A system prompt is a standing instruction that shapes every reply in a conversation, temperature is a numeric setting between 0 and roughly 1 that controls how varied or consistent the output is, and the context window is the model's working-memory limit measured in tokens**, and together these three controls turn good prompting into reliable systems. The OpenAI, Anthropic, and Google APIs all expose temperature, where low values (0 to 0.3) produce consistent factual output and higher values produce creative variation, while system prompts live in Custom GPTs, Claude Projects, and the messages array of API calls. For instance, a support bot needs a firm system prompt ("always apologize first, never promise refunds over fifty dollars") and a low temperature, because you want reliability not surprise. The context windows in Claude and Gemini now handle very long documents, but instructions at the top and restated at the end still pay off.
 
 ## The three controls
 - **System prompt** - a standing instruction applied to every reply: _"You are a concise support agent; never give legal advice."_ Set once, persists.
@@ -157,10 +145,7 @@ Temperature and system prompts live in the **APIs** for ChatGPT, Claude, and Gem
   },
 
   "prompting-10": {
-    lesson: `**TL;DR - What works for drafting emails fails for analyzing data. Each domain has its own prompt pattern; recognizing the domain and reaching for its pattern is a fluency milestone.**
-
-## Why it matters
-A single "good prompt" habit doesn't transfer cleanly across writing, data, coding, and decisions. Knowing the right pattern per domain lets you get a usable result on the first try, even outside your usual role.
+    lesson: `**Domain-specific prompting means recognizing that the prompt pattern that works for drafting emails fails for analyzing data, and reaching for the pattern that fits the task at hand: writing, research, data, coding, or decisions.** Writing prompts need a persona, tone, and format; research prompts should ask for sources, opposing views, and a confidence note; data prompts describe the columns and ask for specific calculations; coding prompts state the language, inputs, and expected output; decision prompts ask for options with trade-offs rather than a single answer. For instance, a strong data prompt for a sales export reads "find the top region by month and flag any month that dropped more than 20 percent, output a table plus two plain-English insights, and say so if data is missing." The right tool changes too: Claude or ChatGPT for writing, ChatGPT Data Analysis or Gemini in Sheets for data, Cursor or Copilot for code, Perplexity for sourced research.
 
 ## Patterns by domain
 - **Writing** - persona + tone + format ("warm, 100 words, end with an ask").

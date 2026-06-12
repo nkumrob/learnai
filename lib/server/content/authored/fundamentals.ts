@@ -3,10 +3,7 @@ import type { ModuleContent } from "@/types/shared";
 // Level 1 - AI Foundations (Literacy). Topics 1-5.
 export const fundamentals: Record<string, ModuleContent> = {
   "fundamentals-1": {
-    lesson: `**TL;DR - "AI" is an umbrella word. Today's headline tools (ChatGPT, Claude, Gemini) are _generative AI_ built on _machine learning_. Knowing the difference tells you when AI will help and when it will flop.**
-
-## Why it matters
-People call everything "AI" - spam filters, Netflix picks, ChatGPT. If you can't tell them apart, you can't predict what a tool is good at, so you'll either over-trust it or dismiss it. This mental model is the foundation everything else builds on.
+    lesson: `**Artificial intelligence (AI) is the broad field of building machines that perform tasks normally requiring human intelligence**, and today most "AI" products are powered by machine learning, deep learning, or generative AI, which are nested subfields rather than separate technologies. Machine learning lets systems learn patterns from data instead of following hand-coded rules, deep learning is machine learning using large neural networks, and generative AI is a slice of deep learning that creates new text, images, or code. In practice, that means when Gmail's spam filter flags a message it is using classic machine learning, when ChatGPT, Claude, or Gemini drafts an email it is generative AI, and when Netflix recommends a show it is a different recommendation algorithm. Knowing which kind of AI a product uses tells you what it can reliably do and where it tends to fail, which is the foundation for every other skill in this course.
 
 ## The family tree
 - **Artificial intelligence (AI)** - the broad goal: machines doing things that seem to need intelligence.
@@ -48,10 +45,7 @@ The big generative assistants are **ChatGPT** (OpenAI), **Claude** (Anthropic), 
   },
 
   "fundamentals-2": {
-    lesson: `**TL;DR - An LLM predicts the next word from patterns it learned. It doesn't "look up" facts. That single idea explains hallucinations, inconsistency, and why context is everything.**
-
-## Why it matters
-If you think ChatGPT is "searching for the answer," you'll trust it like a search engine and get burned. Once you know it's _predicting likely text_, its quirks stop being mysterious and you learn to steer it.
+    lesson: `**A large language model (LLM) is a neural network trained on huge amounts of text that produces output by predicting the most likely next token**, one piece at a time, based on patterns it learned during training. Models like GPT-4 from OpenAI, Claude from Anthropic, and Gemini from Google DeepMind are not databases and do not look anything up by default, which is why they can sound confident while inventing facts, a failure called hallucination. The mechanism is statistical pattern completion, so the same prompt can yield slightly different wording each time, and accuracy drops on names, numbers, quotes, and recent events. For instance, ask a plain chatbot for an Einstein quote and it may produce a polished sentence Einstein never said. Understanding this single idea, that an LLM predicts likely text rather than retrieving facts, is what turns hallucinations and inconsistency from mysteries into things you can steer around.
 
 ## How it works (no math)
 The model read a huge amount of text and learned which words tend to follow which. When you prompt it, it generates one likely word at a time. That's it. It's astonishingly good at language because language is full of patterns - and unreliable on facts because a plausible-sounding word isn't always a true one.
@@ -85,10 +79,7 @@ Some tools now _do_ search the web (ChatGPT with browsing, **Perplexity**, Gemin
   },
 
   "fundamentals-3": {
-    lesson: `**TL;DR - AI is brilliant at producing and reshaping language, and weak at live facts, exact math, citations, and judgment. Match the task to the tool and you're instantly more effective.**
-
-## Why it matters
-Most people either over-trust AI (and ship its mistakes) or dismiss it (and miss huge wins). The fix is knowing the boundary - then you delegate the right things and verify the rest.
+    lesson: `**Generative AI is reliably strong at producing and reshaping language, including drafting emails, summarizing documents, explaining concepts, translating, and brainstorming, and reliably weak at live facts, exact arithmetic, citations, and judgment calls about people.** The reason traces back to how large language models work: tools like Claude, ChatGPT, and Gemini predict likely text rather than retrieve verified data, so they excel where fluent patterns matter and slip where precise truth matters. For instance, "draft a reply to this customer email" is a near-perfect fit, while "what is our current stock price" needs live data the model does not have, and "total these 38 numbers exactly" should go to a calculator or to ChatGPT's data-analysis mode that actually runs Python. The practical rule for everyday work is simple: AI produces and reshapes, you supply the facts and the judgment, and you verify anything you would bet money on.
 
 ## Great at
 - **Drafting** - emails, posts, outlines, first versions of anything.
@@ -134,10 +125,7 @@ If yes-but-unsure -> verify. If it's a judgment call -> that's your job.
   },
 
   "fundamentals-4": {
-    lesson: `**TL;DR - Never paste secrets into a public AI tool. Run inputs through a quick safe-use checklist and redact anything you couldn't post publicly.**
-
-## Why it matters
-The fastest way to get into real trouble with AI isn't a wrong answer - it's leaking data. Consumer tools may use what you type to improve their models, and one pasted contract or customer list can become a serious problem. The good news: a 10-second habit prevents almost all of it.
+    lesson: `**Safe AI use means never pasting confidential or personally identifying data into a public AI tool, redacting anything sensitive before you ask for help, and reading every output before you act on it.** Free consumer tools like ChatGPT, Claude, and Gemini may use what you type to improve their models, and a single pasted contract, customer list, or set of API keys can leak in ways that are hard to undo. The mechanism is simple: text you send is stored, sometimes used for training, and can surface again in unpredictable ways. For instance, instead of pasting "Acme Corp pays Jane Doe $8,500 a month," replace it with "Company A pays Person B $X" and you keep the structural help without exposing the deal. Business tiers like ChatGPT Enterprise, Claude for Work, and Gemini for Workspace add privacy guarantees and admin controls, which is what teams handling client data should default to.
 
 ## Never paste into a public AI tool
 - Customer or employee personal data (names, emails, IDs).
@@ -173,10 +161,7 @@ Many tools have a safer enterprise/business tier: **ChatGPT Enterprise/Team**, *
   },
 
   "fundamentals-5": {
-    lesson: `**TL;DR - You don't need every tool. Learn the _categories_, keep one general assistant as your default, and add a specialist tool only when a task demands it.**
-
-## Why it matters
-The tool list is overwhelming and changes weekly. Chasing tools wastes time. Knowing the category for a task removes the paralysis - you'll always know where to start.
+    lesson: `**The AI tools landscape sorts into a few clear categories: general-purpose assistants like ChatGPT, Claude, and Gemini for writing and thinking, sourced research tools like Perplexity and NotebookLM, image generators like Midjourney, DALL-E, and Ideogram, meeting notetakers like Otter, Fireflies, and Granola, coding tools like Cursor and GitHub Copilot, and automation platforms like Zapier, Make, and n8n.** Each category exists because a different shape of work benefits from a different model, interface, or set of integrations. For instance, asking ChatGPT to research a topic gives you a confident summary with no sources, while Perplexity returns the same answer with footnoted citations you can verify. The practical move for any new user is to pick one general assistant as a daily default, learn it deeply, and add a specialist only when a recurring task clearly needs one, which prevents the wasted spend that comes with collecting tools you never master.
 
 ## The map
 - **General assistants** - ChatGPT, Claude, Gemini. Your default for writing, thinking, Q&A.

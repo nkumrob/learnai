@@ -3,10 +3,7 @@ import type { ModuleContent } from "@/types/shared";
 // Level 1 - AI Foundations (Literacy). Topics 6-10.
 export const fundamentals2: Record<string, ModuleContent> = {
   "fundamentals-6": {
-    lesson: `**TL;DR - AI learns from human data, so it absorbs human bias and can amplify it. You can't fix the model, but you can spot biased output and stop it before it ships.**
-
-## Why it matters
-Models are trained on the internet, which reflects the world's imbalances. A 2023 Bloomberg analysis found AI image generators exaggerated racial and gender stereotypes. Non-technical workers are often the _last_ human check before AI output reaches customers - so spotting bias is a practical skill, not a philosophy seminar.
+    lesson: `**AI bias is the tendency of machine learning systems to produce skewed or stereotyped output because the human-generated data they trained on contains those same patterns**, often amplifying them rather than averaging them out. Large language models like ChatGPT, Claude, and Gemini learn from the internet, which over- and under-represents groups and describes them with cliches, so the model defaults reflect those distributions. A 2023 Bloomberg analysis showed image generators exaggerated racial and gender stereotypes well beyond real-world ratios. For instance, prompting "describe a nurse and a surgeon" still tends to default the nurse to "she" and the surgeon to "he," a clean signal that training data is leaking through. You cannot retrain the model, but you can spot bias in output before it ships by checking defaults, representation, and any factual claims about a group, and rewriting or cutting what does not pass.
 
 ## How bias gets in
 The training data over- or under-represents groups and describes them in stereotyped ways. The model learns those patterns and reproduces them - sometimes more strongly than reality.
@@ -42,10 +39,7 @@ All the major tools (ChatGPT, Claude, Gemini) have guardrails, but none are bias
   },
 
   "fundamentals-7": {
-    lesson: `**TL;DR - AI tends to _automate_ routine tasks, _augment_ many others, and _leave_ judgment, relationships, and creativity to humans. Map your job into those three buckets and you'll make smart moves instead of fearful ones.**
-
-## Why it matters
-Hype says "AI will take your job"; denial says "it's a toy". Both lead to bad decisions. A grounded, task-level view lets you offload the boring parts and double down on what's actually valued - which is where careers grow.
+    lesson: `**AI affects your job at the level of tasks rather than the level of whole roles, which is why a useful career response is to sort your recurring tasks into three buckets: automate, augment, and human-only.** Automate covers repetitive rule-based work like data entry and basic formatting that no-code tools such as Zapier or Make can already run. Augment covers drafts, summaries, and first-pass analysis where a tool like Claude or ChatGPT produces the draft and you still decide. Human-only covers relationships, ethics, strategy, and original creative direction. For instance, a marketer's week typically includes "paste weekly numbers into the report" (automate), "write ten subject-line options" (augment), and "decide the brand's quarterly position" (human-only). The grounded move is to push the automate bucket to tools, use AI on the augment bucket, and protect time for human-only work, which is where careers actually grow.
 
 ## The three buckets
 - **Automate** - repetitive, rule-based work (data entry, sorting, basic formatting).
@@ -85,10 +79,7 @@ The roles growing fastest pair domain expertise with AI fluency - "AI won't repl
   },
 
   "fundamentals-8": {
-    lesson: `**TL;DR - Traditional software is deterministic (same input -> same output). Generative AI is probabilistic (same input -> _similar but different_ output). Miss this and you'll be confused and burned.**
-
-## Why it matters
-People expect AI to behave like a calculator and panic when it doesn't repeat exactly. Understanding _why_ it varies tells you when to lock it down and when to let it roam.
+    lesson: `**Generative AI is probabilistic, meaning the same input can produce similar but not identical output every time, while traditional software is deterministic, meaning the same input always produces the same output**, and missing this difference is the single biggest source of user confusion. The mechanism is that large language models like ChatGPT, Claude, and Gemini sample from likely next tokens, so a small amount of randomness is built into every reply, which is a feature for creativity and a risk for consistency. For instance, ask "summarize this in three bullets" twice and you get two valid but differently worded summaries, while a calculator asked "2 plus 2" returns 4 every time. The practical control is a setting called temperature, exposed in the OpenAI, Anthropic, and Google APIs, where low values around 0 to 0.3 produce consistent factual output and higher values produce more varied creative output.
 
 ## How it works
 Traditional code follows fixed rules: 2 + 2 is always 4. An LLM samples from likely next words, so there's natural variation - a feature for creativity, a risk for consistency.
@@ -123,10 +114,7 @@ Need fresh ideas? Let it run hot and ask for many options.
   },
 
   "fundamentals-9": {
-    lesson: `**TL;DR - The most important habit in AI use is keeping a human in the loop: AI generates, you verify, judge, and refine. Build a personal verification habit and you'll never get caught out.**
-
-## Why it matters
-Every serious AI framework ranks oversight and critical thinking as the #1 non-technical skill. The people who get burned are the ones who paste AI output straight into the world. The fix is a small, consistent habit.
+    lesson: `**Human-in-the-loop is the practice of keeping a person responsible for reviewing, judging, and approving AI output before it acts on the world**, on the principle that the model generates drafts and the human owns the decision. Every serious AI framework, including the NIST AI Risk Management Framework and the safety guidance from OpenAI, Anthropic, and Google DeepMind, ranks human oversight as the top non-technical skill, because failures from unchecked AI output (a wrong refund amount, an invented customer fact, a hallucinated citation) reach the real world automatically. The mechanism is simple: AI is a fast, eager intern that is great at producing drafts and terrible at being accountable. For instance, if Claude drafts a refund email saying "your refund of $250 was processed," you check the amount and the status before sending. The same mindset later becomes a literal approval checkpoint in automations and AI agents.
 
 ## How it works
 Think of AI as a fast, eager intern: great at producing drafts, terrible at being accountable. You're the editor. The model proposes; you dispose.
@@ -161,10 +149,7 @@ This habit scales all the way up: in Level 4 (automation) and Level 5 (agents), 
   },
 
   "fundamentals-10": {
-    lesson: `**TL;DR - You don't need deep theory, but you do need the vocabulary. Knowing ~15 core terms lets you follow AI conversations and make decisions instead of nodding along.**
-
-## Why it matters
-Workers who can't speak the language get left out of decisions about AI at work. These terms also unlock the rest of this journey - you'll see them in every later level.
+    lesson: `**Speaking the language of AI means using about fifteen core terms correctly so you can follow conversations and make decisions about tools at work, including model, prompt, token, context window, hallucination, zero-shot, few-shot, temperature, system prompt, RAG, agent, multimodal, fine-tuning, and MCP.** A model is the AI system itself (such as GPT-4, Claude 3.5, or Gemini), a prompt is your input, a token is a chunk of text the model reads and bills you by, and the context window is how much text it can consider at once. Hallucination is confident wrong output, RAG (retrieval-augmented generation) feeds the model your documents at answer time, an agent uses tools to take actions, and MCP (Model Context Protocol) is Anthropic's open standard for connecting AI to external tools. For instance, "lower the temperature and give it a few-shot example" tells a teammate exactly what you mean. Fluency here unlocks every later level.
 
 ## The essential terms
 - **Model** - the AI system (GPT, Claude). **Prompt** - your input. **Token** - a chunk of text it reads/writes (you're billed by these).
