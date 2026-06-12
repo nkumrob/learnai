@@ -12,6 +12,7 @@ import {
   moduleId,
   TRACK_DEFS,
 } from "@/lib/server/content/tracks-definition";
+import { HOWTO_BY_MODULE } from "@/lib/core/howto-steps";
 import { absoluteUrl, SITE_NAME, SITE_URL } from "@/lib/core/site";
 import { LessonReader } from "@/components/LessonReader";
 import { TaskCard } from "@/components/lesson/TaskCard";
@@ -143,6 +144,27 @@ export default async function ModulePage({
     })),
   };
 
+  const howTo = HOWTO_BY_MODULE[id];
+  const howToJsonLd = howTo
+    ? {
+        "@context": "https://schema.org",
+        "@type": "HowTo",
+        "@id": `${lessonUrl}#howto`,
+        name: howTo.name,
+        description: howTo.description,
+        totalTime: howTo.totalTime,
+        inLanguage: "en",
+        mainEntityOfPage: { "@type": "WebPage", "@id": lessonUrl },
+        step: howTo.steps.map((s, i) => ({
+          "@type": "HowToStep",
+          position: i + 1,
+          name: s.name,
+          text: s.text,
+          url: `${lessonUrl}#step-${i + 1}`,
+        })),
+      }
+    : null;
+
   const modulesStub = trackDef.modules.map((m) => ({
     order: m.order,
     slug: m.slug,
@@ -154,6 +176,7 @@ export default async function ModulePage({
       <JsonLd data={lessonJsonLd} />
       <JsonLd data={quizJsonLd} />
       <JsonLd data={breadcrumbJsonLd} />
+      {howToJsonLd && <JsonLd data={howToJsonLd} />}
 
       <LessonTopbar
         trackLabel={trackDef.title}
