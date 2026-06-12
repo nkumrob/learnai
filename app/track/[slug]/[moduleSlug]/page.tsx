@@ -48,6 +48,7 @@ export async function generateMetadata({
     description,
     alternates: { canonical: url },
     openGraph: { title: `${m.title} - LearnAI`, description, url, type: "article" },
+    twitter: { card: "summary_large_image", title: `${m.title} - LearnAI`, description },
   };
 }
 
@@ -105,6 +106,16 @@ export default async function ModulePage({
     provider: { "@type": "Organization", "@id": `${SITE_URL}/#org`, name: SITE_NAME },
   };
 
+  const breadcrumbJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: SITE_NAME, item: SITE_URL },
+      { "@type": "ListItem", position: 2, name: TRACK_LABEL[slug], item: trackUrl },
+      { "@type": "ListItem", position: 3, name: current.title, item: lessonUrl },
+    ],
+  };
+
   const quizJsonLd = {
     "@context": "https://schema.org",
     "@type": "Quiz",
@@ -142,6 +153,7 @@ export default async function ModulePage({
     <>
       <JsonLd data={lessonJsonLd} />
       <JsonLd data={quizJsonLd} />
+      <JsonLd data={breadcrumbJsonLd} />
 
       <LessonTopbar
         trackLabel={trackDef.title}
@@ -170,7 +182,8 @@ export default async function ModulePage({
             By the end you&apos;ll be able to {lower(current.outcome)}.
           </p>
           <p className="mt-3 text-xs text-ink-3">
-            Updated {CONTENT_DATE_HUMAN}
+            Last reviewed{" "}
+            <time dateTime={CONTENT_DATE_ISO}>{CONTENT_DATE_HUMAN}</time>
           </p>
         </header>
 

@@ -28,6 +28,11 @@ export async function generateMetadata({
       url,
       type: "article",
     },
+    twitter: {
+      card: "summary_large_image",
+      title: `${c.headline} - ${SITE_NAME}`,
+      description: c.intro.split(".")[0] + ".",
+    },
   };
 }
 

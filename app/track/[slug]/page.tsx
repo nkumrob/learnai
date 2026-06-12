@@ -36,6 +36,7 @@ export async function generateMetadata({
     description,
     alternates: { canonical: url },
     openGraph: { title: `${title} - LearnAI`, description, url },
+    twitter: { card: "summary_large_image", title: `${title} - LearnAI`, description },
   };
 }
 
