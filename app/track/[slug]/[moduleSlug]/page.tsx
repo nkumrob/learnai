@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { getModuleContent } from "@/lib/server/db/tracks";
+import { getAuthoredContent } from "@/lib/server/content/authored";
 import {
   isTrackSlug,
   TRACK_LABEL,
@@ -68,7 +69,10 @@ export default async function ModulePage({
   if (!current) notFound();
 
   const id = moduleId(slug, current.order);
-  const content = await getModuleContent(id);
+  // Prefer authored content (ships with every deploy, no seed step needed).
+  // Fall back to the DB cache for anything authored at runtime (e.g. future
+  // AI-generated content).
+  const content = getAuthoredContent(id) ?? (await getModuleContent(id));
   if (!content) notFound();
 
   const next = trackDef.modules.find((m) => m.order === current.order + 1);
