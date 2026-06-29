@@ -5,13 +5,21 @@ import { TRACK_LABEL, TRACK_LEVEL } from "@/lib/core/track-meta";
 import type { TrackSlug } from "@/types/shared";
 
 type Row = {
-  initials: string;
+  name: string;
   trackSlug: TrackSlug;
   trackLabel: string;
   level: number;
   daysAgo: number;
   verifyToken: string | null;
 };
+
+function titleCaseName(raw: string): string {
+  return raw
+    .split(/\s+/)
+    .filter(Boolean)
+    .map((w) => w.charAt(0).toUpperCase() + w.slice(1))
+    .join(" ");
+}
 
 async function fetchRecent(): Promise<Row[]> {
   await ensureSchema();
@@ -27,16 +35,16 @@ async function fetchRecent(): Promise<Row[]> {
       const row = r as Record<string, unknown>;
       const slug = String(row.slug) as TrackSlug;
       if (!(slug in TRACK_LABEL)) continue;
-      const name = String(row.learner_name).trim();
-      const parts = name.split(/\s+/).filter(Boolean);
-      const initials = (parts[0]?.[0] ?? "") + (parts[1]?.[0] ?? "");
+      const name = titleCaseName(String(row.learner_name).trim());
+      // Never surface seed/demo learners as public social proof.
+      if (!name || /\b(demo|test|sample|example)\b/i.test(name)) continue;
       const issued = new Date(String(row.issued_at));
       const days = Math.max(
         0,
         Math.floor((Date.now() - issued.getTime()) / 86_400_000),
       );
       out.push({
-        initials: (initials || "?").toUpperCase(),
+        name,
         trackSlug: slug,
         trackLabel: TRACK_LABEL[slug],
         level: TRACK_LEVEL[slug],
@@ -50,32 +58,14 @@ async function fetchRecent(): Promise<Row[]> {
   }
 }
 
-const FALLBACK: Row[] = [
-  {
-    initials: "MR",
-    trackSlug: "prompting",
-    trackLabel: TRACK_LABEL.prompting,
-    level: 2,
-    daysAgo: 1,
-    verifyToken: null,
-  },
-  {
-    initials: "DK",
-    trackSlug: "automation",
-    trackLabel: TRACK_LABEL.automation,
-    level: 4,
-    daysAgo: 2,
-    verifyToken: null,
-  },
-  {
-    initials: "PS",
-    trackSlug: "productivity",
-    trackLabel: TRACK_LABEL.productivity,
-    level: 3,
-    daysAgo: 3,
-    verifyToken: null,
-  },
-];
+const FALLBACK: Row = {
+  name: "Michael Carter",
+  trackSlug: "prompting",
+  trackLabel: TRACK_LABEL.prompting,
+  level: 2,
+  daysAgo: 1,
+  verifyToken: null,
+};
 
 function fmtDays(d: number) {
   if (d === 0) return "today";
@@ -97,41 +87,29 @@ function dateForDaysAgo(days: number): string {
 
 export async function CertificateFeed() {
   const real = await fetchRecent();
-  const rows = (real.length >= 3 ? real : [...real, ...FALLBACK]).slice(0, 3);
+  const row = real[0] ?? FALLBACK;
 
   return (
     <section className="band py-20 sm:py-28">
-      <div className="mb-14 max-w-2xl">
-        <span className="eyebrow" style={{ color: "var(--gold)", letterSpacing: "0.22em" }}>
-          § 05 · the proof
-        </span>
-        <h2 className="display-md mt-2 text-ink">
-          Every certificate is{" "}
-          <span className="font-display italic text-accent">verifiable.</span>
-        </h2>
-        <p className="mt-4 text-ink-2">
-          Each one has a public URL anyone can check. Recruiters, your
-          manager, your future self. No one has to take your word for it.
-        </p>
-      </div>
+      <div className="grid gap-12 lg:grid-cols-2 lg:items-center lg:gap-16">
+        <div className="max-w-xl">
+          <span className="eyebrow" style={{ color: "var(--gold)", letterSpacing: "0.22em" }}>
+            § 05 · the proof
+          </span>
+          <h2 className="display-md mt-2 text-ink">
+            Every certificate is{" "}
+            <span className="font-display italic text-accent">verifiable.</span>
+          </h2>
+          <p className="mt-4 text-ink-2">
+            Each one has a public URL anyone can check. Recruiters, your
+            manager, your future self. No one has to take your word for it.
+          </p>
+        </div>
 
-      <ul className="grid gap-6 sm:grid-cols-3 sm:gap-8 sm:items-end">
-        {rows.map((r, i) => (
-          <li
-            key={i}
-            className={
-              i === 0
-                ? "sm:pt-10"
-                : i === 1
-                  ? "sm:-mt-4 sm:rotate-[-1.5deg]"
-                  : "sm:pt-12"
-            }
-            style={{ transformOrigin: "center bottom" }}
-          >
-            <MiniCert row={r} featured={i === 1} />
-          </li>
-        ))}
-      </ul>
+        <div className="mx-auto w-full max-w-sm">
+          <MiniCert row={row} featured />
+        </div>
+      </div>
     </section>
   );
 }
@@ -166,13 +144,22 @@ function MiniCert({ row, featured }: { row: Row; featured?: boolean }) {
             aria-hidden
           />
           <span
-            className="grid h-8 w-8 place-items-center rounded-full border-2 font-display text-[12px] font-semibold tracking-tight"
+            className="grid h-9 w-9 place-items-center rounded-full border"
             style={{
-              borderColor: "var(--gold)",
+              borderColor: "color-mix(in srgb, var(--gold) 60%, transparent)",
               color: "var(--gold)",
             }}
+            aria-hidden
           >
-            L{row.level}
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+              <path
+                d="M20 6 9 17l-5-5"
+                stroke="currentColor"
+                strokeWidth="2.5"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+            </svg>
           </span>
           <span
             className="h-px flex-1"
@@ -189,36 +176,29 @@ function MiniCert({ row, featured }: { row: Row; featured?: boolean }) {
           >
             Certificate of Completion
           </div>
-          <h3 className="mt-3 font-display text-xl font-semibold tracking-tight text-ink leading-snug">
+          <p className="mt-4 text-[11px] uppercase tracking-[0.18em] text-ink-3">
+            Awarded to
+          </p>
+          <p className="mt-1.5 font-display text-2xl font-semibold tracking-tight text-ink leading-tight">
+            {row.name}
+          </p>
+          <p className="mt-3 text-xs text-ink-2">for completing the track</p>
+          <h3 className="mt-1 font-display text-base font-semibold tracking-tight text-accent leading-snug">
             {row.trackLabel}
           </h3>
-          <p className="mt-1 font-display text-xs italic text-ink-3">
-            awarded to a learner with initials
-          </p>
-          <p
-            className="mt-1 font-display text-3xl font-semibold tracking-tight"
-            style={{ color: "var(--gold)" }}
-          >
-            {row.initials}
+          <p className="mt-2 text-[11px] uppercase tracking-[0.18em] text-ink-3">
+            Level {row.level}
           </p>
         </div>
 
-        {/* Signature script */}
-        <div className="mt-5 flex items-end justify-between gap-3">
+        {/* Footer: issuer + date */}
+        <div className="mt-6 flex items-end justify-between gap-3">
           <div className="flex-1">
-            <span
-              className="block text-sm italic leading-none"
-              style={{
-                fontFamily: "var(--font-display)",
-                color: "var(--ink)",
-                transform: "rotate(-3deg)",
-                transformOrigin: "left bottom",
-              }}
-            >
-              LearnAI Curriculum
+            <span className="block font-display text-sm font-semibold tracking-tight text-ink leading-none">
+              LearnAI
             </span>
             <span
-              className="mt-1 block h-px"
+              className="mt-1.5 block h-px"
               style={{ background: "var(--ink-3)", opacity: 0.5 }}
             />
             <span className="mt-1 block text-[10px] uppercase tracking-[0.18em] text-ink-3">
@@ -231,7 +211,7 @@ function MiniCert({ row, featured }: { row: Row; featured?: boolean }) {
               {issued}
             </span>
             <span
-              className="mt-1 block h-px"
+              className="mt-1.5 block h-px"
               style={{ background: "var(--ink-3)", opacity: 0.5 }}
             />
             <span className="mt-1 block text-[10px] uppercase tracking-[0.18em] text-ink-3">
