@@ -9,6 +9,9 @@
     "start": "next start",
     "lint": "eslint",
     "seed": "node --conditions=react-server --import tsx scripts/seed-content.ts",
+    "seed:analytics": "node --conditions=react-server --import tsx scripts/seed-analytics.ts",
+    "reset:analytics": "node --conditions=react-server --import tsx scripts/reset-analytics.ts",
+    "purge:sessions": "node --conditions=react-server --import tsx scripts/purge-junk-sessions.ts",
     "generate:llms": "node --conditions=react-server --import tsx scripts/generate-llms-txt.ts",
     "test": "vitest run"
   },
