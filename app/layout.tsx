@@ -140,8 +140,8 @@ export default function RootLayout({
       >
         <JsonLd data={orgJsonLd} />
         <div className="relative z-[1] flex min-h-full flex-col">
-          <SiteHeader />
           <RetirementGuideCard />
+          <SiteHeader />
           <main className="flex-1">{children}</main>
           <SiteFooter />
         </div>
