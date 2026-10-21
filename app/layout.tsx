@@ -6,6 +6,7 @@ import { GoogleAnalytics } from "@next/third-parties/google";
 import { ThemeToggle } from "@/components/ThemeToggle";
 import { Logo, LogoMark } from "@/components/Logo";
 import { JsonLd } from "@/components/JsonLd";
+import { RetirementGuideCard } from "@/components/RetirementGuideCard";
 import {
   SITE_DESCRIPTION,
   SITE_KEYWORDS,
@@ -141,6 +142,7 @@ export default function RootLayout({
         <div className="relative z-[1] flex min-h-full flex-col">
           <SiteHeader />
           <main className="flex-1">{children}</main>
+          <RetirementGuideCard />
           <SiteFooter />
         </div>
         <Analytics />
