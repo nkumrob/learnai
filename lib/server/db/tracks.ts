@@ -1,6 +1,7 @@
 import "server-only";
 import { getDb } from "./client";
 import { ensureSchema } from "./schema";
+import { getAuthoredContent } from "@/lib/server/content/authored";
 import type {
   Module,
   ModuleContent,
@@ -103,7 +104,11 @@ export async function getModuleWithContent(
 ): Promise<ModuleWithContent | null> {
   const mod = await getModuleById(moduleId);
   if (!mod) return null;
-  const content = await getModuleContent(moduleId);
+  // Grade against the same content the lesson page renders: authored first,
+  // DB cache only as a fallback. Grading the stale cache marked correct
+  // answers wrong whenever the authored quiz had changed.
+  const content =
+    getAuthoredContent(moduleId) ?? (await getModuleContent(moduleId));
   if (!content) return null;
   return { ...mod, content };
 }
